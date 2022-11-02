@@ -1,0 +1,20 @@
+*{box-sizing: border-box;}
+
+.section{
+    min-height: calc(100vh - 272px);
+}
+.button-style{
+    background-color: white;
+    border: none;
+    font-weight:500;
+}
+.float-right{
+    float: right;
+}
+.outline-none{
+    border: none;
+    outline: none;
+}
+.border-right{
+    border-right: 2px solid rgb(106, 105, 105);
+}
