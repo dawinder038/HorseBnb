@@ -5,18 +5,151 @@
                 <div>
                     <img src="../../../assets/logo.svg" alt="Logo">
                 </div>
-               
             </div>
             <div class="d-flex p-left">
                 <div class="box">
-                    <button style="background-color:white; border: none;font-weight: 500;">
+                    <button type="button" class="btn" style="background-color:white; border: none;font-weight: 500;"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Sign UP
                     </button>
                 </div>
                 <div>
-                    <button class="btn btn-danger">Login</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#sign-in-modal">Login</button>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+<!-- Modal for Sign Up -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5">
+                <div>
+                    <form [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm.value)">
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control p-2" formControlName="firstName" placeholder="First Name">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control p-2" formControlName="lastName" placeholder="Last Name">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="email" class="form-control p-2" formControlName="email" placeholder="Email">
+                        </div>
+                        <div class="input-group mt-2">
+                            <select class=" dropdown-toggle dropdown " formControlName="country_code"  data-bs-toggle="dropdown" aria-expanded="false">
+                                <option class="dropdown-item" value="+91" selected>+91</option>
+                                <option  class="dropdown-item" value="+92">+92</option>
+                                <option  class="dropdown-item" value="+93">+93</option>
+                            </select>
+                            <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter Phone Number" aria-label="Text input with dropdown button">
+                          </div>
+                        <div class="form-group mt-2">
+                            <input type="password" class="form-control p-2" formControlName="password" placeholder="Password">
+                        </div>
+                        <div class="mt-2">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label ms-2" for="exampleCheck1">Agree to <a href="#">Terms</a>  & <a href="#">Condition</a></label>
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn w-100 btn-danger">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="my-4 d-flex flex  justify-content-center">
+                    <div class="line-box"></div>
+                    <div class="mx-2" style="font-size: 18px;">or</div>
+                    <div class="line-box"></div>
+                </div>
+                <div class="mt-2">
+                    <button class="email-btn ">
+                        <img src="../../../assets/facebook_color.png" class="float-left" alt="Email">
+                        Continue with Facebook
+                    </button>
+                </div>
+                <div class="mt-2">
+                    <button class="email-btn">
+                        <img src="../../../assets/google_color.png" class="float-left" alt="Email">
+                        Continue with Google
+                    </button>
+                </div>
+                <div class="mt-2">
+                    <p class="text-center">Already have an HorseBnb account? <a href="#">Log In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal For Sign In -->
+
+
+<div class="modal fade" id="sign-in-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+                <div>
+                    <div>
+                        <form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm.value)">
+                            <div class="form-group mt-2">
+                                <input type="email" class="form-control p-2" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" formControlName="username" placeholder="Email Address">
+                            </div>
+                            <div class="form-group mt-2">
+                                <input type="password" class="form-control p-2" formControlName="password" id="exampleInputPassword1"
+                                    placeholder="Password">
+                            </div>
+                            <div class="form-group mt-3 form-check">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                                    </div>
+                                    <div>
+                                        <a style="color:red;">Fogot Password?</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button type="submit" class="btn w-100 btn-danger">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="my-4 d-flex flex  justify-content-center">
+                    <div class="line-box"></div>
+                    <div class="mx-2" style="font-size: 18px;">or</div>
+                    <div class="line-box"></div>
+                </div>
+                <div class="mt-2">
+                    <button class="email-btn ">
+                        <img src="../../../assets/facebook_color.png" class="float-left" alt="Email">
+                        Continue with Facebook
+                    </button>
+                </div>
+                <div class="mt-2">
+                    <button class="email-btn">
+                        <img src="../../../assets/google_color.png" class="float-left" alt="Email">
+                        Continue with Google
+                    </button>
+                </div>
+                <div class="mt-2">
+                    <p class="text-center">Don't have an HorseBnb account? <a href="#">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
