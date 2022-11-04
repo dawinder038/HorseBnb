@@ -12,6 +12,9 @@ export class ServiceNameService {
   loginApi(data:any){
     return this.http.post(this.apiUrl+"login",data);
   }
+  // getDataApi(){
+  //   return this.http.get(this.apiUrl)
+  // }
 }
 
 

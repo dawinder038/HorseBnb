@@ -6,18 +6,22 @@ import { AppComponent } from './app.component';
 // import { FooterModule } from './Common-Components/footer/footer.module';
 // import { HeaderModule } from './Common-Components/header/header.module';
 import { HomeComponent } from '../app/pages/home/home.component';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './Common-Components/header/header.component';
 import { FooterComponent } from './Common-Components/footer/footer.component';
+import { HostYourStallsComponent } from './pages/host-your-stalls/host-your-stalls.component';
 // import { InterceptorService } from './@core/Services/interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HostYourStallsComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import { FooterComponent } from './Common-Components/footer/footer.component';
     // FooterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
