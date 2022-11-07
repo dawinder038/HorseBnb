@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 
 @Component({
   selector: 'app-host-your-stalls',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HostYourStallsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,private service:HorseServiceService) { }
 
   ngOnInit(): void {
+
   }
+  getStarted(){
+    this.service.getDataApi().subscribe((result:any)=>{
+      console.log(result);
+      this.router.navigateByUrl('/create-your-stalls')
+    })
+    
+  }
+
 
 }

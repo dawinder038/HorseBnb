@@ -11,17 +11,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './Common-Components/header/header.component';
 import { FooterComponent } from './Common-Components/footer/footer.component';
 import { HostYourStallsComponent } from './pages/host-your-stalls/host-your-stalls.component';
-// import { InterceptorService } from './@core/Services/interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
+import { CreateStallsComponent } from './pages/create-stalls/create-stalls.component';
+import { HostGuestsComponent } from './pages/host-guests/host-guests.component';
+import { InterceptorService } from './@core/Services/interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    HostYourStallsComponent
+    HostYourStallsComponent,
+    CreateStallsComponent,
+    HostGuestsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot()
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

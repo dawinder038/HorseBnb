@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
-export class ServiceNameService {
+export class HorseServiceService {
   apiUrl='https://airbnb-clone.henceforthsolutions.com:3001/v1/api/'
   constructor(private http: HttpClient) { }
 
@@ -12,9 +12,12 @@ export class ServiceNameService {
   loginApi(data:any){
     return this.http.post(this.apiUrl+"login",data);
   }
-  // getDataApi(){
-  //   return this.http.get(this.apiUrl)
-  // }
+  getDataApi(){
+    return this.http.get(this.apiUrl+"current_user/show")
+  }
+  createOwnListingApi(data:any){
+    return this.http.post(this.apiUrl+"own_listings/create_draft",data)
+  }
 }
 
 

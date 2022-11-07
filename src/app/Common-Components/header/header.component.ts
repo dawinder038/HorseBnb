@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { ServiceNameService } from 'src/app/@core/Services/horse-service.service';
+import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 
 
 @Component({
@@ -13,9 +13,10 @@ import { ServiceNameService } from 'src/app/@core/Services/horse-service.service
 export class HeaderComponent implements OnInit {
   signUpForm!: FormGroup;
   signInForm!: FormGroup;
-  result: any;
+  createOwnListingForm!:FormGroup;
+  fName:any;
   show: boolean = false;
-  constructor(private service: ServiceNameService,private router:Router) {
+  constructor(private service: HorseServiceService,private router:Router) {
     this.checkLoginStatus();
    }
 
@@ -45,6 +46,7 @@ export class HeaderComponent implements OnInit {
       password: new FormControl('')
     })
 
+
   }
 
   signUp(data: any) {
@@ -71,9 +73,10 @@ export class HeaderComponent implements OnInit {
   }
   signIn(data: any) {
     this.service.loginApi(data).subscribe((result: any) => {
-      console.log(result);
+      console.log(result)
+      this.fName=result.data.attributes.profile.firstName;
+      
       sessionStorage.setItem('signUpToken', result.data.token);
-      let token=result.data.token
       this.show=true;
     })
   }
@@ -81,5 +84,4 @@ export class HeaderComponent implements OnInit {
     sessionStorage.clear();
     window.location.reload();
   }
-
 }

@@ -1,5 +1,4 @@
 <header>
-
     <div class="container-fluid shadow-sm">
         <div class="d-flex p-2 justify-content-between">
             <div class="ms-5 p-2">
@@ -22,35 +21,36 @@
                 </div>
                 <div *ngIf="show">
                     <div class="row">
-                    <div class="d-flex margin-x justify-content-space-between">
-                        <div class="mx-3 pointer" routerLink="/host-your-stalls">Host your stalls</div>
-                        <div class="mx-3 pointer">Host your experiences</div>
-                        <div class="mx-3 pointer">Help</div>
-                        <div class="mx-3 pointer">
-                            <img src="../../../assets/chat.png" alt="image">
-                        </div>
-                        <div class="card pointer btn-group mx-3">
-                            <div class="d-flex dropdown-toggle p-2" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../../../assets/userpic_l.png" style="width: 30px; height:30px" alt="">
-                                <span class="ms-2">John Brothers</span>
-                                <div class="dropdown">
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                      <li><a class="dropdown-item" href="#">Booking</a></li>
-                                      <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                                      <li><a class="dropdown-item" href="#">Manage settings</a></li>
-                                      <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
-                                    </ul>
-                                  </div>
+                        <div class="d-flex margin-x justify-content-space-between">
+                            <div class="mx-3 pointer" routerLink="/host-your-stalls">Host your stalls</div>
+                            <div class="mx-3 pointer"  routerLink="/host-guests">Host Guests</div>
+                            <div class="mx-3 pointer">Host your experiences</div>
+                            <div class="mx-3 pointer">Help</div>
+                            <div class="mx-3 pointer">
+                                <img src="../../../assets/chat.png" alt="image">
+                            </div>
+                            <div class="card pointer btn-group mx-3">
+                                <div class="d-flex dropdown-toggle p-2" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="../../../assets/userpic_l.png" style="width: 30px; height:30px" alt="">
+                                    <span class="ms-2">{{fName}}</span>
+                                    <div class="dropdown">
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#">Booking</a></li>
+                                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                                            <li><a class="dropdown-item" href="#">Manage settings</a></li>
+                                            <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </header>
-
 
 <!-- Modal for Sign Up -->
 
