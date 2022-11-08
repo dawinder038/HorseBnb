@@ -17,10 +17,10 @@ export class HostYourStallsComponent implements OnInit {
   getStarted(){
     this.service.getDataApi().subscribe((result:any)=>{
       console.log(result);
-      this.router.navigateByUrl('/create-your-stalls')
+      setTimeout(() => {
+        this.router.navigateByUrl('/create-your-stalls/step1')
+      }, 1000);
     })
     
   }
-
-
 }

@@ -16,6 +16,14 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CreateStallsComponent } from './pages/create-stalls/create-stalls.component';
 import { HostGuestsComponent } from './pages/host-guests/host-guests.component';
 import { InterceptorService } from './@core/Services/interceptor.service';
+import { CreateStallsStep3Component } from './pages/create-stalls-step3/create-stalls-step3.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { TermConditionsComponent } from './pages/term-conditions/term-conditions.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +32,11 @@ import { InterceptorService } from './@core/Services/interceptor.service';
     FooterComponent,
     HostYourStallsComponent,
     CreateStallsComponent,
-    HostGuestsComponent
+    HostGuestsComponent,
+    CreateStallsStep3Component,
+    AboutUsComponent,
+    ContactUsComponent,
+    TermConditionsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +47,8 @@ import { InterceptorService } from './@core/Services/interceptor.service';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent],

@@ -2,27 +2,59 @@
 <section class="section">
   <div class="container">
     <div class="py-4">
-      <button class="button-style ">Short Term Stalls</button>
-      <button class="button-style ms-3">Monthly Board</button>
-      <button class="button-style ms-3">Horse Experiences</button>
+      <button class="button-style "(click)="showShortTermFun()">Short Term Stalls</button>
+      <button class="button-style ms-3" (click)="showMonthlyFun()"> Monthly Board</button>
+      <button class="button-style ms-3" (click)="showGuestAccomodationsFun()" >Guest Accommodations</button>
+      <button class="button-style ms-3" (click)="horseAdventuresFun()">Horse Adventures</button>
     </div>
     <div class="py-4">
       <form>
-        <div class="row shadow-sm py-4 px-4">
+        <div class="row shadow-sm py-4 px-4" *ngIf="!horseAccomoShow">
           <div class="col-md-4 border-right">
             <h6>WHERE</h6>
             <svg class="w-64 h-64" xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" viewBox="0 0 20 20" fill="currentColor"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg>
             <input type="text" class="outline-none" id="search" placeholder="Anywhere">
           </div>
           <div class="col-md-4 border-right">
-            <h6>CHECK IN/CHECK OUT</h6>
-            <input type="text" class="outline-none" placeholder="Add dates">
+            <div *ngIf="!showStall">
+              <h6>CHECK IN/CHECK OUT</h6>
+              <input type="text"
+              placeholder="add dates"
+              class="form-control outline-none"
+              bsDaterangepicker
+              [bsConfig]="{ isAnimated: true }">
+            </div>
+            <div *ngIf="showStall">
+              <h6>SELECT MONTH</h6>
+              <input type="text" class="form-control outline-none" placeholder="add month">
+            </div>
           </div>
           <div class="col-md-4 d-flex search-btn justify-content-between">
-            <div>
-              <h6>HORSE STALLS</h6>
+            <div *ngIf="horseStallShow">
+              <h6>NUMBER OF STALLS</h6>
               <input type="text" class="outline-none" placeholder="Add stall & guests">
             </div>
+            <div *ngIf="!horseStallShow">
+              <h6>NUMBER OF ROOMS</h6>
+              <input type="text" class="outline-none" placeholder="Add rooms">
+            </div>
+            <div>
+              <button class="btn btn-danger float-right">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="row shadow-sm py-4 px-4" *ngIf="horseAccomoShow">
+          <div class="col-md-6 border-right">
+            <h6>WHERE</h6>
+            <svg class="w-64 h-64" xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" viewBox="0 0 20 20" fill="currentColor"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg>
+            <input type="text" class="outline-none" id="search" placeholder="Anywhere">
+          </div>
+          <div class="col-md-6">
+            <h6>Date</h6>
+            <input type="text"
+            placeholder="Add dates"
+            class="form-control outline-none"
+            bsDatepicker>
             <div>
               <button class="btn btn-danger float-right">Search</button>
             </div>

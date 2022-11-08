@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
@@ -32,6 +32,15 @@ export class HeaderComponent implements OnInit {
     }
   }
   intializeForm() {
+    // this.signUpForm = new FormGroup({
+    //   firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+    //   lastName: new FormControl('', [Validators.required]),
+    //   email: new FormControl('', [Validators.required, Validators.email]),
+    //   password: new FormControl('', [Validators.required, Validators.pattern('')]),
+    //   phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+    //   country_code: new FormControl('', [Validators.required])
+    // })
+    
     this.signUpForm = new FormGroup({
       firstName: new FormControl(''),
       lastName: new FormControl(''),
@@ -40,13 +49,12 @@ export class HeaderComponent implements OnInit {
       phoneNumber: new FormControl(''),
       country_code: new FormControl('')
     })
-
+    
     this.signInForm = new FormGroup({
-      username: new FormControl(''),
-      password: new FormControl('')
+      username: new FormControl('', [Validators.required, Validators.email ]),
+      password: new FormControl('', [Validators.required])
     })
-
-
+ 
   }
 
   signUp(data: any) {
@@ -74,8 +82,8 @@ export class HeaderComponent implements OnInit {
   signIn(data: any) {
     this.service.loginApi(data).subscribe((result: any) => {
       console.log(result)
-      this.fName=result.data.attributes.profile.firstName;
-      
+      this.fName=result.data.attributes.profile.displayName;
+      console.log(result.data.token)
       sessionStorage.setItem('signUpToken', result.data.token);
       this.show=true;
     })
@@ -83,5 +91,10 @@ export class HeaderComponent implements OnInit {
   logout(){
     sessionStorage.clear();
     window.location.reload();
+  }
+  hostYourStall(){
+   setTimeout(() => {
+    this.router.navigateByUrl('/host-your-stalls')
+   }, 1000);
   }
 }
