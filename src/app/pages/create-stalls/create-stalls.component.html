@@ -19,7 +19,7 @@
                 <form [formGroup]="createOwnListingForm" (ngSubmit)="createOwnListing(createOwnListingForm.value)">
                     <div class="mt-3">
                         <div>
-                            <select class="form-select dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                            <select class="form-select dropdown-toggle" formControlName="choose_stall" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                             aria-expanded="false" aria-label="Default select example">
                                 <option class="dropdown-item" selected>Choose stall type</option>
                                 <option class="dropdown-item" value="Short term stall">short term stall</option>
@@ -35,7 +35,7 @@
                     </div>
                     <div>
                         <input type="text" formControlName="title" class="form-control" style="width: 70%;" placeholder="Enter Title">
-                        <input type="submit" class="btn mt-3" routerLink="/create-stalls/step3" style="background-color:red ;" value="continue">
+                        <button type="submit" class="btn mt-3"  (click)="ownListingShowId()" style="background-color:red;color: white;">Continue</button>
                     </div>
                 </form>
             </div>

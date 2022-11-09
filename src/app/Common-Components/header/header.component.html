@@ -23,9 +23,8 @@
                     <div class="row">
                         <div class="d-flex margin-x justify-content-space-between">
                             <div class="mx-3 pointer" (click)="hostYourStall()">Host your stalls</div>
-                            <div class="mx-3 pointer"  routerLink="/host-guests">Host Guests</div>
-                            <div class="mx-3 pointer">Host your experiences</div>
-                            <div class="mx-3 pointer">Help</div>
+                            <div class="mx-3 pointer" routerLink="/host-guests">Host Guests</div>
+                            <div class="mx-3 pointer" routerLink="/host-adventure">Host an Advrnture</div>
                             <div class="mx-3 pointer">
                                 <img src="../../../assets/chat.png" alt="image">
                             </div>
@@ -37,7 +36,7 @@
                                     <div class="dropdown">
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <li><a class="dropdown-item" href="#">Booking</a></li>
-                                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                                            <li><a class="dropdown-item" routerLink="/dashboard">Dashboard</a></li>
                                             <li><a class="dropdown-item" href="#">Manage settings</a></li>
                                             <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
                                         </ul>
@@ -67,6 +66,10 @@
                         <div class="form-group mt-2">
                             <input type="text" class="form-control p-2" formControlName="firstName"
                                 placeholder="First Name">
+                                <div>
+                                    <small *ngIf="signUpForm.controls['firstName']?.hasError('required') && signInForm.controls['firstName']?.touched">Email is required</small>
+                                    <small *ngIf="signUpForm.controls['firstName']?.hasError('email')">Email is not valid</small>
+                                </div>
                         </div>
                         <div class="form-group mt-2">
                             <input type="text" class="form-control p-2" formControlName="lastName"
@@ -133,17 +136,21 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" #closeBtn data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
                 <div>
                     <div>
-                        <form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm.value)">
+                        <form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm.value, closeBtn)">
                             <div class="form-group mt-2">
-                                <input type="email" class="form-control p-2" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="username" placeholder="Email Address">
+                                <input type="email" class="form-control p-2" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" formControlName="username" placeholder="Email Address">
                                 <div>
-                                    <small *ngIf="signInForm.controls['username']?.hasError('required') && signInForm.controls['username']?.touched">Email is required</small>
-                                    <small *ngIf="signInForm.controls['username']?.hasError('email')">Email is not valid</small>
+                                    <small
+                                        *ngIf="signInForm.controls['username']?.hasError('required') && signInForm.controls['username']?.touched">Email
+                                        is required</small>
+                                    <small *ngIf="signInForm.controls['username']?.hasError('email')">Email is not
+                                        valid</small>
                                 </div>
                             </div>
                             <div class="form-group mt-2">
@@ -159,11 +166,10 @@
                                     <div>
                                         <a style="color:red;">Fogot Password?</a>
                                     </div>
-
                                 </div>
                             </div>
                             <div class="mt-3">
-                                <button type="submit" class="btn w-100 btn-danger" >Login</button>
+                                <button type="submit" class="btn w-100 btn-danger">Login</button>
                             </div>
                         </form>
                     </div>

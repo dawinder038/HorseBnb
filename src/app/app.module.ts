@@ -21,6 +21,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { TermConditionsComponent } from './pages/term-conditions/term-conditions.component';
+import { HostAdventureComponent } from './pages/host-adventure/host-adventure.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 
@@ -36,7 +38,9 @@ import { TermConditionsComponent } from './pages/term-conditions/term-conditions
     CreateStallsStep3Component,
     AboutUsComponent,
     ContactUsComponent,
-    TermConditionsComponent
+    TermConditionsComponent,
+    HostAdventureComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

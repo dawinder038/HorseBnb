@@ -32,22 +32,13 @@ export class HeaderComponent implements OnInit {
     }
   }
   intializeForm() {
-    // this.signUpForm = new FormGroup({
-    //   firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-    //   lastName: new FormControl('', [Validators.required]),
-    //   email: new FormControl('', [Validators.required, Validators.email]),
-    //   password: new FormControl('', [Validators.required, Validators.pattern('')]),
-    //   phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-    //   country_code: new FormControl('', [Validators.required])
-    // })
-    
     this.signUpForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      email: new FormControl(''),
-      password: new FormControl(''),
-      phoneNumber: new FormControl(''),
-      country_code: new FormControl('')
+      firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      lastName: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.pattern('')]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      country_code: new FormControl('', [Validators.required])
     })
     
     this.signInForm = new FormGroup({
@@ -79,9 +70,10 @@ export class HeaderComponent implements OnInit {
       console.log(result);
     })
   }
-  signIn(data: any) {
+  signIn(data: any, clsBtn:HTMLElement) {
     this.service.loginApi(data).subscribe((result: any) => {
       console.log(result)
+      clsBtn.click();
       this.fName=result.data.attributes.profile.displayName;
       console.log(result.data.token)
       sessionStorage.setItem('signUpToken', result.data.token);

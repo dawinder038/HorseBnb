@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgressbarConfig } from 'ngx-bootstrap/progressbar';
+import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 
 @Component({
   selector: 'app-create-stalls-step3',
@@ -8,14 +9,13 @@ import { ProgressbarConfig } from 'ngx-bootstrap/progressbar';
  
 })
 export class CreateStallsStep3Component implements OnInit {
-
-  constructor() { }
+  counter:any=0;
+  constructor(private service:HorseServiceService) { }
 
   ngOnInit(): void {
+    this.getData()
   }
-
-  counter = 0;
-
+  
   incCounter(){
        return this.counter = this.counter + 1;
   }
@@ -24,6 +24,15 @@ export class CreateStallsStep3Component implements OnInit {
     this.counter=this.counter - 1;
   }
     
+}
+getData() {
+  this.service.getDataApi().subscribe((result: any) => {
+    console.log(result);
+  })
+}
+next(){
+  sessionStorage.setItem('counter',this.counter)
+  console.log(this.counter)
 }
 
 }
