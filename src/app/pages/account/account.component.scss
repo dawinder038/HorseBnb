@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+.heading {
+    margin: 30px 0px;
+}
+
+.card {
+    height: 180px;
+}
+
+.logout-box {
+    padding: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.2);
+}
+
+.logout-btn {
+    font-size: 20px;
+}
+
+.logout {
+    align-items: center;
+
+}
+
+.p-right {
+    padding-right: 15px;
+}
+
+.section {
+    min-height: calc(100vh - 280px);
+}
+
+.card:hover {
+    background-color: rgba(126, 20, 22, 0.2);
+    cursor: pointer;
+}

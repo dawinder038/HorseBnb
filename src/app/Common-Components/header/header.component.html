@@ -1,54 +1,103 @@
 <header>
-    <div class="container-fluid shadow-sm">
-        <div class="d-flex p-2 justify-content-between">
-            <div class="ms-5 p-2">
-                <div>
-                    <img src="../../../assets/logo.svg" alt="Logo">
-                </div>
+    <nav class="navbar navbar-expand-lg d-flex justify-content-between navbar-light bg-light">
+        <!-- <div class="container-fluid "> -->
+        <div class="ms-5 p-2">
+            <div>
+                <img src="../../../assets/logo.svg" alt="Logo">
             </div>
-            <div class=" p-left">
-                <div *ngIf="!show" class="d-flex">
-                    <div class="box">
-                        <button type="button" class="btn" style="background-color:white; border: none;font-weight: 500;"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Sign Up
-                        </button>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#sign-in-modal">Login</button>
-                    </div>
-                </div>
-                <div *ngIf="show">
-                    <div class="row">
-                        <div class="d-flex margin-x justify-content-space-between">
-                            <div class="mx-3 pointer" (click)="hostYourStall()">Host your stalls</div>
-                            <div class="mx-3 pointer" routerLink="/host-guests">Host Guests</div>
-                            <div class="mx-3 pointer" routerLink="/host-adventure">Host an Advrnture</div>
-                            <div class="mx-3 pointer">
-                                <img src="../../../assets/chat.png" alt="image">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="f-right">
+                <div class=" p-2 justify-content-between">
+                    <div class=>
+                        <div class="d-flex justify-content-between">
+                            <!-- <div class="ms-5 p-2">
+                                <div>
+                                    <img src="../../../assets/logo.svg" alt="Logo">
+                                </div>   
+                            </div> -->
+                            <div *ngIf="!show" class="d-flex">
+                                <div class="box">
+                                    <button type="button" class="btn"
+                                        style="background-color:white; border: none;font-weight: 500;"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Sign Up
+                                    </button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#sign-in-modal">Login</button>
+                                </div>
                             </div>
-                            <div class="card pointer btn-group mx-3">
-                                <div class="d-flex dropdown-toggle p-2" id="dropdownMenuButton1"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="../../../assets/userpic_l.png" style="width: 30px; height:30px" alt="">
-                                    <span class="ms-2">{{fName}}</span>
-                                    <div class="dropdown">
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="#">Booking</a></li>
-                                            <li><a class="dropdown-item" routerLink="/dashboard">Dashboard</a></li>
-                                            <li><a class="dropdown-item" href="#">Manage settings</a></li>
-                                            <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
-                                        </ul>
+                        </div>
+
+                        <div *ngIf="show">
+                            <div class="row ">
+                                <div class="margin-x navbar-nav me-auto mb-2 mb-lg-0">
+
+                                    <div class="mx-3 pointer" (click)="hostYourStall()">Host your stalls</div>
+                                    <div class="mx-3 pointer nav-link active" aria-current="page"
+                                        routerLink="/host-guests">Host Guests</div>
+                                    <div class="mx-3 pointer" routerLink="/host-adventure">Host an Advrnture</div>
+                                    <div class="mx-3 pointer">
+                                        <img src="../../../assets/chat.png" alt="image">
+                                    </div>
+                                    <div class="card pointer btn-group mx-3">
+                                        <div class=" dropdown-toggle p-2" id="dropdownMenuButton1"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="../../../assets/userpic_l.png" style="width: 30px; height:30px"
+                                                alt="">
+                                            <span class="ms-2">{{fName}}</span>
+                                            <div class="dropdown">
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                    <li><a class="dropdown-item" href="#">Booking</a></li>
+                                                    <li><a class="dropdown-item" routerLink="/dashboard">Dashboard</a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="#">Manage settings</a></li>
+                                                    <li><a class="dropdown-item" routerLink="/account">Account</a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- </div> -->
                     </div>
                 </div>
+                <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="">
+                <a class="" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul> -->
             </div>
         </div>
-    </div>
+    </nav>
+
 </header>
 
 <!-- Modal for Sign Up -->
@@ -66,10 +115,13 @@
                         <div class="form-group mt-2">
                             <input type="text" class="form-control p-2" formControlName="firstName"
                                 placeholder="First Name">
-                                <div>
-                                    <small *ngIf="signUpForm.controls['firstName']?.hasError('required') && signInForm.controls['firstName']?.touched">Email is required</small>
-                                    <small *ngIf="signUpForm.controls['firstName']?.hasError('email')">Email is not valid</small>
-                                </div>
+                            <div>
+                                <small
+                                    *ngIf="signUpForm.controls['firstName']?.hasError('required') && signInForm.controls['firstName']?.touched">Email
+                                    is required</small>
+                                <small *ngIf="signUpForm.controls['firstName']?.hasError('email')">Email is not
+                                    valid</small>
+                            </div>
                         </div>
                         <div class="form-group mt-2">
                             <input type="text" class="form-control p-2" formControlName="lastName"

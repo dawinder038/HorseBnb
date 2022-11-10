@@ -23,6 +23,8 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { TermConditionsComponent } from './pages/term-conditions/term-conditions.component';
 import { HostAdventureComponent } from './pages/host-adventure/host-adventure.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AccountComponent } from './pages/account/account.component';
+import { PersonalInfoComponent } from './pages/personal-info/personal-info.component';
 
 
 
@@ -40,7 +42,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     ContactUsComponent,
     TermConditionsComponent,
     HostAdventureComponent,
-    DashboardComponent
+    DashboardComponent,
+    AccountComponent,
+    PersonalInfoComponent
   ],
   imports: [
     BrowserModule,

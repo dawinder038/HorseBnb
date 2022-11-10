@@ -13,6 +13,8 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { TermConditionsComponent } from './pages/term-conditions/term-conditions.component';
 import { HostAdventureComponent } from './pages/host-adventure/host-adventure.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AccountComponent } from './pages/account/account.component';
+import { PersonalInfoComponent } from './pages/personal-info/personal-info.component';
 const routes: Routes = [
   {path:"",redirectTo:"home",pathMatch:"full"},
   {path:"home",component:HomeComponent},
@@ -28,8 +30,8 @@ const routes: Routes = [
   {path:"term-conditions",component:TermConditionsComponent},
   {path:"host-adventure",component:HostAdventureComponent},
   {path:"dashboard",component:DashboardComponent},
-
-  
+  {path:"account",component:AccountComponent},
+  {path:"personal-info",component:PersonalInfoComponent}
 ];
 
 @NgModule({
