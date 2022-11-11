@@ -25,7 +25,9 @@ import { HostAdventureComponent } from './pages/host-adventure/host-adventure.co
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AccountComponent } from './pages/account/account.component';
 import { PersonalInfoComponent } from './pages/personal-info/personal-info.component';
-
+import { HorseServiceService } from './@core/Services/horse-service.service';
+import { AuthGuardGuard } from './@core/Services/auth-guard.guard';
+import { ManageListingComponent } from './pages/manage-listing/manage-listing.component';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { PersonalInfoComponent } from './pages/personal-info/personal-info.compo
     HostAdventureComponent,
     DashboardComponent,
     AccountComponent,
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    ManageListingComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,7 @@ import { PersonalInfoComponent } from './pages/personal-info/personal-info.compo
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },AuthGuardGuard,HorseServiceService],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

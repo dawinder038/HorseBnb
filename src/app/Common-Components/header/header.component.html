@@ -1,6 +1,5 @@
 <header>
     <nav class="navbar navbar-expand-lg d-flex justify-content-between navbar-light bg-light">
-        <!-- <div class="container-fluid "> -->
         <div class="ms-5 p-2">
             <div>
                 <img src="../../../assets/logo.svg" alt="Logo">
@@ -10,16 +9,11 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
             <div class="f-right">
                 <div class=" p-2 justify-content-between">
-                    <div class=>
+                    <div>
                         <div class="d-flex justify-content-between">
-                            <!-- <div class="ms-5 p-2">
-                                <div>
-                                    <img src="../../../assets/logo.svg" alt="Logo">
-                                </div>   
-                            </div> -->
                             <div *ngIf="!show" class="d-flex">
                                 <div class="box">
                                     <button type="button" class="btn"
@@ -36,13 +30,13 @@
                         </div>
 
                         <div *ngIf="show">
-                            <div class="row ">
-                                <div class="margin-x navbar-nav me-auto mb-2 mb-lg-0">
+                            <div class="row align-items-center">
+                                <div class="margin-x navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
 
                                     <div class="mx-3 pointer" (click)="hostYourStall()">Host your stalls</div>
                                     <div class="mx-3 pointer nav-link active" aria-current="page"
                                         routerLink="/host-guests">Host Guests</div>
-                                    <div class="mx-3 pointer" routerLink="/host-adventure">Host an Advrnture</div>
+                                    <div class="mx-3 pointer" routerLink="/host-adventure">Host an Adventure</div>
                                     <div class="mx-3 pointer">
                                         <img src="../../../assets/chat.png" alt="image">
                                     </div>
@@ -57,7 +51,7 @@
                                                     <li><a class="dropdown-item" href="#">Booking</a></li>
                                                     <li><a class="dropdown-item" routerLink="/dashboard">Dashboard</a>
                                                     </li>
-                                                    <li><a class="dropdown-item" href="#">Manage settings</a></li>
+                                                    <li><a class="dropdown-item" routerLink="/manage-listing">Manage Listing</a></li>
                                                     <li><a class="dropdown-item" routerLink="/account">Account</a>
                                                     </li>
                                                     <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a>
@@ -69,31 +63,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- </div> -->
                     </div>
                 </div>
-                <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="">
-                <a class="" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
-            </ul> -->
             </div>
         </div>
     </nav>

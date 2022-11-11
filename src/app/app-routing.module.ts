@@ -15,6 +15,10 @@ import { HostAdventureComponent } from './pages/host-adventure/host-adventure.co
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AccountComponent } from './pages/account/account.component';
 import { PersonalInfoComponent } from './pages/personal-info/personal-info.component';
+import { AuthGuardGuard } from './@core/Services/auth-guard.guard';
+import { ManageListingComponent } from './pages/manage-listing/manage-listing.component';
+
+
 const routes: Routes = [
   {path:"",redirectTo:"home",pathMatch:"full"},
   {path:"home",component:HomeComponent},
@@ -29,9 +33,10 @@ const routes: Routes = [
   {path:"contact-us",component:ContactUsComponent},
   {path:"term-conditions",component:TermConditionsComponent},
   {path:"host-adventure",component:HostAdventureComponent},
-  {path:"dashboard",component:DashboardComponent},
+  {path:"dashboard",component:DashboardComponent ,canActivate:[AuthGuardGuard]},
   {path:"account",component:AccountComponent},
-  {path:"personal-info",component:PersonalInfoComponent}
+  {path:"personal-info",component:PersonalInfoComponent},
+  {path:"manage-listing",component:ManageListingComponent}
 ];
 
 @NgModule({

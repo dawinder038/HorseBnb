@@ -14,22 +14,17 @@ export class DashboardComponent implements OnInit {
   constructor(private service: HorseServiceService) { }
 
   ngOnInit(): void {
-    this.listingQuery();
     this.listingDashboard();
+  }
 
-  }
-  listingQuery() {
-    this.service.listingQueryApi().subscribe((result: any) => {
-      console.log(result);
-    })
-  }
   listingDashboard() {
-    this.service.listingDashboardApi().subscribe((result: any) => {
-      console.log(result);
-      this.booking = result.bookingCount;
-      this.earning = result.earning;
-      this.reviews = result.reviewCount;
-    })
-
+    setTimeout(() => {
+      this.service.listingDashboardApi().subscribe((result: any) => {
+        console.log(result);
+        this.booking = result.bookingCount;
+        this.earning = result.earning;
+        this.reviews = result.reviewCount;
+      })
+    }, 1000);
   }
 }

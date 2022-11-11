@@ -1,0 +1,43 @@
+<app-header></app-header>
+<section class="section">
+  <div class="container-fluid">
+    <div class="p-4">
+      <div>
+        <span style="font-size:30px ;font-weight:300;">335</span>
+        <span style="font-size:30px ;font-weight:300;" class="ms-3">Listing</span>
+      </div>
+      <div class="my-2">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">SR.No</th>
+              <th scope="col" colspan="3">LISTING</th>
+              <th scope="col">TO DO</th>
+              <th scope="col">TYPE</th>
+              <th scope="col" colspan="3">LOCATION</th>
+              <th scope="col">CREATED ON</th>
+              <th scope="col"><img src="../../../assets/settings.png" alt=""></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of totalData">
+              <th scope="row"></th>
+              <td colspan="3">
+                <img style="width:45px ;" [src]="data.attributes.publicData.host_image" alt="">
+                <span class="ms-3">{{data.attributes.publicData.host_bio}}</span>
+              </td>
+              <td>
+                <button class="draft-btn btn">Draft</button>
+              </td>
+              <td>Short Term</td>
+              <td colspan="3">{{data.attributes.publicData.address.street}}</td>
+              <td>{{data.attributes.createdAt}}</td>
+              <td><img src="../../../assets/more_horiz.png" alt=""></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

@@ -1,0 +1,11 @@
+.section{
+    min-height: calc(100vh - 309px);
+}
+.draft-btn{
+    border: 1px solid #10a7c6;
+    color:#10a7c6;;
+}
+.draft-btn:hover{
+    background-color: #10a7c6;
+    color: white;
+}
