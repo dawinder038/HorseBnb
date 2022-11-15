@@ -30,8 +30,9 @@ export class HorseServiceService {
   listingDashboardApi(){
     return this.http.get(this.apiUrl+"listings/dashboard")
   }
-
- 
+  currentUserUpdateProfile(data:any){
+    return this.http.post(this.apiUrl+"current_user/update_profile",data)
+  }
 }
 
 
