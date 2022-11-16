@@ -33,6 +33,12 @@ export class HorseServiceService {
   currentUserUpdateProfile(data:any){
     return this.http.post(this.apiUrl+"current_user/update_profile",data)
   }
+  uploadImage(event: any) {
+    let file = event.target.files[0];
+    let formData = new FormData();
+    formData.append('file', file)
+    return this.http.post(this.apiUrl + "upload/aws?storageType=2&environment=1&isDefaultAsset=1", formData)
+  }
 }
 
 

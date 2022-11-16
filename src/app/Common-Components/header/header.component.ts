@@ -33,11 +33,11 @@ export class HeaderComponent implements OnInit {
   }
   intializeForm() {
     this.signUpForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.pattern('')]),
-      phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(10),Validators.pattern("^[0-9]*$")]),
       country_code: new FormControl('', [Validators.required])
     })
     

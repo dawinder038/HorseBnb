@@ -1,6 +1,6 @@
 <app-header></app-header>
 <section>
-    <div class="container" >
+    <div class="container">
         <div class="mt-3">
             <span><a routerLink="/account">My Account</a> </span>
             <img src="../../../assets/right_arrow.png" alt="Arrow">
@@ -10,22 +10,24 @@
         <div class="row my-2">
             <div class="col-md-4">
                 <div>
-                    <div class="card ">
-                        <div class="p-3 m-auto">
-                            <div>
-                                <img src="../../../assets/five.png"
-                                    style="width: 100px; height:100px; border-radius: 50%;" alt="image">
-                                <input type="file" id="image-upload" class="d-none">
-                            </div>
-                            <div class="d-flex justify-content-center my-4">
-                                <button class="btn" style="background-color: #00a6b3; color:white;">
-                                    <label for="image-upload">
-                                        upload
-                                    </label>
-                                </button>
+                    <form action="">
+                        <div class="card ">
+                            <div class="p-3 m-auto">
+                                <div>
+                                    <img [src]="bgImage"
+                                        style="width: 100px; height:100px; border-radius: 50%;" alt="image">
+                                    <input type="file" id="image-upload" class="d-none"   (change)="fileChange($event)">
+                                </div>
+                                <div class="d-flex justify-content-center my-4">
+                                    <button class="btn" style="background-color: #00a6b3; color:white;">
+                                        <label for="image-upload">
+                                            upload
+                                        </label>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="card my-4">
                     <div class="p-4">
@@ -35,7 +37,8 @@
                         <div class="my-1">
                             <h5 class="my-1">What info is shared with others?</h5>
                             <p class="mt-2">HorseBnB only release contact information for hosts and guests after a
-                                reservation is confirmed.</p>
+                                reservation is confirmed.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -73,16 +76,24 @@
                                     <div>
                                         <label for="first-name">First Name</label>
                                         <input type="text" id="first-name" class="form-control mt-2 "
-                                            placeholder="{{allData.data.attributes.profile.firstName}}" value="" formControlName="firstName">
+                                            placeholder="{{allData.data.attributes.profile.firstName}}" value=""
+                                            formControlName="firstName">
+                                        <small
+                                            *ngIf="nameForm.controls['firstName']?.hasError('required') && nameForm.controls['firstName']?.touched">First
+                                            Name is Required</small>
                                     </div>
                                     <div class="mx-2">
                                         <label for="last-name">Last Name</label>
                                         <input type="text" class="form-control mt-2" id="last-name"
-                                            placeholder="{{allData.data.attributes.profile.lastName}} " value="" formControlName="lastName">
+                                            placeholder="{{allData.data.attributes.profile.lastName}} " value=""
+                                            formControlName="lastName">
+                                        <small
+                                            *ngIf="nameForm.controls['lastName']?.hasError('required') && nameForm.controls['lastName']?.touched">Last
+                                            Name is Required</small>
                                     </div>
                                 </div>
                                 <div>
-                                    <button type="submit" class="btn"
+                                    <button type="submit" class="btn" [disabled]="nameForm.invalid"
                                         style="background-color:#00a6b3;color: white;">Save</button>
                                 </div>
                             </form>
@@ -100,7 +111,8 @@
                             </div>
                         </div>
                         <div class="my-2">
-                            <span style="font-size:15px; font-weight: 300;">{{allData.data.attributes.profile.publicData.gender}}</span>
+                            <span
+                                style="font-size:15px; font-weight: 300;">{{allData.data.attributes.profile.publicData.gender}}</span>
                         </div>
                     </div>
                     <div *ngIf="!showGender">
@@ -113,14 +125,18 @@
                             </div>
                         </div>
                         <form [formGroup]="genderForm" (ngSubmit)="updateGender(genderForm.value)">
-                            <select class="form-select my-2" formControlName="gender" aria-label="Default select example">
+                            <select class="form-select my-2" formControlName="gender"
+                                aria-label="Default select example">
                                 <option selected disabled>Choose Gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
+                            <small
+                                *ngIf="genderForm.controls['gender']?.hasError('required') && nameForm.controls['gender']?.touched">Gender
+                                is required</small>
                             <div class="my-3">
-                                <button type="submit" class="btn"
-                                    style="background-color:#00a6b3;color: white;" >Save</button>
+                                <button type="submit" class="btn" style="background-color:#00a6b3;color: white;"
+                                    [disabled]="genderForm.invalid">Save</button>
                             </div>
                         </form>
                     </div>
@@ -136,7 +152,8 @@
                             </div>
                         </div>
                         <div class="my-2">
-                            <span style="font-size:15px; font-weight: 300;">{{allData.data.attributes.profile.publicData.age}}</span>
+                            <span
+                                style="font-size:15px; font-weight: 300;">{{allData.data.attributes.profile.publicData.age}}</span>
                         </div>
                     </div>
                     <div *ngIf="!showDOB">
@@ -149,10 +166,14 @@
                             </div>
                         </div>
                         <form [formGroup]="DOBForm" (ngSubmit)="updateDOB(DOBForm.value)">
-                            <input type="text" placeholder="" class="form-control mt-2" formControlName="age" bsDatepicker>
+                            <input type="text" placeholder="" class="form-control mt-2" formControlName="age"
+                                bsDatepicker>
+                            <small
+                                *ngIf="DOBForm.controls['age']?.hasError('required') && DOBForm.controls['age']?.touched">DOB
+                                is required</small>
                             <div class="my-3">
-                                <button type="submit" class="btn"
-                                    style="background-color:#00a6b3;color: white;">Save</button>
+                                <button type="submit" class="btn" style="background-color:#00a6b3;color: white;"
+                                    [disabled]="DOBForm.invalid">Save</button>
                             </div>
                         </form>
                     </div>
@@ -173,7 +194,7 @@
                             </div>
                         </div>
                         <div class="my-2">
-                            <span style="font-size:15px; font-weight: 300;">forth@gmail.com</span>
+                            <span style="font-size:15px; font-weight: 300;">{{allData.data.attributes.email}}</span>
                         </div>
                     </div>
                     <div *ngIf="!showEmail">
@@ -190,11 +211,16 @@
                                 </div>
                             </div>
                         </div>
-                        <form>
-                            <input type="email" placeholder="forth@gmail.com" class="form-control mt-2">
+                        <form [formGroup]="emailForm" (ngSubmit)="updateEmail(emailForm.value)">
+                            <input type="email" placeholder="{{allData.data.attributes.email}}" formControlName="email"
+                                class="form-control mt-2">
+                            <small
+                                *ngIf="emailForm.controls['email']?.hasError('required') && emailForm.controls['email']?.touched">Email
+                                is required</small>
+                            <small *ngIf="emailForm.controls['email']?.hasError('email')">Enter valid Email</small>
                             <div class="my-3">
-                                <button type="submit" class="btn"
-                                    style="background-color:#00a6b3;color: white;">Save</button>
+                                <button type="submit" class="btn" style="background-color:#00a6b3;color: white;"
+                                    [disabled]="emailForm.invalid">Save</button>
                             </div>
                         </form>
                     </div>
@@ -212,7 +238,8 @@
                             </div>
                         </div>
                         <div class="my-2">
-                            <span style="font-size:15px; font-weight: 300;">8875557777</span>
+                            <span
+                                style="font-size:15px; font-weight: 300;">{{allData.data.attributes.profile.protectedData.phoneNumber}}</span>
                         </div>
                     </div>
                     <div *ngIf="!showPhone">
@@ -233,7 +260,7 @@
                                 <p>For notifications, reminders, and help logging in</p>
                             </div>
                         </div>
-                        <form>
+                        <form [formGroup]="phoneForm" (ngSubmit)="updatePhone(phoneForm.value)">
                             <div class="input-group mt-2">
                                 <select class=" dropdown-toggle dropdown " formControlName="country_code"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -244,9 +271,16 @@
                                 <input type="text" class="form-control" formControlName="phoneNumber"
                                     placeholder="Enter Phone Number" aria-label="Text input with dropdown button">
                             </div>
+                            <small
+                                *ngIf="phoneForm.controls['phoneNumber']?.hasError('required') && phoneForm.controls['phoneNumber']?.touched">Phone
+                                Number is required</small>
+                            <small *ngIf="phoneForm.controls['phoneNumber']?.hasError('pattern')">Enter valid mobile
+                                number</small>
+                            <small *ngIf="phoneForm.controls['phoneNumber']?.hasError('minLength')">Phone Number should
+                                not be less than 10 number</small>
                             <div class="my-3">
-                                <button type="submit" class="btn"
-                                    style="background-color:#00a6b3;color: white;">Save</button>
+                                <button type="submit" class="btn" style="background-color:#00a6b3;color: white;"
+                                    [disabled]="phoneForm.invalid">Save</button>
                             </div>
                         </form>
                     </div>
@@ -264,7 +298,7 @@
                             </div>
                         </div>
                         <div class="my-2">
-                            <span style="font-size:15px; font-weight: 300;">Angular Developer</span>
+                            <span style="font-size:15px; font-weight: 300;">{{allData.data.bio}}</span>
                         </div>
                     </div>
                     <div *ngIf="!showAbout">
@@ -282,8 +316,8 @@
                                 </div>
                             </div>
                         </div>
-                        <form>
-                            <textarea id="text-area" class="form-control"></textarea>
+                        <form [formGroup]="aboutForm" (ngSubmit)="updateAbout(aboutForm.value)">
+                            <textarea id="text-area" class="form-control " formArrayName="bio"></textarea>
                             <div class="my-3">
                                 <button type="submit" class="btn"
                                     style="background-color:#00a6b3;color: white;">Save</button>
@@ -349,7 +383,8 @@
                             </div>
                         </div>
                         <div class="my-2">
-                            <span style="font-size:15px; font-weight: 300;">English</span>
+                            <span
+                                style="font-size:15px; font-weight: 300;">{{allData.data.attributes.profile.publicData.language}}</span>
                         </div>
                     </div>
                     <div *ngIf="!showLanguage">
@@ -367,12 +402,16 @@
                                 </div>
                             </div>
                         </div>
-                        <form>
-                            <select class=" dropdown-toggle dropdown form-control " formControlName="language"
+                        <form [formGroup]="languageForm" (ngSubmit)="updateLanguage(languageForm.value)">
+                            <select class="dropdown-toggle dropdown form-control " formControlName="language"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <option class="dropdown-item" value="English" selected>English</option>
                                 <option class="dropdown-item" value="Hindi">Hindi</option>
-                                <option class="dropdown-item" value="arab">arab</option>
+                                <option class="dropdown-item" value="Thai">Thai</option>
+                                <option class="dropdown-item" value="Spanish">Spanish</option>
+                                <option class="dropdown-item" value="Italian">Italian</option>
+                                <option class="dropdown-item" value="German">German</option>
+                                <option class="dropdown-item" value="French">French</option>
                             </select>
                             <div class="my-3">
                                 <button type="submit" class="btn"

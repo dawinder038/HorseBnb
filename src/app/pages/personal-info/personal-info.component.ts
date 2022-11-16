@@ -15,7 +15,11 @@ export class PersonalInfoComponent implements OnInit {
   allData: any;
   nameForm!: FormGroup;
   genderForm!: FormGroup;
-  DOBForm!:FormGroup;
+  DOBForm!: FormGroup;
+  emailForm!: FormGroup;
+  phoneForm!: FormGroup;
+  languageForm!: FormGroup;
+  aboutForm!:FormGroup;
   showName: boolean = true;
   showGender: boolean = true;
   showDOB: boolean = true;
@@ -36,21 +40,36 @@ export class PersonalInfoComponent implements OnInit {
   }
   getData() {
     this.service.getDataApi().subscribe((result: any) => {
-      console.log(result.data.attributes.profile.publicData.gender);
+      console.log(result);
+      // debugger
       this.allData = result
     })
   }
   intializeForm() {
     this.nameForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl('')
+      firstName: new FormControl('',[Validators.required]),
+      lastName: new FormControl('',[Validators.required])
     })
 
     this.genderForm = new FormGroup({
-      gender: new FormControl(''),
+      gender: new FormControl('',[Validators.required]
+      ),
     })
     this.DOBForm = new FormGroup({
-      age:new FormControl(''),
+      age: new FormControl(''),
+    })
+    this.emailForm = new FormGroup({
+      email: new FormControl('',[Validators.required,Validators.email])
+    })
+    this.phoneForm = new FormGroup({
+      country_code: new FormControl(''),
+      phoneNumber: new FormControl('',[Validators.required,Validators.pattern("^[0-9]*$")])
+    })
+    this.languageForm = new FormGroup({
+      language: new FormControl('')
+    })
+    this.aboutForm = new FormGroup({
+      bio:new FormControl('')
     })
   }
 
@@ -104,13 +123,14 @@ export class PersonalInfoComponent implements OnInit {
   cancelLanguage() {
     this.showLanguage = true;
   }
-  // fileChange(event: any) {
-  //   this.service.uploadImage(event).subscribe((result: any) => {
-  //     console.log(result);
-  //     this.bgImage = 'http://139.59.47.49:4004/' + result.filename;
-  //   });
+  fileChange(event: any) {
+    this.service.uploadImage(event).subscribe((result: any) => {
+      console.log(result);
+      this.bgImage = 'https://airbnb-clone.henceforthsolutions.com:3001/v1/api/upload/aws/original/' + result.filename;
+      console.log(this.bgImage);
+    });
 
-  // }
+  }
   updateName(data: any) {
     let payload = {
       firstName: data.firstName,
@@ -137,6 +157,50 @@ export class PersonalInfoComponent implements OnInit {
         age: data.age
       }
     }
+    this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
+      console.log(result);
+    })
+  }
+
+  updateEmail(data: any) {
+    let payload = {
+      publicData: {
+        email: data.email
+      }
+    }
+    this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
+      console.log(result);
+    })
+  }
+  updatePhone(data: any) {
+    let payload = {
+      protectedData: {
+        phoneNumber: data.phoneNumber
+      },
+      publicData: {
+        country_code: data.country_code
+      }
+    }
+    this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
+      console.log(result);
+    })
+  }
+
+  updateLanguage(data: any) {
+    let payload = {
+      publicData: {
+        language: data.language
+      }
+    }
+    this.service.currentUserUpdateProfile(payload).subscribe((result:any)=>{
+      console.log(result);
+    })
+  }
+  updateAbout(data:any){
+    let payload = {
+      bio:data.bio
+    }
+    console.log(payload)
     this.service.currentUserUpdateProfile(payload).subscribe((result:any)=>{
       console.log(result);
     })

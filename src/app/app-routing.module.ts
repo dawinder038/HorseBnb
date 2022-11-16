@@ -20,7 +20,7 @@ import { ManageListingComponent } from './pages/manage-listing/manage-listing.co
 
 
 const routes: Routes = [
-  {path:"",redirectTo:"home",pathMatch:"full"},
+
   {path:"home",component:HomeComponent},
   {path:"header",component:HeaderComponent},
   {path:"footer",component:FooterComponent},
@@ -36,7 +36,8 @@ const routes: Routes = [
   {path:"dashboard",component:DashboardComponent ,canActivate:[AuthGuardGuard]},
   {path:"account",component:AccountComponent},
   {path:"personal-info",component:PersonalInfoComponent},
-  {path:"manage-listing",component:ManageListingComponent}
+  {path:"manage-listing",component:ManageListingComponent},
+  {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 
 @NgModule({

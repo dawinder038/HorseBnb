@@ -88,18 +88,26 @@
                                 placeholder="First Name">
                             <div>
                                 <small
-                                    *ngIf="signUpForm.controls['firstName']?.hasError('required') && signInForm.controls['firstName']?.touched">Email
-                                    is required</small>
-                                <small *ngIf="signUpForm.controls['firstName']?.hasError('email')">Email is not
-                                    valid</small>
+                                    *ngIf="signUpForm.controls['firstName']?.hasError('required') && signUpForm.controls['firstName']?.touched">First name is required
+                                </small>
                             </div>
                         </div>
                         <div class="form-group mt-2">
                             <input type="text" class="form-control p-2" formControlName="lastName"
                                 placeholder="Last Name">
+                                <div>
+                                    <small
+                                    *ngIf="signUpForm.controls['lastName']?.hasError('required') && signUpForm.controls['lastName']?.touched">Last name
+                                    is required
+                                </small>
+                                </div>
                         </div>
                         <div class="form-group mt-2">
                             <input type="email" class="form-control p-2" formControlName="email" placeholder="Email">
+                        </div>
+                        <div>
+                            <small *ngIf="signUpForm.controls['email']?.hasError('required') && signUpForm.controls['email']?.touched">Email is required</small>
+                            <small *ngIf="signUpForm.controls['email']?.hasError('email') ">Enter valid email</small>
                         </div>
                         <div class="input-group mt-2">
                             <select class=" dropdown-toggle dropdown " formControlName="country_code"
@@ -110,10 +118,20 @@
                             </select>
                             <input type="text" class="form-control" formControlName="phoneNumber"
                                 placeholder="Enter Phone Number" aria-label="Text input with dropdown button">
+                                
+                        </div>
+                        <div>
+                            <small *ngIf="signUpForm.controls['phoneNumber']?.hasError('required') && signUpForm.controls['phoneNumber']?.touched">Phone number is required</small>
+                            <small *ngIf="signUpForm.controls['phoneNumber']?.hasError('pattern')">Enter valid mobile number</small>
+                            <small *ngIf="signUpForm.controls['phoneNumber']?.hasError('maxlength')">Mobile Number should be 10 digits </small>
                         </div>
                         <div class="form-group mt-2">
                             <input type="password" class="form-control p-2" formControlName="password"
                                 placeholder="Password">
+                        </div>
+                        <div>
+                            <small *ngIf="signUpForm.controls['password']?.hasError('required') && signUpForm.controls['password']?.touched">Password is required</small>
+                            <small *ngIf="signUpForm.controls['password']?.hasError('pattern')">Password must contain one capital letter one special chracter and it will have been minimum 9 digits</small>
                         </div>
                         <div class="mt-2">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -121,7 +139,7 @@
                                     href="#">Condition</a></label>
                         </div>
                         <div class="mt-3">
-                            <button type="submit" class="btn w-100 btn-danger">Sign Up</button>
+                            <button type="submit"  [disabled]="signUpForm.invalid" class="btn w-100 btn-danger">Sign Up</button>
                         </div>
                     </form>
                 </div>
