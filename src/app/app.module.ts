@@ -28,6 +28,8 @@ import { PersonalInfoComponent } from './pages/personal-info/personal-info.compo
 import { HorseServiceService } from './@core/Services/horse-service.service';
 import { AuthGuardGuard } from './@core/Services/auth-guard.guard';
 import { ManageListingComponent } from './pages/manage-listing/manage-listing.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { ManageListingComponent } from './pages/manage-listing/manage-listing.co
     DashboardComponent,
     AccountComponent,
     PersonalInfoComponent,
-    ManageListingComponent
+    ManageListingComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,8 @@ export class HeaderComponent implements OnInit {
   signInForm!: FormGroup;
   createOwnListingForm!:FormGroup;
   fName:any;
+  allData:any;
+  bgImage:any;
   show: boolean = false;
   constructor(private service: HorseServiceService,private router:Router) {
     this.checkLoginStatus();
@@ -22,6 +24,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.intializeForm();
+    this.getData();
   }
 
   checkLoginStatus() {
@@ -88,5 +91,13 @@ export class HeaderComponent implements OnInit {
    setTimeout(() => {
     this.router.navigateByUrl('/host-your-stalls')
    }, 1000);
+  }
+  getData() {
+    this.service.getDataApi().subscribe((result: any) => {
+      console.log(result);
+      this.allData = result
+      this.bgImage = result.data.attributes.profile.publicData.profile_image;
+      console.log(this.bgImage)
+    })
   }
 }

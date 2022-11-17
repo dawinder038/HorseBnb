@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
-import { TermConditionsComponent } from '../term-conditions/term-conditions.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
-import { ResourceLoader } from '@angular/compiler';
-
 
 @Component({
   selector: 'app-personal-info',
@@ -19,7 +15,7 @@ export class PersonalInfoComponent implements OnInit {
   emailForm!: FormGroup;
   phoneForm!: FormGroup;
   languageForm!: FormGroup;
-  aboutForm!:FormGroup;
+  aboutForm!: FormGroup;
   showName: boolean = true;
   showGender: boolean = true;
   showDOB: boolean = true;
@@ -41,53 +37,52 @@ export class PersonalInfoComponent implements OnInit {
   getData() {
     this.service.getDataApi().subscribe((result: any) => {
       console.log(result);
-      // debugger
       this.allData = result
+      this.bgImage = result.data.attributes.profile.publicData.profile_image;
     })
   }
   intializeForm() {
     this.nameForm = new FormGroup({
-      firstName: new FormControl('',[Validators.required]),
-      lastName: new FormControl('',[Validators.required])
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required])
     })
 
     this.genderForm = new FormGroup({
-      gender: new FormControl('',[Validators.required]
+      gender: new FormControl('', [Validators.required]
       ),
     })
     this.DOBForm = new FormGroup({
-      age: new FormControl(''),
+      age: new FormControl('', Validators.required),
     })
     this.emailForm = new FormGroup({
-      email: new FormControl('',[Validators.required,Validators.email])
+      email: new FormControl('', [Validators.required, Validators.email])
     })
     this.phoneForm = new FormGroup({
-      country_code: new FormControl(''),
-      phoneNumber: new FormControl('',[Validators.required,Validators.pattern("^[0-9]*$")])
+      country_code: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")])
     })
     this.languageForm = new FormGroup({
-      language: new FormControl('')
+      language: new FormControl('', [Validators.required])
     })
     this.aboutForm = new FormGroup({
-      bio:new FormControl('')
+      bio: new FormControl('', [Validators.required])
     })
   }
 
-
   editName() {
-    this.showName = false
+    this.showName = false;
   }
   cancelName() {
-    this.showName = true
+    this.showName = true;
   }
   editGender() {
-    this.showGender = false
+    this.showGender = false;
   }
   cancelGender() {
     this.showGender = true;
   }
   editDOB() {
-    this.showDOB = false
+    this.showDOB = false;
   }
   cancelDOB() {
     this.showDOB = true;
@@ -99,7 +94,7 @@ export class PersonalInfoComponent implements OnInit {
     this.showEmail = true;
   }
   editPhone() {
-    this.showPhone = false
+    this.showPhone = false;
   }
   cancelPhone() {
     this.showPhone = true;
@@ -126,21 +121,22 @@ export class PersonalInfoComponent implements OnInit {
   fileChange(event: any) {
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
-      this.bgImage = 'https://airbnb-clone.henceforthsolutions.com:3001/v1/api/upload/aws/original/' + result.filename;
-      console.log(this.bgImage);
+      this.bgImage = 'https://airbnbclone.sfo3.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
+      this.updateImage();
+      this.getData();
     });
-
   }
+
   updateName(data: any) {
     let payload = {
       firstName: data.firstName,
       lastName: data.lastName
     }
-    console.log(payload)
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
       console.log(result);
     })
   }
+
   updateGender(data: any) {
     let payload = {
       publicData: {
@@ -151,6 +147,7 @@ export class PersonalInfoComponent implements OnInit {
       console.log(result);
     })
   }
+
   updateDOB(data: any) {
     let payload = {
       publicData: {
@@ -172,6 +169,7 @@ export class PersonalInfoComponent implements OnInit {
       console.log(result);
     })
   }
+
   updatePhone(data: any) {
     let payload = {
       protectedData: {
@@ -192,19 +190,30 @@ export class PersonalInfoComponent implements OnInit {
         language: data.language
       }
     }
-    this.service.currentUserUpdateProfile(payload).subscribe((result:any)=>{
-      console.log(result);
-    })
-  }
-  updateAbout(data:any){
-    let payload = {
-      bio:data.bio
-    }
-    console.log(payload)
-    this.service.currentUserUpdateProfile(payload).subscribe((result:any)=>{
+    this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
       console.log(result);
     })
   }
 
+  updateAbout(data: any) {
+    let payload = {
+      bio: data.bio
+    }
+    console.log(payload)
+    this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
+      console.log(result);
+    })
+  }
+
+  updateImage() {
+    let payload = {
+      publicData: {
+        image: this.bgImage
+      }
+    }
+    this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
+      console.log(result);
+    })
+  }
 
 }

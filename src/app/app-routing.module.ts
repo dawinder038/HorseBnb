@@ -17,6 +17,7 @@ import { AccountComponent } from './pages/account/account.component';
 import { PersonalInfoComponent } from './pages/personal-info/personal-info.component';
 import { AuthGuardGuard } from './@core/Services/auth-guard.guard';
 import { ManageListingComponent } from './pages/manage-listing/manage-listing.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:"account",component:AccountComponent},
   {path:"personal-info",component:PersonalInfoComponent},
   {path:"manage-listing",component:ManageListingComponent},
+  {path:"update-password",component:UpdatePasswordComponent},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

@@ -10,11 +10,14 @@ export class DashboardComponent implements OnInit {
   booking: any;
   earning: any;
   reviews: any;
+  allData:any;
+  bgImage:any;
 
   constructor(private service: HorseServiceService) { }
 
   ngOnInit(): void {
     this.listingDashboard();
+    this.getData();
   }
 
   listingDashboard() {
@@ -26,5 +29,13 @@ export class DashboardComponent implements OnInit {
         this.reviews = result.reviewCount;
       })
     }, 1000);
+  }
+  getData() {
+    this.service.getDataApi().subscribe((result: any) => {
+      console.log(result);
+      this.allData = result
+      this.bgImage = result.data.attributes.profile.publicData.profile_image;
+      console.log(this.bgImage)
+    })
   }
 }
