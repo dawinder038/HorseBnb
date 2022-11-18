@@ -29,6 +29,8 @@ import { HorseServiceService } from './@core/Services/horse-service.service';
 import { AuthGuardGuard } from './@core/Services/auth-guard.guard';
 import { ManageListingComponent } from './pages/manage-listing/manage-listing.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { AmenitiesComponent } from './pages/amenities/amenities.component';
+import { CreateStallStep7Component } from './pages/create-stall-step7/create-stall-step7.component';
 
 
 
@@ -50,7 +52,9 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
     AccountComponent,
     PersonalInfoComponent,
     ManageListingComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    AmenitiesComponent,
+    CreateStallStep7Component
   ],
   imports: [
     BrowserModule,

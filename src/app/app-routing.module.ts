@@ -18,6 +18,8 @@ import { PersonalInfoComponent } from './pages/personal-info/personal-info.compo
 import { AuthGuardGuard } from './@core/Services/auth-guard.guard';
 import { ManageListingComponent } from './pages/manage-listing/manage-listing.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { AmenitiesComponent } from './pages/amenities/amenities.component';
+import { CreateStallStep7Component } from './pages/create-stall-step7/create-stall-step7.component';
 
 
 const routes: Routes = [
@@ -39,6 +41,8 @@ const routes: Routes = [
   {path:"personal-info",component:PersonalInfoComponent},
   {path:"manage-listing",component:ManageListingComponent},
   {path:"update-password",component:UpdatePasswordComponent},
+  {path:"create-stall/step6",component:AmenitiesComponent},
+  {path:"create-stall/step7",component:CreateStallStep7Component},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

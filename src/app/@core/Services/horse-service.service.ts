@@ -39,6 +39,9 @@ export class HorseServiceService {
     formData.append('file', file)
     return this.http.post(this.apiUrl + "upload/aws?storageType=2&environment=1&isDefaultAsset=1", formData)
   }
+  changePasswordApi(data:any){
+    return this.http.post(this.apiUrl+"current_user/change_password",data)
+  }
 }
 
 
