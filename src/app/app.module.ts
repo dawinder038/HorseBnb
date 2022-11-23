@@ -31,6 +31,7 @@ import { ManageListingComponent } from './pages/manage-listing/manage-listing.co
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { AmenitiesComponent } from './pages/amenities/amenities.component';
 import { CreateStallStep7Component } from './pages/create-stall-step7/create-stall-step7.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 
 
@@ -54,7 +55,8 @@ import { CreateStallStep7Component } from './pages/create-stall-step7/create-sta
     ManageListingComponent,
     UpdatePasswordComponent,
     AmenitiesComponent,
-    CreateStallStep7Component
+    CreateStallStep7Component,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

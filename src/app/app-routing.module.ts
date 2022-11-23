@@ -20,6 +20,7 @@ import { ManageListingComponent } from './pages/manage-listing/manage-listing.co
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { AmenitiesComponent } from './pages/amenities/amenities.component';
 import { CreateStallStep7Component } from './pages/create-stall-step7/create-stall-step7.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path:"update-password",component:UpdatePasswordComponent},
   {path:"create-stall/step6",component:AmenitiesComponent},
   {path:"create-stall/step7",component:CreateStallStep7Component},
+  {path:"chat",component:ChatComponent},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 
