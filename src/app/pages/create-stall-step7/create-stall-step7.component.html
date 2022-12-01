@@ -30,13 +30,20 @@
                     <div>
                         <img src="../../../assets/clock.png" alt="">
                     </div>
-                    <input type="file" id="image-upload" class="d-none">
+                    <input type="file" id="image-upload" class="d-none" (change)="fileChange($event)">
                     <label for="image-upload">
                         <img src="../../../assets/publish.png" alt="">
                     </label>
                 </div>
                 <div class="text-center">
                     <button class="btn btn-danger">Upload Photo</button>
+                </div>
+            </div>
+            <div class="py-4 px-5">
+                <div class="row">
+                    <div class="col-md-5"  *ngFor="let image of imageArray ">
+                        <img [src]="image.url" alt="" class="image">
+                    </div>
                 </div>
             </div>
             <div>
@@ -48,7 +55,7 @@
                     <button class="btn" style="color:red;">back</button>
                 </div>
                 <div>
-                    <button class="btn btn-danger" routerLink="/create-stall/step7">Next</button>
+                    <button class="btn btn-danger"  (click)="ownListingUpdate()">Next</button>
                 </div>
             </div>
         </div>

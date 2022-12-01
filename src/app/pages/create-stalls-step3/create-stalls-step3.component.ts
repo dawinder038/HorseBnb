@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProgressbarConfig } from 'ngx-bootstrap/progressbar';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 
@@ -10,10 +11,13 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class CreateStallsStep3Component implements OnInit {
   counter:any=0;
-  constructor(private service:HorseServiceService) { }
+  id:any;
+  constructor(private service:HorseServiceService,private router :Router , private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getData()
+    this.id= this.route.snapshot.params['id']; 
+    console.log(this.id)
   }
   
   incCounter(){
@@ -30,9 +34,19 @@ getData() {
     console.log(result);
   })
 }
-next(){
-  sessionStorage.setItem('counter',this.counter)
-  console.log(this.counter)
+addStalls(){
+  let payload = {
+    id:this.id,
+    publicData:{
+      stalls:this.counter
+  }
+  }
+  this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
+    console.log("stalls result",result);
+    setTimeout(() => {
+      this.router.navigateByUrl('/create-stalls/step5/'+this.id)
+    }, 700);
+  })
 }
 
 }

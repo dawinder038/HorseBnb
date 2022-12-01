@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class CreateStallsComponent implements OnInit {
   createOwnListingForm!: FormGroup;
-  id:any;
-  constructor(private service: HorseServiceService,private router:Router) { }
+  id: any;
+  constructor(private service: HorseServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.intializeForm()
@@ -20,7 +20,7 @@ export class CreateStallsComponent implements OnInit {
   intializeForm() {
     this.createOwnListingForm = new FormGroup({
       title: new FormControl(''),
-      choose_stall:new FormControl('')
+      choose_stall: new FormControl('')
     })
   }
 
@@ -28,15 +28,16 @@ export class CreateStallsComponent implements OnInit {
     let payload = {
       title: data.title,
       publicData: {
-        type: 0,
+        type: data.choose_stall,
         "stepsCompleted": [0]
       }
     }
+    console.log(payload)
     this.service.createOwnListingApi(payload).subscribe((result: any) => {
       console.log(result);
-      this.id=result.data.id.uuid
-      sessionStorage.setItem('id',result.data.id.uuid);
-      this.router.navigateByUrl('/create-stalls/step3');
+      this.id = result.data.id.uuid;
+      this.router.navigateByUrl('/create-stalls/step3/' + this.id);
+      console.log(this.router.navigateByUrl('/create-stalls/step3/' + this.id))
     })
   }
 
@@ -45,13 +46,11 @@ export class CreateStallsComponent implements OnInit {
       console.log(result)
     })
   }
-  
-  ownListingShowId(){
-    setTimeout(() => {
-      this.service.ownListingShowIdApi(this.id).subscribe((result:any)=>{
-        console.log(result);
-      })
-    }, 1000);
+
+  ownListingShowId() {
+    this.service.ownListingShowIdApi(this.id).subscribe((result: any) => {
+      console.log(result);
+    })
   }
 
 }

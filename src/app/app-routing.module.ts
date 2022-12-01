@@ -21,6 +21,7 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
 import { AmenitiesComponent } from './pages/amenities/amenities.component';
 import { CreateStallStep7Component } from './pages/create-stall-step7/create-stall-step7.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { DescriptionComponent } from './pages/description/description.component';
 
 
 const routes: Routes = [
@@ -31,8 +32,8 @@ const routes: Routes = [
   {path:"host-your-stalls",component:HostYourStallsComponent},
   {path:"create-your-stalls/step1",component:CreateStallsComponent},
   {path:"host-guests",component:HostGuestsComponent},
-  {path:"create-stalls/step3",component:CreateStallsStep3Component},
-  {path:"create-stalls/step5",component:CreateStallsStep5Component},
+  {path:"create-stalls/step3/:id",component:CreateStallsStep3Component},
+  {path:"create-stalls/step5/:id",component:CreateStallsStep5Component},
   {path:"about-us",component:AboutUsComponent},
   {path:"contact-us",component:ContactUsComponent},
   {path:"term-conditions",component:TermConditionsComponent},
@@ -42,9 +43,10 @@ const routes: Routes = [
   {path:"personal-info",component:PersonalInfoComponent},
   {path:"manage-listing",component:ManageListingComponent},
   {path:"update-password",component:UpdatePasswordComponent},
-  {path:"create-stall/step6",component:AmenitiesComponent},
-  {path:"create-stall/step7",component:CreateStallStep7Component},
+  {path:"create-stalls/step6/:id",component:AmenitiesComponent},
+  {path:"create-stalls/step7/:id",component:CreateStallStep7Component},
   {path:"chat",component:ChatComponent},
+  {path:"create-stalls/step8/:id",component:DescriptionComponent},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

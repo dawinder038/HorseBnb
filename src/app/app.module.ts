@@ -32,8 +32,7 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
 import { AmenitiesComponent } from './pages/amenities/amenities.component';
 import { CreateStallStep7Component } from './pages/create-stall-step7/create-stall-step7.component';
 import { ChatComponent } from './pages/chat/chat.component';
-
-
+import { DescriptionComponent } from './pages/description/description.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +55,8 @@ import { ChatComponent } from './pages/chat/chat.component';
     UpdatePasswordComponent,
     AmenitiesComponent,
     CreateStallStep7Component,
-    ChatComponent
+    ChatComponent,
+    DescriptionComponent
   ],
   imports: [
     BrowserModule,
