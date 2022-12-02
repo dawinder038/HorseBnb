@@ -22,6 +22,7 @@ import { AmenitiesComponent } from './pages/amenities/amenities.component';
 import { CreateStallStep7Component } from './pages/create-stall-step7/create-stall-step7.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { DescriptionComponent } from './pages/description/description.component';
+import { CreateStallsStep9Component } from './pages/create-stalls-step9/create-stalls-step9.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,7 @@ const routes: Routes = [
   {path:"create-stalls/step7/:id",component:CreateStallStep7Component},
   {path:"chat",component:ChatComponent},
   {path:"create-stalls/step8/:id",component:DescriptionComponent},
+  {path:"create-stalls/step9/:id",component:CreateStallsStep9Component},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

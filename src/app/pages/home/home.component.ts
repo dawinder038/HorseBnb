@@ -40,5 +40,4 @@ export class HomeComponent implements OnInit {
   horseAdventuresFun() {
     this.horseAccomoShow = true;
   }
-
 }
