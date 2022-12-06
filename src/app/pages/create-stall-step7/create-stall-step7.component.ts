@@ -28,6 +28,7 @@ id:any;
       console.log(this.bgImage);
     });
   }
+
   ownListingUpdate(){
    let payload = {
     id:this.id,
@@ -46,4 +47,5 @@ id:any;
       this.router.navigateByUrl("/create-stalls/step8/"+this.id);
     })
   }
+  
 }

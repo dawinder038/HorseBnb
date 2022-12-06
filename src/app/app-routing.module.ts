@@ -23,6 +23,9 @@ import { CreateStallStep7Component } from './pages/create-stall-step7/create-sta
 import { ChatComponent } from './pages/chat/chat.component';
 import { DescriptionComponent } from './pages/description/description.component';
 import { CreateStallsStep9Component } from './pages/create-stalls-step9/create-stalls-step9.component';
+import { CheckInCheckOutComponent } from './pages/check-in-check-out/check-in-check-out.component';
+import { SuccessfullHostingComponent } from './pages/successfull-hosting/successfull-hosting.component';
+import { CalendarAndAvailabilityComponent } from './pages/calendar-and-availability/calendar-and-availability.component';
 
 
 const routes: Routes = [
@@ -49,6 +52,9 @@ const routes: Routes = [
   {path:"chat",component:ChatComponent},
   {path:"create-stalls/step8/:id",component:DescriptionComponent},
   {path:"create-stalls/step9/:id",component:CreateStallsStep9Component},
+  {path:"create-stalls/checkin-and-checkout/:id",component:CheckInCheckOutComponent},
+  {path:"create-stalls/successfull-hosting/:id",component:SuccessfullHostingComponent},
+  {path:"create-stalls/step11/1/:id",component:CalendarAndAvailabilityComponent},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

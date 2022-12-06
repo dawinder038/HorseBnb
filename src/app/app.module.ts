@@ -34,7 +34,9 @@ import { CreateStallStep7Component } from './pages/create-stall-step7/create-sta
 import { ChatComponent } from './pages/chat/chat.component';
 import { DescriptionComponent } from './pages/description/description.component';
 import { CreateStallsStep9Component } from './pages/create-stalls-step9/create-stalls-step9.component';
-
+import { CheckInCheckOutComponent } from './pages/check-in-check-out/check-in-check-out.component';
+import { SuccessfullHostingComponent } from './pages/successfull-hosting/successfull-hosting.component';
+import { CalendarAndAvailabilityComponent } from './pages/calendar-and-availability/calendar-and-availability.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,10 @@ import { CreateStallsStep9Component } from './pages/create-stalls-step9/create-s
     CreateStallStep7Component,
     ChatComponent,
     DescriptionComponent,
-    CreateStallsStep9Component
+    CreateStallsStep9Component,
+    CheckInCheckOutComponent,
+    SuccessfullHostingComponent,
+    CalendarAndAvailabilityComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 
 @Component({
@@ -9,9 +10,11 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 export class CreateStallsStep9Component implements OnInit {
   showUpload:boolean=false;
 bgImage:any;
-  constructor(private service:HorseServiceService, ) { }
+id:any;
+  constructor(private service:HorseServiceService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
   }
 
   fileChange(event: any) {
@@ -23,4 +26,9 @@ bgImage:any;
       }
     });
   }
+  next(){
+    this.router.navigateByUrl('/create-stalls/checkin-and-checkout/'+this.id)
+    
+  }
+  
 }

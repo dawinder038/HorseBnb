@@ -42,6 +42,10 @@ export class HorseServiceService {
   changePasswordApi(data:any){
     return this.http.post(this.apiUrl+"current_user/change_password",data)
   }
+  listingQueryApi(payload:any){
+    return this.http.get(this.apiUrl+"listings/query?pub_type="+payload)
+  }
+
 }
 
 

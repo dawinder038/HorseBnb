@@ -56,7 +56,7 @@
             class="form-control outline-none"
             bsDatepicker>
             <div>
-              <button class="btn btn-danger float-right">Search</button>
+              <button class="btn btn-danger float-right" >Search</button>
             </div>
           </div>
         </div>
@@ -135,21 +135,21 @@
       </div>
     </div>
     <div class="row py-3">
-      <div class="col-md-3 mt-2 ">
+      <div class="col-md-3 mt-2" *ngFor="let item of shortTerm">
         <div class=" shadow-sm">
           <img src="../../../assets/one.png" class="card-img-top" alt="Three Image">
         </div>
         <div class="d-flex py-2 justify-content-between">
           <div class="text-muted">
-            Entire horse stalls
+            {{item.attributes.title}}
           </div>
           <div class="mt-1">
             <img src="../../../assets/star_m.png" alt="">
-            <span>4.5</span>
+            <span>{{item.attributes.publicData.rating}}</span>
           </div>
         </div>
         <div class="mt-1" style="font-size:20px ;">
-          Apple Horse Stall & Guests Stay
+        {{item.attributes.description}}
         </div>
         <div class="mt-1">
           <span><strong> &#36; 30 /</strong></span> night
@@ -159,72 +159,34 @@
           <img src="../../../assets/question_mark.png" style="width: 30px; height:30px;" class="ms-2" alt="">
         </div>
       </div>
-      <div class="col-md-3 mt-2">
-        <div class=" shadow-sm">
-          <img src="../../../assets/two.png" class="card-img-top" alt="Three Image">
-        </div>
-        <div class="d-flex py-2 justify-content-between">
-          <div class="text-muted">
-            Entire horse stalls
-          </div>
-          <div class="mt-1">
-            <img src="../../../assets/star_m.png" alt="">
-            <span>4.5</span>
-          </div>
-        </div>
-        <div class="mt-1" style="font-size:20px ;">
-          Apple Horse Stall & Guests Stay
-        </div>
-        <div class="mt-1">
-          <span><strong> &#36; 30 /</strong></span> night
-        </div>
-        <div class="mt-1">
-          <span class="text-muted">&#36; 35 total</span>
-          <img src="../../../assets/question_mark.png" style="width: 30px; height:30px;" class="ms-2" alt="">
-        </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-12">
+        <h6>Guest Accommodations</h6>
       </div>
-      <div class="col-md-3 mt-2">
-        <div class=" shadow-sm">
-          <img src="../../../assets/three.png" class="card-img-top" alt="Three Image">
-        </div>
-        <div class="d-flex py-2 justify-content-between">
-          <div class="text-muted">
-            Entire horse stalls
-          </div>
-          <div class="mt-1">
-            <img src="../../../assets/star_m.png" alt="">
-            <span>4.5</span>
-          </div>
-        </div>
-        <div class="mt-1" style="font-size:20px ;">
-          Apple Horse Stall & Guests Stay
-        </div>
-        <div class="mt-1">
-          <span><strong> &#36; 30 /</strong></span> night
-        </div>
-        <div class="mt-1">
-          <span class="text-muted">&#36; 35 total</span>
-          <img src="../../../assets/question_mark.png" style="width: 30px; height:30px;" class="ms-2" alt="">
-        </div>
+      <div class="col-12">
+        <p class="text-muted">Travelling with your horse? Find overnight accommodations for you and your horse</p>
       </div>
-      <div class="col-md-3 mt-2">
+    </div>
+    <div class="row py-3">
+      <div class="col-md-3 mt-2" *ngFor="let item of guestAccomo">
         <div class=" shadow-sm">
-          <img src="../../../assets/four.png" class="card-img-top" alt="Three Image">
+          <img src={{item.attributes.publicData.host_image}} class="card-img-top" alt="Three Image">
         </div>
         <div class="d-flex py-2 justify-content-between">
           <div class="text-muted">
-            Entire horse stalls
+            {{item.attributes.title}}
           </div>
           <div class="mt-1">
             <img src="../../../assets/star_m.png" alt="">
-            <span>4.5</span>
+            <span>{{item.attributes.publicData.rating}} </span>
           </div>
         </div>
         <div class="mt-1" style="font-size:20px ;">
-          Apple Horse Stall & Guests Stay
+        {{item.attributes.description}}
         </div>
         <div class="mt-1">
-          <span><strong> &#36; 30 /</strong></span> night
+          <span><strong> &#36;{{item.attributes.publicData.listing_price}} /</strong></span> night
         </div>
         <div class="mt-1">
           <span class="text-muted">&#36; 35 total</span>

@@ -17,7 +17,7 @@ export class ManageListingComponent implements OnInit {
   ownListingQuery() {
     this.service.ownListingQueryApi().subscribe((result: any) => {
       this.totalData = result.data;
-      console.log(result);
+      console.log("total-listing",result);
     })
   }
 }

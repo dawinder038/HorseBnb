@@ -29,9 +29,9 @@
               <td>
                 <button class="draft-btn btn">Draft</button>
               </td>
-              <td>Short Term</td>
+              <td>{{data.attributes.publicData.type==1 ? 'Short Term':'Monthly Board'}}</td>
               <td colspan="3">{{data.attributes.publicData.address.street}}</td>
-              <td>{{data.attributes.createdAt}}</td>
+              <td>{{data.attributes.createdAt | date: 'MMMM d, y'}}</td>
               <td><img src="../../../assets/more_horiz.png" alt=""></td>
             </tr>
           </tbody>
