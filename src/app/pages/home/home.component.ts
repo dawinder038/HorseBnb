@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 @Component({
   selector: 'app-home',
@@ -9,19 +9,24 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 export class HomeComponent implements OnInit {
   showStall: any;
   horseStallShow: any;
-  shortTerm:any;
-  guestAccomo:any;
+  shortTerm: any;
+  guestAccomo: any;
+  id:any;
+  monthlyData: any;
   horseAccomoShow: any = false;
-  constructor(private service: HorseServiceService , private router:Router) { }
+  constructor(private service: HorseServiceService, private router: Router,private route:ActivatedRoute) { }
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
     this.getData()
     this.shortTermStalls();
     this.guestStalls();
+    // this.monthlyStalls();
+    // this.adventureStalls();
   }
 
   getData() {
     this.service.getDataApi().subscribe((result: any) => {
-      console.log(result)
+      console.log(result);
     })
   }
 
@@ -46,25 +51,55 @@ export class HomeComponent implements OnInit {
     this.horseAccomoShow = true;
   }
 
-  shortTermStalls(){
+  shortTermStalls() {
     let payload = {
-      type :1,
+      type: 1,
+      perPage: 8,
+      page: 1
+
     }
-    this.service.listingQueryApi(payload.type).subscribe((result:any)=>{
-      console.log("short term",result);
-      this.shortTerm = result.data
-      console.log(this.shortTerm[0].attributes.description)
+    this.service.listingQueryApi(payload).subscribe((result: any) => {
+      console.log("short term", result);
+      this.shortTerm = result.data;
     })
   }
 
-  guestStalls(){
+  guestStalls() {
     let payload = {
-      type :4,
+      perPage: 8,
+      type: 4,
+      page: 1
     }
-    this.service.listingQueryApi(payload.type).subscribe((result:any)=>{
-      console.log("ss",result);
+    this.service.listingQueryApi(payload).subscribe((result: any) => {
+      console.log("ss", result);
       this.guestAccomo = result.data;
     })
   }
 
+  monthlyStalls() {
+    let payload = {
+      type: 2,
+      perPage: 8,
+      page: 1
+    }
+    this.service.listingQueryApi(payload).subscribe((result: any) => {
+      console.log(result);
+      this.monthlyData = result.data;
+    })
+  }
+
+  adventureStalls() {
+    let payload = {
+      type: 3,
+      perPage: 8,
+      page: 1
+    }
+    this.service.listingQueryApi(payload.type).subscribe((result: any) => {
+      console.log(result);
+    })
+  }
+  bookingDetails(data:any){
+    this.router.navigateByUrl('/booking-details/'+data);
+    console.log(data)
+  }
 }

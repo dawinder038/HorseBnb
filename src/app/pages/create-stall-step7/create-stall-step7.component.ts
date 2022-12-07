@@ -16,13 +16,12 @@ id:any;
   constructor(private service: HorseServiceService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
-
     this.id = this.route.snapshot.params['id'];  
   }
   fileChange(event: any) {
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
-      this.bgImage = 'https://airbnbclone.sfo3.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
+      this.bgImage ='https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/'+result.filename;
       this.imageArray.push({"url":this.bgImage});
       console.log(this.imageArray);
       console.log(this.bgImage);
@@ -47,5 +46,5 @@ id:any;
       this.router.navigateByUrl("/create-stalls/step8/"+this.id);
     })
   }
-  
+
 }

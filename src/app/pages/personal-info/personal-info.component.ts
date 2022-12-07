@@ -121,8 +121,9 @@ export class PersonalInfoComponent implements OnInit {
   fileChange(event: any) {
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
-      this.bgImage = 'https://airbnbclone.sfo3.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
+      this.bgImage = 'https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/'+result.filename;
       this.updateImage();
+      console.log(this.bgImage)
       this.getData();
     });
   }
@@ -162,7 +163,7 @@ export class PersonalInfoComponent implements OnInit {
   updateEmail(data: any) {
     let payload = {
       publicData: {
-        email: data.email
+        email: data.email,
       }
     }
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {

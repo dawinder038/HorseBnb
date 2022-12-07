@@ -26,6 +26,7 @@ import { CreateStallsStep9Component } from './pages/create-stalls-step9/create-s
 import { CheckInCheckOutComponent } from './pages/check-in-check-out/check-in-check-out.component';
 import { SuccessfullHostingComponent } from './pages/successfull-hosting/successfull-hosting.component';
 import { CalendarAndAvailabilityComponent } from './pages/calendar-and-availability/calendar-and-availability.component';
+import { BookingDetailsComponent } from './pages/booking-details/booking-details.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,7 @@ const routes: Routes = [
   {path:"create-stalls/checkin-and-checkout/:id",component:CheckInCheckOutComponent},
   {path:"create-stalls/successfull-hosting/:id",component:SuccessfullHostingComponent},
   {path:"create-stalls/step11/1/:id",component:CalendarAndAvailabilityComponent},
+  {path:"booking-details/:id",component:BookingDetailsComponent},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

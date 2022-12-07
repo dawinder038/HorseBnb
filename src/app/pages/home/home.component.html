@@ -137,7 +137,7 @@
     <div class="row py-3">
       <div class="col-md-3 mt-2" *ngFor="let item of shortTerm">
         <div class=" shadow-sm">
-          <img src="../../../assets/one.png" class="card-img-top" alt="Three Image">
+          <img src="../../../assets/one.png" class="card-img-top" (click)="bookingDetails(item.attributes.publicData.rating)" alt="Three Image">
         </div>
         <div class="d-flex py-2 justify-content-between">
           <div class="text-muted">
@@ -171,7 +171,7 @@
     <div class="row py-3">
       <div class="col-md-3 mt-2" *ngFor="let item of guestAccomo">
         <div class=" shadow-sm">
-          <img src={{item.attributes.publicData.host_image}} class="card-img-top" alt="Three Image">
+          <img src={{item.attributes.publicData.host_image}} class="card-img-top"  alt="Three Image">
         </div>
         <div class="d-flex py-2 justify-content-between">
           <div class="text-muted">
@@ -191,6 +191,18 @@
         <div class="mt-1">
           <span class="text-muted">&#36; 35 total</span>
           <img src="../../../assets/question_mark.png" style="width: 30px; height:30px;" class="ms-2" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="row my-2">
+      <div class="col-md-12">
+        <h5>Monthly stabling for your horse</h5>
+        <p class="text-muted">Find monthly boarding facilities</p>
+        <div class="card intro-horse text-white">
+          <img src="https://horsebnb.com:8081/assets/img/no_monthly_banner.png" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <button class="btn bg-white boarding-image">EXPLORE BOARDING FACILITIES</button>
+          </div>
         </div>
       </div>
     </div>

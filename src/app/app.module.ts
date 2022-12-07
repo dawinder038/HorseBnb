@@ -37,6 +37,8 @@ import { CreateStallsStep9Component } from './pages/create-stalls-step9/create-s
 import { CheckInCheckOutComponent } from './pages/check-in-check-out/check-in-check-out.component';
 import { SuccessfullHostingComponent } from './pages/successfull-hosting/successfull-hosting.component';
 import { CalendarAndAvailabilityComponent } from './pages/calendar-and-availability/calendar-and-availability.component';
+import { BookingDetailsComponent } from './pages/booking-details/booking-details.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +66,7 @@ import { CalendarAndAvailabilityComponent } from './pages/calendar-and-availabil
     CheckInCheckOutComponent,
     SuccessfullHostingComponent,
     CalendarAndAvailabilityComponent,
+    BookingDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ import { CalendarAndAvailabilityComponent } from './pages/calendar-and-availabil
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    TabsModule.forRoot(),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },AuthGuardGuard,HorseServiceService],
   bootstrap: [AppComponent],
