@@ -1,0 +1,48 @@
+<app-header></app-header>
+<section class="section">
+    <div class="row p-5 container-fluid">
+        <div class="col-md-3 p-3">
+            <app-side-nav></app-side-nav>
+        </div>
+        <div class="col-md-9 p-3">
+            <div class="bg-white">
+                <div class="p-2">
+                    <h4>Reviews</h4>
+                </div>
+                <hr>
+                <div>
+                    <div>
+                        <tabset>
+                            <tab heading="Reviews About You" id="tab1">
+                                <div class=" mt-3 p-2 bg-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="pt-4 ps-4">
+                                            <h6 class="" style="font-size:25px; font-weight: 400;">Reviews</h6>
+                                        </div>
+                                    </div>
+                                    <div class="text-center my-3">
+                                        <img src="../../../assets/no_reviews.png" class="no-reviews" alt="">
+                                        <p class="my-2">No one has reviewed you yet.</p>
+                                    </div>
+                                </div>
+                            </tab>
+                            <tab heading="Reviews By You">
+                                <div class=" mt-3 p-2 bg-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="pt-4 ps-4">
+                                            <h6 class="" style="font-size:25px; font-weight: 400;">Reviews</h6>
+                                        </div>
+                                    </div>
+                                    <div class="text-center my-3">
+                                        <img src="../../../assets/no_reviews.png" class="no-reviews" alt="">
+                                        <p class="my-2">You have not reviewed yet.</p>
+                                    </div>
+                                </div>
+                            </tab>
+                        </tabset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

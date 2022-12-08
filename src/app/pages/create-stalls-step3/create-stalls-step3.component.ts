@@ -16,8 +16,7 @@ export class CreateStallsStep3Component implements OnInit {
 
   ngOnInit(): void {
     this.getData()
-    this.id= this.route.snapshot.params['id']; 
-    console.log(this.id)
+    this.id= this.route.snapshot.params['id'];
   }
   
   incCounter(){

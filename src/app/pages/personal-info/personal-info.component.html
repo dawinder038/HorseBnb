@@ -83,7 +83,7 @@
                                     <div>
                                         <label for="first-name">First Name</label>
                                         <input type="text" id="first-name" class="form-control mt-2 "
-                                            placeholder="{{allData.data.attributes.profile.firstName}}" value=""
+                                            placeholder="{{allData.data.attributes.profile.firstName}}"
                                             formControlName="firstName">
                                         <small
                                             *ngIf="nameForm.controls['firstName']?.hasError('required') && nameForm.controls['firstName']?.touched">First
@@ -160,7 +160,7 @@
                         </div>
                         <div class="my-2">
                             <span
-                                style="font-size:15px; font-weight: 300;">{{allData.data.attributes.profile.publicData.age}}</span>
+                                style="font-size:15px; font-weight: 300;">{{allData.data.attributes.profile.publicData.age | date:'MMM d, y'}}</span>
                         </div>
                     </div>
                     <div *ngIf="!showDOB">

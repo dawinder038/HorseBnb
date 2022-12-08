@@ -9,41 +9,41 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
   styleUrls: ['./create-stall-step7.component.scss']
 })
 export class CreateStallStep7Component implements OnInit {
-myForm!:FormGroup;
-bgImage :any;
-imageArray:any [] = []
-id:any;
-  constructor(private service: HorseServiceService,private route:ActivatedRoute,private router:Router) { }
+  myForm!: FormGroup;
+  bgImage: any;
+  imageArray: any[] = []
+  id: any;
+  constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];  
+    this.id = this.route.snapshot.params['id'];
   }
   fileChange(event: any) {
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
-      this.bgImage ='https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/'+result.filename;
-      this.imageArray.push({"url":this.bgImage});
+      this.bgImage = 'https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
+      this.imageArray.push({ "url": this.bgImage });
       console.log(this.imageArray);
       console.log(this.bgImage);
     });
   }
 
-  ownListingUpdate(){
-   let payload = {
-    id:this.id,
-    publicData:{
-      images:[{
-        "url":this.imageArray[0].url,
-        "caption":"caption",
-        "priority":0,
-        "id":0,
-      }  
-    ]
+  ownListingUpdate() {
+    let payload = {
+      id: this.id,
+      publicData: {
+        images: [{
+          "url": this.imageArray[0].url,
+          "caption": "caption",
+          "priority": 0,
+          "id": 0,
+        }
+        ]
+      }
     }
-    }
-    this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
+    this.service.ownListingUpdateApi(payload).subscribe((result: any) => {
       console.log(result);
-      this.router.navigateByUrl("/create-stalls/step8/"+this.id);
+      this.router.navigateByUrl("/create-stalls/step8/" + this.id);
     })
   }
 

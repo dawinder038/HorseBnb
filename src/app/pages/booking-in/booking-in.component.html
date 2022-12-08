@@ -1,0 +1,59 @@
+<app-header></app-header>
+<section class="section">
+    <div class="row p-5 container-fluid">
+        <div class="col-md-3 p-3">
+            <app-side-nav></app-side-nav>
+        </div>
+        <div class="col-md-9 p-3">
+            <div class="bg-white">
+                <div class="p-2">
+                    <h4>Bookings</h4>
+                  
+                </div>
+                <hr>
+                <div class="p-2">
+                    <div>
+                        <tabset>
+                          <tab heading="New" id="tab1"></tab>
+                          <tab heading="Confirmed"></tab>
+                          <tab heading="Completed">
+                            <div class="row  px-1  overflow-auto">
+                              <table class="table table-striped ">
+                                  <thead class="">
+                                      <tr class="thead">
+                                          <th>GUEST NAME</th>
+                                          <th>BOOKINGS</th>
+                                          <th>LISTING NAME</th>
+                                          <th>LISTING TYPE</th>
+                                          <th>CHECK-IN/CHECK-OUT/MONTH</th>
+                                          <th>STATUS</th>
+                                          <th>ACTIONS</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody class="">
+                                      <tr class="tbody">
+                                          <td>
+                                              <img src="	https://horsebnb.com:8081/assets/img/default.png"
+                                                  style="width:30px;height:30px;" alt="">
+                                              HorseTest
+                                          </td>
+                                          <td>1 Room</td>
+                                          <td>ss</td>
+                                          <td>Guest Accomodations</td>
+                                          <td>20 to 30</td>
+                                          <td style="color:#00e2a8">COMPLETED</td>
+                                          <td><img src="../../../assets/visibility_on.png" alt=""></td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                          </tab>
+                          <tab heading="Declined"></tab>
+                          <tab heading="Cancelled"></tab>
+                        </tabset>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

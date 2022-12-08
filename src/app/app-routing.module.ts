@@ -27,6 +27,10 @@ import { CheckInCheckOutComponent } from './pages/check-in-check-out/check-in-ch
 import { SuccessfullHostingComponent } from './pages/successfull-hosting/successfull-hosting.component';
 import { CalendarAndAvailabilityComponent } from './pages/calendar-and-availability/calendar-and-availability.component';
 import { BookingDetailsComponent } from './pages/booking-details/booking-details.component';
+import { PricingComponent } from './pages/pricing/pricing.component';
+import { DashInsideComponent } from './pages/dash-inside/dash-inside.component';
+import { BookingInComponent } from './pages/booking-in/booking-in.component';
+import { ReviewsComponent } from './pages/reviews/reviews.component';
 
 
 const routes: Routes = [
@@ -57,6 +61,10 @@ const routes: Routes = [
   {path:"create-stalls/successfull-hosting/:id",component:SuccessfullHostingComponent},
   {path:"create-stalls/step11/1/:id",component:CalendarAndAvailabilityComponent},
   {path:"booking-details/:id",component:BookingDetailsComponent},
+  {path:"create-stalls/step12/:id",component:PricingComponent},
+  {path:"dash-inside",component:DashInsideComponent},
+  {path:"booking-in",component:BookingInComponent},
+  {path:"reviews",component:ReviewsComponent},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

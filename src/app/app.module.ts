@@ -39,6 +39,12 @@ import { SuccessfullHostingComponent } from './pages/successfull-hosting/success
 import { CalendarAndAvailabilityComponent } from './pages/calendar-and-availability/calendar-and-availability.component';
 import { BookingDetailsComponent } from './pages/booking-details/booking-details.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { PricingComponent } from './pages/pricing/pricing.component';
+import { DashInsideComponent } from './pages/dash-inside/dash-inside.component';
+import { SideNavComponent } from './pages/side-nav/side-nav.component';
+import { BookingInComponent } from './pages/booking-in/booking-in.component';
+import { ReviewsComponent } from './pages/reviews/reviews.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +73,12 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     SuccessfullHostingComponent,
     CalendarAndAvailabilityComponent,
     BookingDetailsComponent,
+    PricingComponent,
+    DashInsideComponent,
+    SideNavComponent,
+    BookingInComponent,
+    ReviewsComponent,
+    TransactionsComponent,
   ],
   imports: [
     BrowserModule,

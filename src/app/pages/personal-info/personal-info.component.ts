@@ -26,21 +26,13 @@ export class PersonalInfoComponent implements OnInit {
   showAddress: any = true;
   showLanguage: any = true;
   profilePayload: any = {};
-
-
   constructor(private service: HorseServiceService) { }
 
   ngOnInit(): void {
     this.intializeForm();
     this.getData();
   }
-  getData() {
-    this.service.getDataApi().subscribe((result: any) => {
-      console.log(result);
-      this.allData = result
-      this.bgImage = result.data.attributes.profile.publicData.profile_image;
-    })
-  }
+
   intializeForm() {
     this.nameForm = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
@@ -52,7 +44,7 @@ export class PersonalInfoComponent implements OnInit {
       ),
     })
     this.DOBForm = new FormGroup({
-      age: new FormControl('', Validators.required),
+      age: new FormControl('', [Validators.required]),
     })
     this.emailForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email])
@@ -66,6 +58,21 @@ export class PersonalInfoComponent implements OnInit {
     })
     this.aboutForm = new FormGroup({
       bio: new FormControl('', [Validators.required])
+    })
+  }
+
+  getData() {
+    this.service.getDataApi().subscribe((result: any) => {
+      console.log("reus",result);
+      this.allData = result;
+      this.nameForm.controls['firstName'].setValue(result.data.attributes.profile.firstName);
+      this.nameForm.controls['lastName'].setValue(result.data.attributes.profile.lastName);
+      this.genderForm.controls['gender'].setValue(result.data.attributes.profile.publicData.gender);
+      this.DOBForm.controls['age'].setValue(result.data.attributes.profile.publicData.age);
+      this.emailForm.controls['email'].setValue(result.data.attributes.email);
+      this.phoneForm.controls['country_code'].setValue(result.data.attributes.profile.publicData.country_code);
+      this.phoneForm.controls['phoneNumber'].setValue(result.data.attributes.profile.publicData.phoneNumber)
+      this.bgImage = result.data.attributes.profile.publicData.profile_image;
     })
   }
 
