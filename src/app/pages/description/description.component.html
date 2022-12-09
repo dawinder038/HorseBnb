@@ -24,16 +24,16 @@
                     Do not include business name or contact information.</p>
             </div>
             <div>
-                <form>
+                <form [formGroup]="descriptionForm" (ngSubmit)="addDescription(descriptionForm.value)">
                     <div>
                         <div class="my-2">
-                            <textarea name="" id="" cols="40" class="p-2" rows="5" placeholder="Type here..."></textarea>
+                            <textarea name="" id="" formControlName="description" cols="40" class="p-2" rows="5" placeholder="Type here..."></textarea>
                         </div>
                         <div class="my-3">
                             <h4>Want to add more info?</h4>
                             <p>Use the additional fields below to share more details</p>
                             <div class="my-2">
-                                <textarea name="" id="" cols="40" class="p-2" rows="5" placeholder="Type here..."></textarea>
+                                <textarea formControlName="extra_detail" id="" cols="40" class="p-2" rows="5" placeholder="Type here..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                             <button class="btn" style="color:red;">back</button>
                         </div>
                         <div>
-                            <button class="btn btn-danger" (click)="next()">Next</button>
+                            <button type="submit" class="btn btn-danger">Next</button>
                         </div>
                     </div>
                 </form>

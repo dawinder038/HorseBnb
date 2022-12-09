@@ -12,7 +12,6 @@ export class AuthGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
       let authToken = sessionStorage.getItem('signUpToken');
       if(authToken != null) {
         return true

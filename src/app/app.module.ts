@@ -45,6 +45,9 @@ import { SideNavComponent } from './pages/side-nav/side-nav.component';
 import { BookingInComponent } from './pages/booking-in/booking-in.component';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { CreateStallsStep5Component } from './pages/create-stalls-step5/create-stalls-step5.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +82,7 @@ import { TransactionsComponent } from './pages/transactions/transactions.compone
     BookingInComponent,
     ReviewsComponent,
     TransactionsComponent,
+    CreateStallsStep5Component,
   ],
   imports: [
     BrowserModule,
@@ -92,6 +96,7 @@ import { TransactionsComponent } from './pages/transactions/transactions.compone
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
+    TimepickerModule.forRoot(),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },AuthGuardGuard,HorseServiceService],
   bootstrap: [AppComponent],

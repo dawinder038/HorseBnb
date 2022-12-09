@@ -13,6 +13,7 @@ export class CreateStallStep7Component implements OnInit {
   bgImage: any;
   imageArray: any[] = []
   id: any;
+  imageId: any;
   constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -22,8 +23,8 @@ export class CreateStallStep7Component implements OnInit {
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
       this.bgImage = 'https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
-      this.imageArray.push({ "url": this.bgImage });
-      console.log(this.imageArray);
+      this.imageArray.push({ "url": this.bgImage,caption:"caption",id:result.id,priority:0 });
+      this.imageId = result.id;
       console.log(this.bgImage);
     });
   }
@@ -32,19 +33,18 @@ export class CreateStallStep7Component implements OnInit {
     let payload = {
       id: this.id,
       publicData: {
-        images: [{
-          "url": this.imageArray[0].url,
-          "caption": "caption",
-          "priority": 0,
-          "id": 0,
-        }
-        ]
+        cover_photo:{
+          caption:"caption",
+          url:this.imageArray[0].url,
+          id:this.imageArray[0].id,
+        },
+        images:this.imageArray,
       }
     }
     this.service.ownListingUpdateApi(payload).subscribe((result: any) => {
-      console.log(result);
+      console.log("image result", result);
       this.router.navigateByUrl("/create-stalls/step8/" + this.id);
     })
   }
-
+  
 }

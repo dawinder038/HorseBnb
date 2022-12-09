@@ -8,10 +8,23 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
   styleUrls: ['./booking-details.component.scss']
 })
 export class BookingDetailsComponent implements OnInit {
-
-  constructor(private service:HorseServiceService,private router:Router,private route:ActivatedRoute) { }
+  id: any;
+  bookingResult:any;
+  imageArray:any;
+  constructor(private service: HorseServiceService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.showBookingDetail();
+    this.id = this.route.snapshot.params['id'];
   }
-
+  showBookingDetail() {
+    setTimeout(() => {
+      this.service.listingShowIdApi(this.id).subscribe((result: any) => {
+        console.log("id", result);
+        this.bookingResult = result.data;
+        this.imageArray = result.data.attributes.publicData.images;
+        console.log("booking",this.bookingResult.attributes.description);
+      });
+    }, 1000);
+  }
 }

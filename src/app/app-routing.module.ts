@@ -7,7 +7,7 @@ import { HostYourStallsComponent } from './pages/host-your-stalls/host-your-stal
 import { CreateStallsComponent } from './pages/create-stalls/create-stalls.component';
 import { HostGuestsComponent } from './pages/host-guests/host-guests.component';
 import { CreateStallsStep3Component } from './pages/create-stalls-step3/create-stalls-step3.component';
-import { CreateStallsStep5Component } from './pages/create-stalls-step5/create-stalls-step5.component';
+// import { CreateStallsStep5Component } from './pages/create-stalls-step5/create-stalls-step5.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { TermConditionsComponent } from './pages/term-conditions/term-conditions.component';
@@ -31,6 +31,7 @@ import { PricingComponent } from './pages/pricing/pricing.component';
 import { DashInsideComponent } from './pages/dash-inside/dash-inside.component';
 import { BookingInComponent } from './pages/booking-in/booking-in.component';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
+import { CreateStallsStep5Component } from './pages/create-stalls-step5/create-stalls-step5.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path:"host-guests",component:HostGuestsComponent},
   {path:"create-stalls/step3/:id",component:CreateStallsStep3Component},
   {path:"create-stalls/step5/:id",component:CreateStallsStep5Component},
+  // {path:"create-stalls/step5/:id",component:CreateStallsStep5Component},
   {path:"about-us",component:AboutUsComponent},
   {path:"contact-us",component:ContactUsComponent},
   {path:"term-conditions",component:TermConditionsComponent},

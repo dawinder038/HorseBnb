@@ -21,13 +21,13 @@
                 <h4>Check In & Check Out</h4>
                 <p>choose a time for Check-in and Check-out</p>
                 <div>
-                    <form>
+                    <form [formGroup]="checkInOutForm" (ngSubmit)="checkInOut(checkInOutForm.value)">
                         <div class="my-2">
                             <div>
                                 <label for="arrive">Arrive After</label>
                             </div>
                             <div>
-                                <input type="text" class="form-control" id="arrive">
+                                <timepicker formControlName="arrive_after"></timepicker>
                             </div>
                         </div>
                         <div>
@@ -36,7 +36,7 @@
                                     <label for="leave">Leave Before</label>
                                 </div>
                                 <div>
-                                    <input type="text" class="form-control" id="leave">
+                                    <timepicker formControlName="leave_before"></timepicker>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                     <button class="btn" style="color:red;">back</button>
                                 </div>
                                 <div>
-                                    <button class="btn btn-danger" (click)="next()">Next</button>
+                                    <button type="submit" class="btn btn-danger">Next</button>
                                 </div>
                             </div>
                         </div>

@@ -48,7 +48,7 @@ export class CreateStallsComponent implements OnInit {
   }
 
   ownListingShowId() {
-    this.service.ownListingShowIdApi(this.id).subscribe((result: any) => {
+    this.service.listingShowIdApi(this.id).subscribe((result: any) => {
       console.log(result);
     })
   }

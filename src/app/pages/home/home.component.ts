@@ -98,8 +98,8 @@ export class HomeComponent implements OnInit {
       console.log(result);
     })
   }
-  bookingDetails(data:any){
-    this.router.navigateByUrl('/booking-details/'+data);
-    console.log(data)
+  bookingDetails(id:any){
+    this.router.navigateByUrl('/booking-details/'+id);
+    
   }
 }

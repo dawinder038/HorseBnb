@@ -17,18 +17,13 @@
         </div>
         <div class="row card">
             <div class="col-md-6">
-                <!-- <img src="../../../assets/five.png" alt="" class="w-100 h-100 m-0 p-0"> -->
+                <img [src]="bookingResult.attributes.publicData.cover_photo.url" alt="" class="w-100 h-100 m-0 p-0">
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-6">
-                        <!-- <img src="../../../assets/detail_one.png" alt=""> -->
+                    <div class="col-md-6" *ngFor="let images of imageArray">
+                        <img [src]=images.url alt="">
                     </div>
-                    <div class="col-md-6"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6"></div>
                 </div>
             </div>
         </div>
@@ -36,9 +31,9 @@
             <div class="col-md-8">
                 <div class="d-flex justify-content-between">
                     <div>
-                        <h5>Business hosted by sandeep kaur</h5>
+                        <h5>Business hosted by {{bookingResult.attributes.publicData.hosted_by}}</h5>
                     </div>
-                    <div><img src="../../../assets/" alt="" style="width: 35px;height :35px;"></div>
+                    <div><img [src]="bookingResult.attributes.publicData.host_image" alt="" style="width: 35px;height :35px;"></div>
                 </div>
                 <hr class="my-2">
                 <div class="flex">
@@ -81,7 +76,7 @@
                 <hr class="my-2">
                 <div class="my-3">
                     <h4 class="ms-2">Description</h4>
-                    <p class="text-muted ms-2">Do not include business name or contact information.</p>
+                    <p class=" ms-2">{{bookingResult.attributes.description}}</p>
                 </div>
                 <hr class="my-2">
             </div>

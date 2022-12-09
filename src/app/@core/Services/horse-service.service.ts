@@ -18,7 +18,7 @@ export class HorseServiceService {
   createOwnListingApi(data:any){
     return this.http.post(this.apiUrl+"own_listings/create_draft",data)
   }
-  ownListingShowIdApi(id:any){
+  listingShowIdApi(id:any){
     return this.http.get(this.apiUrl+"own_listings/show?id="+id)
   }
   ownListingUpdateApi(data:any){

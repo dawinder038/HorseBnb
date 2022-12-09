@@ -137,7 +137,7 @@
     <div class="row py-3">
       <div class="col-md-3 mt-2" *ngFor="let item of shortTerm">
         <div class=" shadow-sm">
-          <img src="../../../assets/one.png" class="card-img-top" (click)="bookingDetails(item.attributes.publicData.rating)" alt="Three Image">
+          <img src="../../../assets/one.png" class="card-img-top" (click)="bookingDetails(item.id.uuid)" alt="Three Image">
         </div>
         <div class="d-flex py-2 justify-content-between">
           <div class="text-muted">
@@ -171,7 +171,7 @@
     <div class="row py-3">
       <div class="col-md-3 mt-2" *ngFor="let item of guestAccomo">
         <div class=" shadow-sm">
-          <img src={{item.attributes.publicData.host_image}} class="card-img-top"  alt="Three Image">
+          <img src={{item.attributes.publicData.host_image}} class="card-img-top" (click)="bookingDetails(item.id.uuid)"   alt="Three Image">
         </div>
         <div class="d-flex py-2 justify-content-between">
           <div class="text-muted">

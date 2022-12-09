@@ -20,15 +20,22 @@ id:any;
   fileChange(event: any) {
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
-      this.bgImage = 'https://airbnbclone.sfo3.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
+      this.bgImage = 'https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
       if(this.bgImage!=null){
         this.showUpload=true;
       }
     });
   }
-  next(){
-    this.router.navigateByUrl('/create-stalls/checkin-and-checkout/'+this.id)
-    
+  uploadImage(){
+    let payload = {
+      id:this.id,
+      publicData:{
+        host_image:this.bgImage,
+      }
+    }
+    this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
+      console.log(result);
+    })
+    this.router.navigateByUrl('/create-stalls/checkin-and-checkout/'+this.id);
   }
-  
 }

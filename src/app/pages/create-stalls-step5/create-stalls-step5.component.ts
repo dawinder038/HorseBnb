@@ -9,45 +9,40 @@ import { FormControl, FormGroup,Validators } from '@angular/forms';
 })
 export class CreateStallsStep5Component implements OnInit {
   id:any;
-
-  
   constructor(private service:HorseServiceService ,private router:Router,private route : ActivatedRoute) { }
   addressForm!: FormGroup;
   ngOnInit(): void {
-
+this.intializeForm()
     this.id = this.route.snapshot.params['id'];
    }
 
   intializeForm(){
-    
-    // this.addressForm = new FormGroup({
-    //   country:new FormControl('',[Validators.required]),
-    //   street : new FormControl(''),
-    //   city : new FormControl(''),
-    //   postcode : new FormControl(''),
-    //   state : new FormControl('')
-    // })
-    
+    this.addressForm = new FormGroup({
+      country:new FormControl('',[Validators.required]),
+      street : new FormControl(''),
+      city : new FormControl(''),
+      postcode : new FormControl(''),
+      state : new FormControl('')
+    })
   }
-  myForm = new FormGroup({
-    name: new FormControl('')
-  })
-
-  ownListingUpdate(data:any){
-    console.log(data)
-   let payload = {
-    id:this.id,
-    publicData:{
-      address:{
-        city:"hh"
+  addAddress(data:any){
+    let payload = {
+      id:this.id,
+      publicData:{
+        address:{
+          city:data.city,
+          state:data.state,
+          country:data.country,
+          postcode:data.postcode,
+          street:data.street,
+        }
       }
     }
-   }
-    // this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
-    //   console.log("listin",result);
-    // })
-  }
-  next(){
-    this.router.navigateByUrl('/create-stalls/step6/'+this.id);
+    console.log(data);
+    this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
+      console.log(result);
+      this.router.navigateByUrl('/create-stalls/step6/'+this.id);
+    })
+   
   }
 }

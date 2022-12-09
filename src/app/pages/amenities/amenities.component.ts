@@ -16,8 +16,7 @@ id:any;
 
 
 next(){
-  this.router.navigateByUrl('/create-stalls/step7/'+this.id)
-
+  this.router.navigateByUrl('/create-stalls/step7/'+this.id);
 }
 
 }

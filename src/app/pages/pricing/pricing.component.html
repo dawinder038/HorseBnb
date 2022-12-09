@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form>
+            <form [formGroup]="priceForm" (ngSubmit)="addPrice(priceForm.value)">
                 <div class="my-4">
                     <div>
                         <h4>Pricing Your Space</h4>
@@ -33,7 +33,7 @@
                         <p class="text-muted">This will be your default price</p>
                     </div>
                     <div>
-                        <input type="text" placeholder="$" class="form-control">
+                        <input type="text" placeholder="$" formControlName="listing_price" class="form-control">
                     </div>
                 </div>
                 <div>
