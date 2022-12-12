@@ -26,6 +26,7 @@ id:any;
       }
     });
   }
+  
   uploadImage(){
     let payload = {
       id:this.id,

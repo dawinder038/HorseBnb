@@ -11,7 +11,6 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 export class PricingComponent implements OnInit {
   id:any;
   priceForm!:FormGroup;
-
   constructor(private service:HorseServiceService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
@@ -26,6 +25,7 @@ export class PricingComponent implements OnInit {
   }
   addPrice(data:any){
     let payload = {
+      id:this.id,
       listing_price : data.listing_price,
     }
     this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
