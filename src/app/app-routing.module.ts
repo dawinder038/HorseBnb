@@ -32,6 +32,8 @@ import { DashInsideComponent } from './pages/dash-inside/dash-inside.component';
 import { BookingInComponent } from './pages/booking-in/booking-in.component';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { CreateStallsStep5Component } from './pages/create-stalls-step5/create-stalls-step5.component';
+import { PublishListingComponent } from './pages/publish-listing/publish-listing.component';
+import { StripeComponent } from './pages/stripe/stripe.component';
 
 
 const routes: Routes = [
@@ -67,6 +69,8 @@ const routes: Routes = [
   {path:"dash-inside",component:DashInsideComponent},
   {path:"booking-in",component:BookingInComponent},
   {path:"reviews",component:ReviewsComponent},
+  {path:"manage-listing/publish-listing/:id",component:PublishListingComponent},
+  {path:"create-stalls/step13/:id",component:StripeComponent},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

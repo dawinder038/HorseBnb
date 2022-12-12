@@ -23,14 +23,21 @@ export class PricingComponent implements OnInit {
       listing_price: new FormControl('')
     })
   }
+  
   addPrice(data:any){
     let payload = {
       id:this.id,
-      listing_price : data.listing_price,
+      publicData:{
+        listing_price : data.listing_price,
+      }
     }
     this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
-      console.log(result);
+      console.log("listing Price",result);
     })
+  }
+
+  next(){
+    this.router.navigateByUrl('/create-stalls/step13/'+this.id);
   }
 
 }

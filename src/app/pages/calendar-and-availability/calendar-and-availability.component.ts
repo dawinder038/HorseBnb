@@ -23,4 +23,6 @@ export class CalendarAndAvailabilityComponent implements OnInit {
   next(){
     this.router.navigateByUrl('/create-stalls/step12/'+this.id)
   }
+
+ 
 }

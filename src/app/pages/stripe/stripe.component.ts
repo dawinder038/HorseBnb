@@ -3,18 +3,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 
 @Component({
-  selector: 'app-successfull-hosting',
-  templateUrl: './successfull-hosting.component.html',
-  styleUrls: ['./successfull-hosting.component.scss']
+  selector: 'app-stripe',
+  templateUrl: './stripe.component.html',
+  styleUrls: ['./stripe.component.scss']
 })
-export class SuccessfullHostingComponent implements OnInit {
+export class StripeComponent implements OnInit {
   id: any;
   constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
   }
-  next() {
-    this.router.navigateByUrl('/create-stalls/step11/1/' + this.id);
+  next(){
+    this.router.navigateByUrl('/manage-listing/publish-listing/'+this.id)
   }
+
 }

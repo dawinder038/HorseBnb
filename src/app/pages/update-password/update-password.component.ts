@@ -38,9 +38,11 @@ export class UpdatePasswordComponent implements OnInit {
       console.log(result);
     })
   }
+  
   showPasswordBox(){
     this.passwordShow=true;
   }
+
   hidePasswordBox(){
     this.passwordShow = false;
   }

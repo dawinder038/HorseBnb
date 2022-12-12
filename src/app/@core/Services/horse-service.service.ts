@@ -45,6 +45,9 @@ export class HorseServiceService {
   listingQueryApi(payload:any){
     return this.http.get(this.apiUrl+'listings/query?perPage='+payload.perPage+'&page='+payload.page+'&pub_type='+ payload.type)
   }
+  publishDraftApi(data:any){
+    return this.http.post(this.apiUrl+'own_listings/publish_draft',data)
+  }
 
 }
 
