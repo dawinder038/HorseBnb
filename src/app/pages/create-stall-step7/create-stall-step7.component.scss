@@ -32,3 +32,12 @@
     background: rgb(212, 50, 50);
     border-radius: 10px;
   }
+  .p-rel{
+    position: relative;
+  }
+
+  .p-abs{
+    position: absolute;
+    top: 2px;
+    right: -92px;
+  }

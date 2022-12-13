@@ -28,7 +28,18 @@ export class CreateStallStep7Component implements OnInit {
       console.log(this.bgImage);
     });
   }
+  removePhoto(data: any) {
+    console.log(data);
+    var index = this.imageArray.indexOf(data);
+    if (index !== -1) {
+      this.imageArray.splice(index, 1);
+    }
+  }
 
+  //   editPhoto(data:any){
+  //     var index = this.imageArray.indexOf(data);
+  //  this.imageArray.splice(this.imageArray.indexOf(data), index,{ "url": this.bgImage,caption:"caption",id:this.imageId,priority:0 })
+  //   }
   ownListingUpdate() {
     let payload = {
       id: this.id,

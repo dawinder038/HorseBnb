@@ -8,6 +8,9 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class ManageListingComponent implements OnInit {
   totalData: any;
+  page: number = 1;
+  total: number = 0;
+  label: String = ""
 
   constructor(private service: HorseServiceService) { }
 
@@ -19,5 +22,9 @@ export class ManageListingComponent implements OnInit {
       this.totalData = result.data;
       console.log("total-listing",result);
     })
+  }
+  pageChanged(event: any) {
+    this.page = event;
+    this.ownListingQuery();
   }
 }

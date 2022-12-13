@@ -19,10 +19,11 @@ this.intializeForm()
   intializeForm(){
     this.addressForm = new FormGroup({
       country:new FormControl('',[Validators.required]),
-      street : new FormControl(''),
-      city : new FormControl(''),
-      postcode : new FormControl(''),
-      state : new FormControl('')
+      street : new FormControl('',[Validators.required]),
+      city : new FormControl('',[Validators.required]),
+      postcode : new FormControl('',[Validators.required]),
+      state : new FormControl('',[Validators.required]),
+      flat:new FormControl(''),
     })
   }
   addAddress(data:any){

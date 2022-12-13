@@ -41,7 +41,11 @@
             </div>
             <div class="py-4 px-5">
                 <div class="row">
-                    <div class="col-md-5"  *ngFor="let image of imageArray ">
+                    <div class="col-md-5 p-rel"  *ngFor="let image of imageArray ">
+                        <div class="p-abs w-100">
+                            <img src="../../../assets/delete_photos.png" (click)="removePhoto(image)" style="width:30px; height:30px;"  alt="delete">
+                            <img src="../../../assets/edit_pencil.png"  style="width:42px; height:42px;" alt="edit">
+                        </div>
                         <img [src]="image.url" alt="" class="image">
                     </div>
                 </div>
