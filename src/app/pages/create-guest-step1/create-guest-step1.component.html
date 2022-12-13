@@ -1,0 +1,52 @@
+<div class="container-fluid  shadow-sm p-3 ">
+    <div class=" d-flex header  justify-content-between">
+        <div>
+            <img src="../../../assets/logo.svg" alt="Logo">
+        </div>
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10"
+        aria-valuemin="0" aria-valuemax="100">
+    </div>
+</div>
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-6">
+            <div style="width:350px">
+                <div>
+                    <h4>
+                        Hi, NAME let's get <br> started listing your <br> space.
+                    </h4>
+                </div>
+                <div class="my-3">
+                    <Span>STEP 1</Span>
+                </div>
+                <div>
+                    <Span style="font-size: 24px;"> Create a title for your <br> listing ?</Span>
+                </div>
+                <div>
+                    <p style="color: red;">Please note if you offer multiple services, you <br> must create an individual listing per category.</p>
+                </div>
+                <div>
+                    <p>Catch guest's attention with a listing title that <br> highlights what makes your place special. This <br> can not be your business name.</p>
+                </div>
+                <div>
+                    <form [formGroup]="createGuestForm" (ngSubmit)="createOwnListing(createGuestForm.value)"> 
+                        <div>
+                            <input type="text" formControlName="title" placeholder="Title" class="form-control">
+                        </div>
+                        <div class="my-3">
+                            <button type="submit" class="btn btn-danger" routerLink="/create-guest/step3" >Continue</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <img style="width: 400px; height:400px;" src="https://horsebnb.com:8081/assets/img/guest_main.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>

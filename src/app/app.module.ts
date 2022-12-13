@@ -49,6 +49,8 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { CreateStallsStep5Component } from './pages/create-stalls-step5/create-stalls-step5.component';
 import { PublishListingComponent } from './pages/publish-listing/publish-listing.component';
 import { StripeComponent } from './pages/stripe/stripe.component';
+import { CreateGuestStep1Component } from './pages/create-guest-step1/create-guest-step1.component';
+import { CreateGuestStep3Component } from './pages/create-guest-step3/create-guest-step3.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +89,8 @@ import { StripeComponent } from './pages/stripe/stripe.component';
     CreateStallsStep5Component,
     PublishListingComponent,
     StripeComponent,
+    CreateGuestStep1Component,
+    CreateGuestStep3Component,
   ],
   imports: [
     BrowserModule,

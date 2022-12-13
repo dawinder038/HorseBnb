@@ -34,6 +34,8 @@ import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { CreateStallsStep5Component } from './pages/create-stalls-step5/create-stalls-step5.component';
 import { PublishListingComponent } from './pages/publish-listing/publish-listing.component';
 import { StripeComponent } from './pages/stripe/stripe.component';
+import { CreateGuestStep1Component } from './pages/create-guest-step1/create-guest-step1.component';
+import { CreateGuestStep3Component } from './pages/create-guest-step3/create-guest-step3.component';
 
 
 const routes: Routes = [
@@ -71,6 +73,8 @@ const routes: Routes = [
   {path:"reviews",component:ReviewsComponent},
   {path:"manage-listing/publish-listing/:id",component:PublishListingComponent ,canActivate:[AuthGuardGuard]},
   {path:"create-stalls/step13/:id",component:StripeComponent,canActivate:[AuthGuardGuard]},
+  {path:"create-guest/step1",component:CreateGuestStep1Component},
+  {path:"create-guest/step3",component:CreateGuestStep3Component},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

@@ -48,13 +48,20 @@
                                             <span class="ms-2">{{fName}}</span>
                                             <div class="dropdown">
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                    <li><a class="dropdown-item" href="#">Booking</a></li>
-                                                    <li><a class="dropdown-item" routerLink="/dashboard">Dashboard</a>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">Booking</a>
                                                     </li>
-                                                    <li><a class="dropdown-item" routerLink="/manage-listing">Manage Listing</a></li>
-                                                    <li><a class="dropdown-item" routerLink="/account">Account</a>
+                                                    <li>
+                                                        <a class="dropdown-item" routerLink="/dashboard">Dashboard</a>
                                                     </li>
-                                                    <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+                                                    <li>
+                                                        <a class="dropdown-item" routerLink="/manage-listing">Manage Listing</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" routerLink="/account">Account</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
                                                     </li>
                                                 </ul>
                                             </div>

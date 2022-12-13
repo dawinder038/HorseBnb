@@ -77,7 +77,6 @@ export class HeaderComponent implements OnInit {
     this.service.loginApi(data).subscribe((result: any) => {
       console.log(result)
       clsBtn.click();
-      this.fName=result.data.attributes.profile.displayName;
       console.log(result.data.token)
       sessionStorage.setItem('signUpToken', result.data.token);
       this.show=true;
@@ -96,6 +95,8 @@ export class HeaderComponent implements OnInit {
     this.service.getDataApi().subscribe((result: any) => {
       console.log(result);
       this.allData = result
+      this.fName=result.data.attributes.profile.displayName;
+      console.log(this.fName);
       this.bgImage = result.data.attributes.profile.publicData.profile_image;
       console.log(this.bgImage)
     })

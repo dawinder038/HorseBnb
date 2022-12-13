@@ -19,7 +19,7 @@ export class PublishListingComponent implements OnInit {
     let payload = {
       id:this.id
     }
-    this.service.publishDraftApi(payload.id).subscribe((result:any)=>{
+    this.service.publishDraftApi(payload).subscribe((result:any)=>{
       console.log(result);
     })
   }
