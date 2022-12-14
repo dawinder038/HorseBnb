@@ -17,7 +17,7 @@ export class PublishListingComponent implements OnInit {
   }
   publishDraft(){
     let payload = {
-      id:this.id
+      id:this.id,
     }
     this.service.publishDraftApi(payload).subscribe((result:any)=>{
       console.log(result);

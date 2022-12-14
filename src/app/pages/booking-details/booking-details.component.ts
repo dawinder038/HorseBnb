@@ -9,9 +9,17 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class BookingDetailsComponent implements OnInit {
   id: any;
-  bookingResult:any;
-  imageArray:any;
-  constructor(private service: HorseServiceService, private router: Router, private route: ActivatedRoute) { }
+  bookingResult: any;
+  bsInlineValue = new Date();
+  bsInlineRangeValue: Date[];
+  imageArray: any;
+  counter: any = 0;
+  maxDate = new Date();
+  stallsValue: any;
+  constructor(private service: HorseServiceService, private router: Router, private route: ActivatedRoute) {
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
+  }
 
   ngOnInit(): void {
     this.showBookingDetail();
@@ -19,12 +27,26 @@ export class BookingDetailsComponent implements OnInit {
   }
   showBookingDetail() {
     setTimeout(() => {
-      this.service.listingShowIdApi(this.id).subscribe((result: any) => {
+      this.service.listingShowIdApi(1173).subscribe((result: any) => {
         console.log("id", result);
         this.bookingResult = result.data;
         this.imageArray = result.data.attributes.publicData.images;
-        console.log("booking",this.bookingResult.attributes.description);
+        console.log("booking", this.bookingResult.attributes.description);
       });
     }, 1000);
   }
+
+  incCounter() {
+    return this.counter = this.counter + 1;
+  }
+  decCounter() {
+    if (this.counter > 0) {
+      this.counter = this.counter - 1;
+    }
+  }
+
+  addStalls() {
+    this.stallsValue = this.counter;
+  }
+
 }
