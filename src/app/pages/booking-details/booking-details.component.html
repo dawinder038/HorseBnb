@@ -22,11 +22,9 @@
                 <img [src]="bookingResult.attributes.publicData.cover_photo.url" alt="" class="w-100 h-100 m-0 p-0">
             </div>
             <div class="col-md-6">
-                <div>
-                    <div class="row">
-                        <div class="col-md-6" *ngFor="let images of imageArray , index as i">
-                            <img [src]=images.url alt="">
-                        </div>
+                <div class="row">
+                    <div class="col-md-6 my-2" *ngFor="let images of imageArray; let i = index">
+                        <img [src]=images.url alt="" style="width: 260px;">
                     </div>
                 </div>
             </div>
@@ -155,7 +153,7 @@
             <div class="col">
                 <h4>Amenities</h4>
                 <div class="row">
-                    <div class="col-md-4" *ngFor="let amenitiesItem of bookingResult.attributes.publicData.amenities">
+                    <div class="col-md-4 my-2" *ngFor="let amenitiesItem of bookingResult.attributes.publicData.amenities">
                         <img src="	https://horsebnb.com:8081/assets/img/horse_one.png" alt="">
                         <span class="ms-2">{{amenitiesItem}}</span>
                     </div>
@@ -185,14 +183,14 @@
             <div class="row">
                 <div class="col-md-6 border-right">
                     <div class="d-flex">
-                        <div>
-                            <img style="width:60px; height:60px; border-radius:50%;" src="../../../assets/six.png"
+                        <div class="card" style="border-radius: 50%;">
+                            <img class="p-2" style="width:80px; height:80px; border-radius:50%;" [src]="bookingResult.attributes.publicData.host_image"
                                 alt="">
                         </div>
                         <div>
                             <div class="ms-2">
-                                <h5>Hosted By NAme</h5>
-                                <span class="text-muted">Joined on Date </span>
+                                <h5>Hosted By {{bookingResult.attributes.publicData.hosted_by}}</h5>
+                                <span class="text-muted">Joined on {{bookingResult.attributes.createdAt | date }} </span>
                             </div>
                         </div>
                     </div>
@@ -225,7 +223,7 @@
                             <img src="../../../assets/two.png" alt="">
                             <div class="my-2">
                                 <h6 class="m-0">Short term stalls</h6>
-                                <p>Description or title</p>
+                                <p>{{bookingResult.attributes.title}}</p>
                             </div>
                         </div>
                     </div>

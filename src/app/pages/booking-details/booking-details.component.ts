@@ -9,6 +9,8 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class BookingDetailsComponent implements OnInit {
   id: any;
+  i:any=1;
+  imageArrayk:any;
   bookingResult: any;
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -27,9 +29,10 @@ export class BookingDetailsComponent implements OnInit {
   }
   showBookingDetail() {
     setTimeout(() => {
-      this.service.listingShowIdApi(1173).subscribe((result: any) => {
+      this.service.listingShowIdApi(this.id).subscribe((result: any) => {
         console.log("id", result);
         this.bookingResult = result.data;
+       
         this.imageArray = result.data.attributes.publicData.images;
         console.log("booking", this.bookingResult.attributes.description);
       });

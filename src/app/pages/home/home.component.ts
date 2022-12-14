@@ -76,30 +76,29 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  monthlyStalls() {
-    let payload = {
-      type: 2,
-      perPage: 8,
-      page: 1
-    }
-    this.service.listingQueryApi(payload).subscribe((result: any) => {
-      console.log(result);
-      this.monthlyData = result.data;
-    })
-  }
+  // monthlyStalls() {
+  //   let payload = {
+  //     type: 2,
+  //     perPage: 8,
+  //     page: 1
+  //   }
+  //   this.service.listingQueryApi(payload).subscribe((result: any) => {
+  //     console.log(result);
+  //     this.monthlyData = result.data;
+  //   })
+  // }
 
-  adventureStalls() {
-    let payload = {
-      type: 3,
-      perPage: 8,
-      page: 1
-    }
-    this.service.listingQueryApi(payload.type).subscribe((result: any) => {
-      console.log(result);
-    })
-  }
+  // adventureStalls() {
+  //   let payload = {
+  //     type: 3,
+  //     perPage: 8,
+  //     page: 1
+  //   }
+  //   this.service.listingQueryApi(payload.type).subscribe((result: any) => {
+  //     console.log(result);
+  //   })
+  // }
   bookingDetails(id:any){
     this.router.navigateByUrl('/booking-details/'+id);
-    
   }
 }
