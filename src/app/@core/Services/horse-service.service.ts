@@ -48,6 +48,9 @@ export class HorseServiceService {
   publishDraftApi(data:any){
     return this.http.post(this.apiUrl+'own_listings/publish_draft',data)
   }
+  generateStripeTokenApi(data:any){
+    return this.http.post(this.apiUrl+'generate/accountToken',data)
+  }
   
 }
 

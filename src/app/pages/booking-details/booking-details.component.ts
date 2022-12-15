@@ -32,9 +32,7 @@ export class BookingDetailsComponent implements OnInit {
       this.service.listingShowIdApi(this.id).subscribe((result: any) => {
         console.log("id", result);
         this.bookingResult = result.data;
-       
         this.imageArray = result.data.attributes.publicData.images;
-        console.log("booking", this.bookingResult.attributes.description);
       });
     }, 1000);
   }

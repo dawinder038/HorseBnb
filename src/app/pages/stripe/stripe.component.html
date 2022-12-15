@@ -30,7 +30,8 @@
                 <div class="my-4">
                     <div class="d-flex">
                         <div>
-                            <button class="btn btn-danger">Update stripe information</button>
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#stripeModal">Conect
+                                with stripe</button>
                         </div>
                         <div class="ms-4">
                             <button class="btn btn-danger">skip for now</button>
@@ -54,6 +55,91 @@
         <div class="col-md-6">
             <div>
                 <img src="../../../assets/stripe_payments.svg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- stripe modal -->
+<div class="modal fade" id="stripeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Connect With Stripe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="stripeInfoForm" (ngSubmit)="generateStripeToken(stripeInfoForm.value)">
+                    <div class="p-4">
+                        <div class="my-2">
+                            <label for="first-name">First Name</label>
+                            <input type="text" formControlName="first_name" class="form-control my-1" id="first-name">
+                        </div>
+                        <div class="my-2">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" formControlName="last_name" class="form-control my-1" id="last-name">
+                        </div>
+                        <div class="my-2">
+                            <label for="DOB">Date of Birth</label>
+                            <input type="text" class="form-control my-1" formControlName="dob" id="DOB">
+                        </div>
+                        <div class="my-2">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control my-1" formControlName="email" id="email">
+                        </div>
+                        <div class="my-2">
+                            <label for="p-number">Phone Number</label>
+                            <input type="text" class="form-control my-1" formControlName="phone" id="p-number">
+                        </div>
+                        <div class="my-2">
+                            <label for="SSN">SSN Last 4 Digits</label>
+                            <input type="text" class="form-control my-1" formControlName="ssn_last_4"  id="SSN">
+                        </div>
+                        <div class="my-2">
+                            <div>
+                                <span>Stripe Identity Image</span>
+                                <div class="border-dashed">
+                                    <label for="image">
+                                        <img src="../../../assets/publish.png" alt="">
+                                    </label>
+                                    <input type="file" id="image" class="d-none">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-3">
+                             <span>Enter Exact Address</span>
+                             <div class="my-2">
+                                <label for="country">Country/Region</label>
+                                <input type="text" id="country" formControlName="country" class="form-control">
+                             </div>
+                             <div class="my-2">
+                                <label for="state">State</label>
+                                <input type="text" id="state" formControlName="state" class="form-control">
+                             </div>
+                             <div class="my-2">
+                                <label for="city">City</label>
+                                <input type="text" id="city" formControlName="city" class="form-control">
+                             </div>
+                             <div class="my-2">
+                                <label for="zipcode">Zip Code</label>
+                                <input type="text" id="zipcode" formControlName="postal_code" class="form-control">
+                             </div>
+                        </div>
+                        <div class="mt-5">
+                            <hr>
+                            <div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex ">
+                                        <img class="upload-icon" src="../../../assets/arrow_left.png" alt="">
+                                        <button class="btn" style="color:red;">cancel</button>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-danger">Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
