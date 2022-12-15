@@ -51,7 +51,12 @@ export class HorseServiceService {
   generateStripeTokenApi(data:any){
     return this.http.post(this.apiUrl+'generate/accountToken',data)
   }
-  
+  generateBankAccountTokenApi(data:any){
+    return this.http.post(this.apiUrl+'generate/BankAccountToken',data);
+  }
+  availabilityExceptionApi(data:any){
+    return this.http.post(this.apiUrl+'availability_exceptions/create',data)
+  }
 }
 
 

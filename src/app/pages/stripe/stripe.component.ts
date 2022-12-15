@@ -10,11 +10,13 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class StripeComponent implements OnInit {
   id: any;
+  bankAccountForm!: FormGroup;
   stripeInfoForm!: FormGroup;
   constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    this.intializeForm();
   }
   intializeForm() {
     this.stripeInfoForm = new FormGroup({
@@ -29,9 +31,12 @@ export class StripeComponent implements OnInit {
       city: new FormControl(''),
       postal_code: new FormControl(''),
     })
-  }
-  next() {
-    this.router.navigateByUrl('/manage-listing/publish-listing/' + this.id)
+
+    this.bankAccountForm = new FormGroup({
+      account_holder_name: new FormControl(''),
+      routing_number: new FormControl(''),
+      account_number: new FormControl(''),
+    })
   }
   generateStripeToken(data: any) {
     console.log(data);
@@ -51,14 +56,31 @@ export class StripeComponent implements OnInit {
             postal_code: data.postal_code,
           },
           dob: {
-            day: "day",
-            month: "month",
-            year: "year"
+            day: 1,
+            month: 2,
+            year: 2000
           }
         }
       }
     }
-    this.service.generateStripeTokenApi(payload).subscribe((result:any)=>{
+    console.log(payload);
+    // this.service.generateStripeTokenApi(payload).subscribe((result:any)=>{
+    //   console.log(result);
+    //   this.router.navigateByUrl('/manage-listing/publish-listing/' + this.id)
+    // })
+  }
+
+  generateBankAccountToken(data: any) {
+    let payload = {
+      bank_account: {
+        country: "US",
+        currency: "USD",
+        account_holder_name: data.account_holder_name,
+        account_number: data.account_number,
+        routing_number: data.routing_number,
+      }
+    }
+    this.service.generateBankAccountTokenApi(payload).subscribe((result: any) => {
       console.log(result);
     })
   }
