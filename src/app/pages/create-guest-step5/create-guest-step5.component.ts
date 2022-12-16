@@ -3,11 +3,12 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
 @Component({
-  selector: 'app-create-stalls-step5',
-  templateUrl: './create-stalls-step5.component.html',
-  styleUrls: ['./create-stalls-step5.component.scss']
+  selector: 'app-create-guest-step5',
+  templateUrl: './create-guest-step5.component.html',
+  styleUrls: ['./create-guest-step5.component.scss']
 })
-export class CreateStallsStep5Component implements OnInit {
+export class CreateGuestStep5Component implements OnInit {
+
   id:any;
   constructor(private service:HorseServiceService ,private router:Router,private route : ActivatedRoute) { }
   addressForm!: FormGroup;
@@ -15,6 +16,7 @@ export class CreateStallsStep5Component implements OnInit {
 this.intializeForm()
     this.id = this.route.snapshot.params['id'];
    }
+
   intializeForm(){
     this.addressForm = new FormGroup({
       country:new FormControl('',[Validators.required]),
@@ -41,7 +43,9 @@ this.intializeForm()
     console.log(data);
     this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
       console.log(result);
-      this.router.navigateByUrl('/create-stalls/step6/'+this.id);
+      this.router.navigateByUrl('/create-guest/step6/'+this.id);
     })
+   
   }
+
 }

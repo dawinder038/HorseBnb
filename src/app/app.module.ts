@@ -52,6 +52,9 @@ import { StripeComponent } from './pages/stripe/stripe.component';
 import { CreateGuestStep1Component } from './pages/create-guest-step1/create-guest-step1.component';
 import { CreateGuestStep3Component } from './pages/create-guest-step3/create-guest-step3.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CreateGuestStep5Component } from './pages/create-guest-step5/create-guest-step5.component';
+import { CreateGuestStep6Component } from './pages/create-guest-step6/create-guest-step6.component';
+import { CreateGuestStep7Component } from './pages/create-guest-step7/create-guest-step7.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +95,9 @@ import { ToastrModule } from 'ngx-toastr';
     StripeComponent,
     CreateGuestStep1Component,
     CreateGuestStep3Component,
+    CreateGuestStep5Component,
+    CreateGuestStep6Component,
+    CreateGuestStep7Component,
 
   ],
   imports: [

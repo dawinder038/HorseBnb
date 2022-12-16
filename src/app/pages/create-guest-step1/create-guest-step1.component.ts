@@ -36,6 +36,7 @@ export class CreateGuestStep1Component implements OnInit {
     this.service.createOwnListingApi(payload).subscribe((result: any) => {
       console.log(result);
       this.id = result.data.id.uuid;
+      this.router.navigateByUrl('/create-guest/step3/'+this.id)
     })
   }
 

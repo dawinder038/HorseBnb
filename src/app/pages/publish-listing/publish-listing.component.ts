@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-publish-listing',
   templateUrl: './publish-listing.component.html',
@@ -9,7 +10,7 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 export class PublishListingComponent implements OnInit {
 
   id:any;
-  constructor(private service:HorseServiceService,private route:ActivatedRoute,private router:Router) { }
+  constructor(private service:HorseServiceService,private route:ActivatedRoute,private router:Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -18,9 +19,10 @@ export class PublishListingComponent implements OnInit {
     let payload = {
       id:this.id,
     }
-    this.service.publishDraftApi(payload).subscribe((result:any)=>{
+   this.service.publishDraftApi(payload).subscribe((result:any)=>{
       console.log(result);
-      this.router.navigateByUrl('/manage-listing');
+      this.toastr.success('Successfully','Published');
+      this.router.navigateByUrl('/manage-listing');      
     })
   }
 

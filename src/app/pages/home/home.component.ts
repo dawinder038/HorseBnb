@@ -25,13 +25,13 @@ export class HomeComponent implements OnInit {
     // this.monthlyStalls();
     // this.adventureStalls();
   }
-
+  // Get All Data Form Api
   getData() {
     this.service.getDataApi().subscribe((result: any) => {
       console.log(result);
     })
   }
-
+// monthly Boared Method
   showMonthlyFun() {
     this.showStall = true;
     this.horseStallShow = true;

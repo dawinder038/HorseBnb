@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-stalls',
   templateUrl: './create-stalls.component.html',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class CreateStallsComponent implements OnInit {
   createOwnListingForm!: FormGroup;
   id: any;
-  constructor(private service: HorseServiceService, private router: Router) { }
+  constructor(private service: HorseServiceService, private router: Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.intializeForm()
@@ -25,6 +26,7 @@ export class CreateStallsComponent implements OnInit {
   }
 
   createOwnListing(data: any) {
+
     let payload = {
       title: data.title,
       publicData: {
@@ -37,6 +39,7 @@ export class CreateStallsComponent implements OnInit {
       console.log(result);
       this.id = result.data.id.uuid;
       this.router.navigateByUrl('/create-stalls/step3/' + this.id);
+  
       console.log(this.router.navigateByUrl('/create-stalls/step3/' + this.id))
     })
   }

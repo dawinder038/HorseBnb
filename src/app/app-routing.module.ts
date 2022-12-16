@@ -36,6 +36,9 @@ import { PublishListingComponent } from './pages/publish-listing/publish-listing
 import { StripeComponent } from './pages/stripe/stripe.component';
 import { CreateGuestStep1Component } from './pages/create-guest-step1/create-guest-step1.component';
 import { CreateGuestStep3Component } from './pages/create-guest-step3/create-guest-step3.component';
+import { CreateGuestStep5Component } from './pages/create-guest-step5/create-guest-step5.component';
+import { CreateGuestStep6Component } from './pages/create-guest-step6/create-guest-step6.component';
+import { CreateGuestStep7Component } from './pages/create-guest-step7/create-guest-step7.component';
 
 
 const routes: Routes = [
@@ -74,7 +77,10 @@ const routes: Routes = [
   {path:"manage-listing/publish-listing/:id",component:PublishListingComponent ,canActivate:[AuthGuardGuard]},
   {path:"create-stalls/step13/:id",component:StripeComponent,canActivate:[AuthGuardGuard]},
   {path:"create-guest/step1",component:CreateGuestStep1Component},
-  {path:"create-guest/step3",component:CreateGuestStep3Component},
+  {path:"create-guest/step3/:id",component:CreateGuestStep3Component},
+  {path:"create-guest/step5/:id",component:CreateGuestStep5Component},
+  {path:"create-guest/step6/:id",component:CreateGuestStep6Component},
+  {path:"create-guest/step7/:id",component:CreateGuestStep7Component},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

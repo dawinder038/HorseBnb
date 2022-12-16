@@ -28,9 +28,8 @@ export class HeaderComponent implements OnInit {
     this.getData();
   }
 
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  }
+  // check login status or change header during login
+
   checkLoginStatus() {
     if(sessionStorage.getItem('signUpToken') != null) {
       this.show = true;
@@ -38,6 +37,7 @@ export class HeaderComponent implements OnInit {
       this.show = false;
     }
   }
+  // Intailization Of Form 
   intializeForm() {
     this.signUpForm = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
@@ -55,6 +55,7 @@ export class HeaderComponent implements OnInit {
  
   }
 
+  // sign Up method
   signUp(data: any) {
     let payload = {
       firstName: data.firstName,
@@ -77,17 +78,26 @@ export class HeaderComponent implements OnInit {
       console.log(result);
     })
   }
+  // sign In Method
   signIn(data: any, clsBtn:HTMLElement) {
     this.service.loginApi(data).subscribe((result: any) => {
       console.log(result)
       clsBtn.click();
       console.log(result.data.token)
-      this.showSuccess();
-
       sessionStorage.setItem('signUpToken', result.data.token);
       this.show=true;
+      
+      if(result.data.message){
+        this.toastr.success(result.data.message);
+      }
     })
   }
+  showSuccess() {
+   
+  }
+
+// Logout method
+
   logout(){
     sessionStorage.clear();
     window.location.reload();
@@ -97,6 +107,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/host-your-stalls')
    }, 1000);
   }
+
+  // get Data Form ALl user 
+
   getData() {
     this.service.getDataApi().subscribe((result: any) => {
       console.log(result);
@@ -104,7 +117,7 @@ export class HeaderComponent implements OnInit {
       this.fName=result.data.attributes.profile.displayName;
       console.log(this.fName);
       this.bgImage = result.data.attributes.profile.publicData.profile_image;
-      console.log(this.bgImage)
+      console.log(this.bgImage);
     })
   }
 }
