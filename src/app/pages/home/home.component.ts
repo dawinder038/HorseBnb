@@ -9,12 +9,14 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 export class HomeComponent implements OnInit {
   showStall: any;
   horseStallShow: any;
-  shortTerm: any;
-  guestAccomo: any;
+  shortTerm: any=[];
+  guestAccomo: any =[];
   id:any;
+  showMore:boolean = false;
   monthlyData: any;
   horseAccomoShow: any = false;
-  constructor(private service: HorseServiceService, private router: Router,private route:ActivatedRoute) { }
+  constructor(private service: HorseServiceService, private router: Router,private route:ActivatedRoute) {
+  }
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.getData()
@@ -101,4 +103,6 @@ export class HomeComponent implements OnInit {
   bookingDetails(id:any){
     this.router.navigateByUrl('/booking-details/'+id);
   }
+
+  
 }

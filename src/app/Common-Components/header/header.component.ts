@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit {
   allData:any;
   bgImage:any;
   show: boolean = false;
-  constructor(private service: HorseServiceService,private router:Router) {
+  constructor(private service: HorseServiceService,private router:Router,private toastr:ToastrService) {
     this.checkLoginStatus();
    }
 
@@ -27,6 +28,9 @@ export class HeaderComponent implements OnInit {
     this.getData();
   }
 
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
   checkLoginStatus() {
     if(sessionStorage.getItem('signUpToken') != null) {
       this.show = true;
@@ -78,6 +82,8 @@ export class HeaderComponent implements OnInit {
       console.log(result)
       clsBtn.click();
       console.log(result.data.token)
+      this.showSuccess();
+
       sessionStorage.setItem('signUpToken', result.data.token);
       this.show=true;
     })

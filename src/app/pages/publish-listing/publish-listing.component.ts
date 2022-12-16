@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
-
 @Component({
   selector: 'app-publish-listing',
   templateUrl: './publish-listing.component.html',
@@ -21,6 +20,7 @@ export class PublishListingComponent implements OnInit {
     }
     this.service.publishDraftApi(payload).subscribe((result:any)=>{
       console.log(result);
+      this.router.navigateByUrl('/manage-listing');
     })
   }
 

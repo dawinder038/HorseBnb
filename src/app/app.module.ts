@@ -51,6 +51,7 @@ import { PublishListingComponent } from './pages/publish-listing/publish-listing
 import { StripeComponent } from './pages/stripe/stripe.component';
 import { CreateGuestStep1Component } from './pages/create-guest-step1/create-guest-step1.component';
 import { CreateGuestStep3Component } from './pages/create-guest-step3/create-guest-step3.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { CreateGuestStep3Component } from './pages/create-guest-step3/create-gue
     StripeComponent,
     CreateGuestStep1Component,
     CreateGuestStep3Component,
+
   ],
   imports: [
     BrowserModule,
@@ -105,6 +107,8 @@ import { CreateGuestStep3Component } from './pages/create-guest-step3/create-gue
     BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
     TimepickerModule.forRoot(),
+    ToastrModule.forRoot(),
+
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },AuthGuardGuard,HorseServiceService],
   bootstrap: [AppComponent],

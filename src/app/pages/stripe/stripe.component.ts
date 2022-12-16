@@ -43,6 +43,7 @@ export class StripeComponent implements OnInit {
 
     let payload = {
       account: {
+        business_type:"individual",
         individual: {
           first_name: data.first_name,
           last_name: data.last_name,
@@ -64,10 +65,10 @@ export class StripeComponent implements OnInit {
       }
     }
     console.log(payload);
-    // this.service.generateStripeTokenApi(payload).subscribe((result:any)=>{
-    //   console.log(result);
-    //   this.router.navigateByUrl('/manage-listing/publish-listing/' + this.id)
-    // })
+    this.service.generateStripeTokenApi(payload).subscribe((result:any)=>{
+      console.log(result);
+      this.router.navigateByUrl('/manage-listing/publish-listing/' + this.id)
+    })
   }
 
   generateBankAccountToken(data: any) {
@@ -84,6 +85,9 @@ export class StripeComponent implements OnInit {
       console.log(result);
      
     })
+  }
+  skip(){
+    this.router.navigateByUrl('/manage-listing/publish-listing/'+this.id);
   }
 
   
