@@ -20,15 +20,15 @@
             <div>
                 <h4>Connect with Stripe to accept payments</h4>
             </div>
-            <div class="">
-                <div class="card w-75">
-                    <div>
+            <div>
+                <div class="w-75">
+                    <!-- <div>
                         <img src="../../../assets/bookings_dashboard.png" style="width:40px; height:100%;" alt="">
                         <span class="p-2">Your stripe is rejected</span>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="my-4">
-                    <div class="d-flex">
+                <div class="my-4 w-75" >
+                    <div class="d-flex justify-content-between">
                         <div>
                             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#stripeModal">Conect
                                 with stripe</button>
@@ -48,7 +48,7 @@
                     <button class="btn" style="color:red;">back</button>
                 </div>
                 <div>
-                    <button class="btn btn-danger">continue</button>
+                    <button class="btn btn-danger"  (click)="stripeAccountFetch()" >continue</button>
                 </div>
             </div>
         </div>

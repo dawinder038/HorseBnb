@@ -82,7 +82,19 @@ export class StripeComponent implements OnInit {
     }
     this.service.generateBankAccountTokenApi(payload).subscribe((result: any) => {
       console.log(result);
+     
     })
+  }
+
+  
+  stripeAccountFetch(){
+    setTimeout(() => {
+      this.service.stripeAccountFetchApi().subscribe((result:any)=>{
+        console.log(result);
+        this.router.navigateByUrl('/manage-listing/publish-listing/'+this.id)
+      })
+    }, 1000);
+    
   }
 
 }

@@ -23,7 +23,7 @@
             <tr *ngFor="let data of totalData">
               <th scope="row"></th>
               <td colspan="3">
-                <img style="width:45px ;" [src]="data.attributes.publicData.cover_photo" alt="">
+                <img style="width:45px ;" [src]="data.attributes.publicData.cover_photo?.url" alt="">
                 <span class="ms-3">{{data.attributes.publicData.host_bio}}</span>
               </td>
               <td>

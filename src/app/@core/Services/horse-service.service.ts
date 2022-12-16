@@ -54,6 +54,9 @@ export class HorseServiceService {
   generateBankAccountTokenApi(data:any){
     return this.http.post(this.apiUrl+'generate/BankAccountToken',data);
   }
+  stripeAccountFetchApi(){
+    return this.http.get(this.apiUrl+'stripe_account/fetch');
+  }
   availabilityExceptionApi(data:any){
     return this.http.post(this.apiUrl+'availability_exceptions/create',data)
   }

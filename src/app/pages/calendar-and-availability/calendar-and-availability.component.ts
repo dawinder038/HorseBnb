@@ -21,17 +21,19 @@ export class CalendarAndAvailabilityComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
   }
   next(){
+    console.log("value",this.bsInlineRangeValue);
     let payload= {
       listingId:this.id,
-      start:this.bsInlineRangeValue,
-      end:this.bsInlineRangeValue,
+      start:this.bsInlineRangeValue[0],
+      end:this.bsInlineRangeValue[1],
       seat:0,
     }
     console.log(payload);
-    // this.service.availabilityExceptionApi().subscribe((result:any)=>{
-    //   console.log(result);
-    // })
-    // this.router.navigateByUrl('/create-stalls/step12/'+this.id)
+    this.service.availabilityExceptionApi(payload).subscribe((result:any)=>{
+      console.log(result);
+      this.router.navigateByUrl('/create-stalls/step12/'+this.id)
+    })
+    
   }
 
  
