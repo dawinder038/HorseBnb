@@ -63,6 +63,7 @@ import { GuestPricingComponent } from './pages/guest-pricing/guest-pricing.compo
 import { GuestStripeComponent } from './pages/guest-stripe/guest-stripe.component';
 import { AvailTypeTwoComponent } from './pages/avail-type-two/avail-type-two.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

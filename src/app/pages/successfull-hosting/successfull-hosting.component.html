@@ -28,9 +28,9 @@
                     ranking and create <br> negative reviews as it causes problems for travellers.
                 </p>
                 <div>
-                    <form>
+                    <form [formGroup]="getItForm" (ngSubmit)="successfullHosting(getItForm.value)">
                         <div>
-                            <input type="checkbox" id="checkbox">
+                            <input type="checkbox" id="checkbox"  (click)="get()">
                             <label class="ms-2" for="checkbox">Got'it! I'll keep my calendar up to date</label>
                         </div>
                         <div>
@@ -43,7 +43,7 @@
                                     <button class="btn" style="color:red;">back</button>
                                 </div>
                                 <div>
-                                    <button class="btn btn-danger" (click)="successfullHosting()">Next</button>
+                                    <button type="submit" class="btn btn-danger">Next</button>
                                 </div>
                             </div>
                         </div>

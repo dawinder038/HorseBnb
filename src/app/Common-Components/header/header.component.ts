@@ -100,7 +100,10 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     sessionStorage.clear();
-    window.location.reload();
+    setTimeout(() => {
+      this.router.navigateByUrl('/home')
+    }, 1000);
+   
   }
   hostYourStall(){
    setTimeout(() => {

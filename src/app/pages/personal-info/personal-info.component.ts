@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-personal-info',
@@ -26,7 +27,7 @@ export class PersonalInfoComponent implements OnInit {
   showAddress: any = true;
   showLanguage: any = true;
   profilePayload: any = {};
-  constructor(private service: HorseServiceService) { }
+  constructor(private service: HorseServiceService,private toastr : ToastrService) { }
 
   ngOnInit(): void {
     this.intializeForm();
@@ -63,7 +64,7 @@ export class PersonalInfoComponent implements OnInit {
 
   getData() {
     this.service.getDataApi().subscribe((result: any) => {
-      console.log("reus",result);
+      console.log("reus", result);
       this.allData = result;
       this.nameForm.controls['firstName'].setValue(result.data.attributes.profile.firstName);
       this.nameForm.controls['lastName'].setValue(result.data.attributes.profile.lastName);
@@ -73,6 +74,7 @@ export class PersonalInfoComponent implements OnInit {
       this.phoneForm.controls['country_code'].setValue(result.data.attributes.profile.publicData.country_code);
       this.phoneForm.controls['phoneNumber'].setValue(result.data.attributes.profile.publicData.phoneNumber)
       this.bgImage = result.data.attributes.profile.publicData.profile_image;
+      this.languageForm.controls['language'].setValue(result.data.attributes.profile.publicData.language)
     })
   }
 
@@ -128,10 +130,11 @@ export class PersonalInfoComponent implements OnInit {
   fileChange(event: any) {
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
-      this.bgImage = 'https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/'+result.filename;
+      this.bgImage = 'https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
       this.updateImage();
       console.log(this.bgImage)
       this.getData();
+     
     });
   }
 
@@ -142,6 +145,7 @@ export class PersonalInfoComponent implements OnInit {
     }
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
       console.log(result);
+      this.toastr.success(result.data.message);
     })
   }
 
@@ -153,6 +157,7 @@ export class PersonalInfoComponent implements OnInit {
     }
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
       console.log(result);
+      this.toastr.success(result.data.message);
     })
   }
 
@@ -164,6 +169,7 @@ export class PersonalInfoComponent implements OnInit {
     }
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
       console.log(result);
+      this.toastr.success(result.data.message);
     })
   }
 
@@ -175,6 +181,7 @@ export class PersonalInfoComponent implements OnInit {
     }
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
       console.log(result);
+      this.toastr.success(result.data.message);
     })
   }
 
@@ -189,6 +196,7 @@ export class PersonalInfoComponent implements OnInit {
     }
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
       console.log(result);
+      this.toastr.success(result.data.message);
     })
   }
 
@@ -200,6 +208,7 @@ export class PersonalInfoComponent implements OnInit {
     }
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
       console.log(result);
+      this.toastr.success(result.data.message);
     })
   }
 
@@ -210,6 +219,7 @@ export class PersonalInfoComponent implements OnInit {
     console.log(payload)
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
       console.log(result);
+      this.toastr.success(result.data.message);
     })
   }
 
@@ -221,6 +231,7 @@ export class PersonalInfoComponent implements OnInit {
     }
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
       console.log(result);
+      this.toastr.success(result.data.message);
     })
   }
 
