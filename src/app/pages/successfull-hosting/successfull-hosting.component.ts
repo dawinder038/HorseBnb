@@ -14,7 +14,17 @@ export class SuccessfullHostingComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
   }
-  next() {
-    this.router.navigateByUrl('/create-stalls/step11/1/' + this.id);
+
+  successfullHosting() {
+    this.service.listingShowIdApi(this.id).subscribe((result: any) => {
+      console.log(result);
+      console.log(result.data.attributes.publicData.type);
+      if(result.data.attributes.publicData.type==1){
+        this.router.navigateByUrl('/create-stalls/step11/'+result.data.attributes.publicData.type +'/' +this.id);
+      }
+      if(result.data.attributes.publicData.type==2){
+        this.router.navigateByUrl('/create-stalls/availabilty/' +result.data.attributes.publicData.type + '/' + this.id);
+      }
+    })
   }
 }

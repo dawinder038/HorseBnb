@@ -1,14 +1,8 @@
-.dashed-border{
-    width:400px;
-    height: 200px;
-    border: 2px dashed black;
-    border-radius: 8px;
+.horse-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.image{
-    width: 150px;
-    height: 150px;
-}
-
 .Scroll{
     overflow-y: scroll;
 }
@@ -31,13 +25,4 @@
   ::-webkit-scrollbar-thumb {
     background: rgb(212, 50, 50);
     border-radius: 10px;
-  }
-  .p-rel{
-    position: relative;
-  }
-
-  .p-abs{
-    position: absolute;
-    top: 2px;
-    right: -92px;
   }

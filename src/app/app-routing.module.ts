@@ -39,6 +39,13 @@ import { CreateGuestStep3Component } from './pages/create-guest-step3/create-gue
 import { CreateGuestStep5Component } from './pages/create-guest-step5/create-guest-step5.component';
 import { CreateGuestStep6Component } from './pages/create-guest-step6/create-guest-step6.component';
 import { CreateGuestStep7Component } from './pages/create-guest-step7/create-guest-step7.component';
+import { GuestDescriptionComponent } from './pages/guest-description/guest-description.component';
+import { GuestCheckInOutComponent } from './pages/guest-check-in-out/guest-check-in-out.component';
+import { GuestSuccessfullComponent } from './pages/guest-successfull/guest-successfull.component';
+import { GuestCalendarAvailabilityComponent } from './pages/guest-calendar-availability/guest-calendar-availability.component';
+import { GuestPricingComponent } from './pages/guest-pricing/guest-pricing.component';
+import { GuestStripeComponent } from './pages/guest-stripe/guest-stripe.component';
+import { AvailTypeTwoComponent } from './pages/avail-type-two/avail-type-two.component';
 
 
 const routes: Routes = [
@@ -69,6 +76,7 @@ const routes: Routes = [
   {path:"create-stalls/checkin-and-checkout/:id",component:CheckInCheckOutComponent,canActivate:[AuthGuardGuard]},
   {path:"create-stalls/successfull-hosting/:id",component:SuccessfullHostingComponent,canActivate:[AuthGuardGuard]},
   {path:"create-stalls/step11/1/:id",component:CalendarAndAvailabilityComponent,canActivate:[AuthGuardGuard]},
+  {path:"create-stalls/availabilty/2/:id",component:AvailTypeTwoComponent},
   {path:"booking-details/:id",component:BookingDetailsComponent,canActivate:[AuthGuardGuard]},
   {path:"create-stalls/step12/:id",component:PricingComponent,canActivate:[AuthGuardGuard]},
   {path:"dash-inside",component:DashInsideComponent,canActivate:[AuthGuardGuard]},
@@ -81,6 +89,12 @@ const routes: Routes = [
   {path:"create-guest/step5/:id",component:CreateGuestStep5Component},
   {path:"create-guest/step6/:id",component:CreateGuestStep6Component},
   {path:"create-guest/step7/:id",component:CreateGuestStep7Component},
+  {path:"create-guest/step8/:id",component:GuestDescriptionComponent},
+  {path:"create-guest/step9/:id",component:GuestCheckInOutComponent},
+  {path:"create-guest/successfull-hosting/:id",component:GuestSuccessfullComponent},
+  {path:"create-guest/step11/1/:id",component:GuestCalendarAvailabilityComponent},
+  {path:"create-guest/step12/:id",component:GuestPricingComponent},
+  {path:"create-guest/step13/:id",component:GuestStripeComponent},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 

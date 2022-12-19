@@ -1,0 +1,70 @@
+<div class="container-fluid  shadow-sm p-3 ">
+    <div class=" d-flex header  justify-content-between">
+        <div>
+            <img src="../../../assets/logo_experience.png" alt="Logo">
+            <Span class="ms-3" style="font-size:20px; color:red;">Calendar & Availability</Span>
+        </div>
+        <div>
+            <button class="btn" style="color:red;" routerLink="/jj">Save & Exit</button>
+        </div>
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 80%" aria-valuenow="10"
+        aria-valuemin="0" aria-valuemax="100">
+    </div>
+</div>
+<div class="container p-0">
+    <form>
+        <div class="row my-4">
+            <div class="col-md-6">
+                <div>
+                    <h5>Set your availability</h5>
+                    <p class="text-muted">editing your Calendar easy-just click on a date to block <br> or unblock it .
+                        you
+                        can always make changes after you <br> publish.</p>
+                </div>
+                <div>
+                    <div class="pr-3 pb-3 pe-3 w-auto">
+                        <bs-daterangepicker-inline [bsValue]="bsInlineRangeValue"
+                            class="p-0"></bs-daterangepicker-inline>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex ">
+                        <img src="../../../assets/arrow_left.png" alt="">
+                        <button class="btn" style="color:red;">back</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-danger" (click)="next()">Next</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="w-100 h-100" style="background-color:#fafafa;">
+                    <div class="box">
+                        <div class="card card-box">
+                            <div class="p-3">
+                                <div>
+                                    <img src="../../../assets/lightbulb.png" alt="">
+                                </div>
+                                <div>
+                                    <p>Guests Can book available dates upto 3 months in advance</p>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="date-checked">
+                                    <label for="date-checked" class="text-muted ms-2">Available to be booked</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="blocked">
+                                    <label for="blocked" class="text-muted ms-2">Blocked</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

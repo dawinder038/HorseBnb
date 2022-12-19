@@ -55,6 +55,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { CreateGuestStep5Component } from './pages/create-guest-step5/create-guest-step5.component';
 import { CreateGuestStep6Component } from './pages/create-guest-step6/create-guest-step6.component';
 import { CreateGuestStep7Component } from './pages/create-guest-step7/create-guest-step7.component';
+import { GuestDescriptionComponent } from './pages/guest-description/guest-description.component';
+import { GuestCheckInOutComponent } from './pages/guest-check-in-out/guest-check-in-out.component';
+import { GuestSuccessfullComponent } from './pages/guest-successfull/guest-successfull.component';
+import { GuestCalendarAvailabilityComponent } from './pages/guest-calendar-availability/guest-calendar-availability.component';
+import { GuestPricingComponent } from './pages/guest-pricing/guest-pricing.component';
+import { GuestStripeComponent } from './pages/guest-stripe/guest-stripe.component';
+import { AvailTypeTwoComponent } from './pages/avail-type-two/avail-type-two.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +105,13 @@ import { CreateGuestStep7Component } from './pages/create-guest-step7/create-gue
     CreateGuestStep5Component,
     CreateGuestStep6Component,
     CreateGuestStep7Component,
+    GuestDescriptionComponent,
+    GuestCheckInOutComponent,
+    GuestSuccessfullComponent,
+    GuestCalendarAvailabilityComponent,
+    GuestPricingComponent,
+    GuestStripeComponent,
+    AvailTypeTwoComponent,
 
   ],
   imports: [
