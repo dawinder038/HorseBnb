@@ -30,7 +30,7 @@
                 <div class="my-4 w-75" >
                     <div class="d-flex justify-content-between">
                         <div>
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#stripeModal">Conect
+                            <button class="btn btn-danger" data-bs-toggle="modal" (click)="valueSet();" data-bs-target="#stripeModal">Conect
                                 with stripe</button>
                         </div>
                         <div class="ms-4">
@@ -80,7 +80,7 @@
                         </div>
                         <div class="my-2">
                             <label for="DOB">Date of Birth</label>
-                            <input type="text" class="form-control my-1" formControlName="dob" id="DOB">
+                            <input type="text" class="form-control my-1"  formControlName="dob" id="DOB">
                         </div>
                         <div class="my-2">
                             <label for="email">Email</label>
@@ -95,15 +95,19 @@
                             <input type="text" class="form-control my-1" formControlName="ssn_last_4" id="SSN">
                         </div>
                         <div class="my-2">
-                            <div>
+                            <div >
                                 <span>Stripe Identity Image</span>
-                                <div class="border-dashed">
+                                <div *ngIf="!imageShow" class="border-dashed">
                                     <label for="image">
                                         <img src="../../../assets/publish.png" alt="">
                                     </label>
-                                    <input type="file" id="image" class="d-none">
+                                    <input type="file" (change)="fileChange($event)" id="image"  class="d-none">
+                                </div>
+                                <div *ngIf="imageShow">
+                                    <img [src]=bgImage alt="Image" style="width: 200px; height: 200px;">
                                 </div>
                             </div>
+                           
                         </div>
                         <div class="my-3">
                             <span>Enter Exact Address</span>

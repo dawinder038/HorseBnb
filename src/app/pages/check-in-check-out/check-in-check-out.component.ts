@@ -80,10 +80,10 @@ export class CheckInCheckOutComponent implements OnInit {
       }
     }
     console.log(payload);
-    // this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
-    //   console.log(result);
-    //   this.router.navigateByUrl("/create-stalls/successfull-hosting/"+this.id);
-    // })
+    this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
+      console.log(result);
+      this.router.navigateByUrl("/create-stalls/successfull-hosting/"+this.id);
+    })
   }
 
 }

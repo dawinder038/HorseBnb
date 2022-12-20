@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, getModuleFactory, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
@@ -10,13 +10,34 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class StripeComponent implements OnInit {
   id: any;
+  lastName:any;
+  dob:any;
+  firstName:any;
+  bgImage:any;
+  email:any;
+  theDate:any;
+  phoneNumber:any;
+  imageShow:boolean=false;
   bankAccountForm!: FormGroup;
   stripeInfoForm!: FormGroup;
+
   constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.intializeForm();
+    this.getData();
+  }
+  getData() {
+    this.service.getDataApi().subscribe((result: any) => {
+      console.log(result);
+      this.firstName = result.data.attributes.profile.firstName;
+      this.lastName = result.data.attributes.profile.lastName;
+      this.dob = result.data.attributes.profile.publicData.age
+      this.email = result.data.attributes.email
+      this.phoneNumber = result.data.attributes.profile.protectedData.phoneNumber;
+
+    })
   }
   intializeForm() {
     this.stripeInfoForm = new FormGroup({
@@ -38,9 +59,16 @@ export class StripeComponent implements OnInit {
       account_number: new FormControl(''),
     })
   }
-  generateStripeToken(data: any) {
-    console.log(data);
 
+  valueSet(){
+    this.theDate = new Date( Date.parse(this.dob));
+    this.stripeInfoForm.controls['first_name'].setValue(this.firstName);
+    this.stripeInfoForm.controls['last_name'].setValue(this.lastName);
+    this.stripeInfoForm.controls['email'].setValue(this.email);
+    this.stripeInfoForm.controls['dob'].setValue(this.theDate.toLocaleDateString());
+    this.stripeInfoForm.controls['phone'].setValue(this.phoneNumber);
+  }
+  generateStripeToken(data: any) {
     let payload = {
       account: {
         business_type:"individual",
@@ -57,18 +85,26 @@ export class StripeComponent implements OnInit {
             postal_code: data.postal_code,
           },
           dob: {
-            day: 1,
-            month: 2,
-            year: 2000
+            day: this.theDate.toLocaleDateString('en-us', { day: 'numeric' }),
+            month: this.theDate.toLocaleDateString('en-us', { month: 'numeric' }),
+            year: this.theDate.toLocaleDateString('en-us', { year: 'numeric' })
           }
         }
       }
     }
+    console.log("dob",payload.account.individual.dob)
     console.log(payload);
     this.service.generateStripeTokenApi(payload).subscribe((result:any)=>{
       console.log(result);
       this.router.navigateByUrl('/manage-listing/publish-listing/' + this.id)
     })
+  }
+  fileChange(event: any) {
+    this.service.uploadImage(event).subscribe((result: any) => {
+      console.log(result);
+      this.bgImage = 'https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
+      this.imageShow = true;
+    });
   }
 
   generateBankAccountToken(data: any) {
@@ -89,7 +125,6 @@ export class StripeComponent implements OnInit {
   skip(){
     this.router.navigateByUrl('/manage-listing/publish-listing/'+this.id);
   }
-
   
   stripeAccountFetch(){
     setTimeout(() => {

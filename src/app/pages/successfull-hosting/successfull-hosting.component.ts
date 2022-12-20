@@ -18,6 +18,7 @@ export class SuccessfullHostingComponent implements OnInit {
   ngOnInit(): void {
     this.intializeForm();
     this.id = this.route.snapshot.params['id'];
+    console.log("id",this.id)
   }
   intializeForm() {
     this.getItForm = new FormGroup({
@@ -36,7 +37,7 @@ export class SuccessfullHostingComponent implements OnInit {
     }
     console.log(payload)
     if (this.isget == true) {
-      this.service.listingShowIdApi(payload).subscribe((result: any) => {
+      this.service.ownListingUpdateApi(payload).subscribe((result: any) => {
         console.log(result);
         console.log(result.data.attributes.publicData.type);
         if (result.data.attributes.publicData.type == 1) {
@@ -48,7 +49,7 @@ export class SuccessfullHostingComponent implements OnInit {
       })
     }
     else {
-      this.toastr.success('Hello world!', 'Toastr fun!');
+      this.toastr.error('Something Went Wrong');
     }
   }
 }

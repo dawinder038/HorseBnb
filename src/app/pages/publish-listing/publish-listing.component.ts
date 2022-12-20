@@ -13,7 +13,16 @@ export class PublishListingComponent implements OnInit {
   constructor(private service:HorseServiceService,private route:ActivatedRoute,private router:Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
+    this.listingShowId();
     this.id = this.route.snapshot.params['id'];
+  }
+  listingShowId(){
+    let payload = {
+      id:this.id,
+    }
+    this.service.listingShowIdApi(payload.id).subscribe((result:any)=>{
+      console.log("id info",result);
+    })
   }
   publishDraft(){
     let payload = {
@@ -25,5 +34,4 @@ export class PublishListingComponent implements OnInit {
       this.router.navigateByUrl('/manage-listing');      
     })
   }
-
 }

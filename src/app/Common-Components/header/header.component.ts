@@ -86,10 +86,10 @@ export class HeaderComponent implements OnInit {
       console.log(result.data.token)
       sessionStorage.setItem('signUpToken', result.data.token);
       this.show=true;
-      
       if(result.data.message){
         this.toastr.success(result.data.message);
       }
+      // window.location.reload();
     })
   }
   showSuccess() {
@@ -102,6 +102,8 @@ export class HeaderComponent implements OnInit {
     sessionStorage.clear();
     setTimeout(() => {
       this.router.navigateByUrl('/home')
+      this.show=false;
+      this.toastr.success('Logout Successfully','User')
     }, 1000);
    
   }
