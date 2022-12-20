@@ -27,12 +27,12 @@
                 <span class="ms-3">{{data.attributes.publicData.host_bio}}</span>
               </td>
               <td>
-                <button class="draft-btn btn">{{data.attributes.state}}</button>
+                <button class="draft-btn btn" (click)="goToPublish(data.id.uuid)" >{{data.attributes.state}}</button>
               </td>
               <td>{{data.attributes.publicData.type==1 ? 'Short Term':'Monthly Board'}}</td>
               <td colspan="3">{{data.attributes.publicData.address.street}}</td>
               <td>{{data.attributes.createdAt | date: 'MMMM d, y'}}</td>
-              <td><img src="../../../assets/more_horiz.png" alt=""></td>
+              <td><img src="../../../assets/more_horiz.png" (click)="editList(data.id.uuid)" alt=""></td>
             </tr>
           </tbody>
         </table>

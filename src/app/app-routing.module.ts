@@ -55,6 +55,7 @@ const routes: Routes = [
   {path:"footer",component:FooterComponent},
   {path:"host-your-stalls",component:HostYourStallsComponent},
   {path:"create-your-stalls/step1",component:CreateStallsComponent,canActivate:[AuthGuardGuard]},
+  {path:"create-your-stalls/step1/:id",component:CreateStallsComponent,canActivate:[AuthGuardGuard]},
   {path:"host-guests",component:HostGuestsComponent},
   {path:"create-stalls/step3/:id",component:CreateStallsStep3Component,canActivate:[AuthGuardGuard]},
   {path:"create-stalls/step5/:id",component:CreateStallsStep5Component,canActivate:[AuthGuardGuard]},

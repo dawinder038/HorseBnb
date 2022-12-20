@@ -10,20 +10,26 @@ import { ToastrService } from 'ngx-toastr';
 export class PublishListingComponent implements OnInit {
 
   id:any;
+  info:any;
   constructor(private service:HorseServiceService,private route:ActivatedRoute,private router:Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.listingShowId();
     this.id = this.route.snapshot.params['id'];
+    console.log(this.id)
   }
   listingShowId(){
-    let payload = {
-      id:this.id,
-    }
-    this.service.listingShowIdApi(payload.id).subscribe((result:any)=>{
-      console.log("id info",result);
-    })
+    setTimeout(() => {
+      let payload = {
+        id:this.id,
+      }
+      this.service.listingShowIdApi(payload.id).subscribe((result:any)=>{
+        console.log("id info",result);
+      this.info = result.data;
+      })
+    }, 1000);
   }
+  // Publish Listing
   publishDraft(){
     let payload = {
       id:this.id,

@@ -26,18 +26,21 @@
                 </p>
             </div>
             <div class="dashed-border">
-                <div class="p-3 text-center">
-                    <div>
-                        <img src="../../../assets/clock.png" alt="">
+                <form [formGroup]="imageForm">
+                    <div class="p-3 text-center">
+                        <div>
+                            <img src="../../../assets/clock.png" alt="">
+                        </div>
+                        <input type="file" id="image-upload" formControlName="image" class="d-none" (change)="fileChange($event)">
+                        <label for="image-upload">
+                            <img src="../../../assets/publish.png" alt="">
+                        </label>
                     </div>
-                    <input type="file" id="image-upload" class="d-none" (change)="fileChange($event)">
-                    <label for="image-upload">
-                        <img src="../../../assets/publish.png" alt="">
-                    </label>
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-danger">Upload Photo</button>
-                </div>
+                    <div class="text-center">
+                        <button class="btn btn-danger">Upload Photo</button>
+                    </div>
+                </form>
+                
             </div>
             <div class="py-4 px-5">
                 <div class="row">

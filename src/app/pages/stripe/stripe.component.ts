@@ -99,6 +99,7 @@ export class StripeComponent implements OnInit {
       this.router.navigateByUrl('/manage-listing/publish-listing/' + this.id)
     })
   }
+  
   fileChange(event: any) {
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-stalls',
@@ -11,11 +11,16 @@ import { ToastrService } from 'ngx-toastr';
 export class CreateStallsComponent implements OnInit {
   createOwnListingForm!: FormGroup;
   id: any;
-  constructor(private service: HorseServiceService, private router: Router,private toastr:ToastrService) { }
+  idFromUrl:any;
+  listData:any;
+  constructor(private service: HorseServiceService, private router: Router,private toastr:ToastrService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.idFromUrl = this.route.snapshot.params['id'];
     this.intializeForm()
     this.getData()
+    this.ownListingShowId();
+   
   }
 
   intializeForm() {
@@ -51,8 +56,11 @@ export class CreateStallsComponent implements OnInit {
   }
 
   ownListingShowId() {
-    this.service.listingShowIdApi(this.id).subscribe((result: any) => {
-      console.log(result);
+    console.log(this.idFromUrl)
+    this.service.listingShowIdApi(this.idFromUrl).subscribe((result: any) => {
+      console.log("particular id data",result);
+    this.listData = result.data;
+    this.createOwnListingForm.controls['title'].setValue(this.listData.title)
     })
   }
 

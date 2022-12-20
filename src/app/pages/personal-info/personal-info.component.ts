@@ -230,8 +230,9 @@ export class PersonalInfoComponent implements OnInit {
       }
     }
     this.service.currentUserUpdateProfile(payload).subscribe((result: any) => {
-      console.log(result);
+      console.log("upload image",result);
       this.toastr.success(result.data.message);
+      this.getData()
     })
   }
 

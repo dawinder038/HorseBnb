@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -19,13 +20,14 @@ export class HeaderComponent implements OnInit {
   allData:any;
   bgImage:any;
   show: boolean = false;
-  constructor(private service: HorseServiceService,private router:Router,private toastr:ToastrService) {
+  constructor(private service: HorseServiceService,private router:Router,private toastr:ToastrService, private spinner:NgxSpinnerService) {
     this.checkLoginStatus();
    }
 
   ngOnInit(): void {
     this.intializeForm();
     this.getData();
+ 
   }
 
   // check login status or change header during login
@@ -87,7 +89,11 @@ export class HeaderComponent implements OnInit {
       sessionStorage.setItem('signUpToken', result.data.token);
       this.show=true;
       if(result.data.message){
+        this.spinner.show();
         this.toastr.success(result.data.message);
+        setTimeout(() => {
+          this.spinner.hide();
+        }, 2000);
       }
       // window.location.reload();
     })
@@ -113,7 +119,7 @@ export class HeaderComponent implements OnInit {
    }, 1000);
   }
 
-  // get Data Form ALl user 
+  // get Data From ALl user 
 
   getData() {
     this.service.getDataApi().subscribe((result: any) => {

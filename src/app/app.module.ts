@@ -62,6 +62,7 @@ import { GuestCalendarAvailabilityComponent } from './pages/guest-calendar-avail
 import { GuestPricingComponent } from './pages/guest-pricing/guest-pricing.component';
 import { GuestStripeComponent } from './pages/guest-stripe/guest-stripe.component';
 import { AvailTypeTwoComponent } from './pages/avail-type-two/avail-type-two.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -129,6 +130,7 @@ import { AvailTypeTwoComponent } from './pages/avail-type-two/avail-type-two.com
     TabsModule.forRoot(),
     TimepickerModule.forRoot(),
     ToastrModule.forRoot(),
+    NgxSpinnerModule
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },AuthGuardGuard,HorseServiceService],

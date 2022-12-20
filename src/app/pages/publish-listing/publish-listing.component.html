@@ -26,17 +26,16 @@
             <div class="col-md-6">
                 <div>
                     <div class="card w-50">
-                        <div class="p-3">
+                        <div class=" p-3">
                             <div>
-                                <img src="../../../assets/one.png" style="width: 250px; height: 200px;" alt="">
+                                <img [src]=info?.attributes?.publicData?.cover_photo?.url class="m-auto " style="width: 240px; height: 200px;" alt="">
                             </div>
                             <div>
-                                <div class="text-muted">Address</div>
-                                <div>Titile</div>
-                                <div>Description</div>
-                                <div>$55/Night</div>
+                                <div class="text-muted">{{info?.attributes?.publicData?.address.street}}, {{info?.attributes?.publicData?.address.city}},{{info?.attributes?.publicData?.address.state}},{{info?.attributes?.publicData?.address.country}}</div>
+                                <div>{{info?.attributes?.title}}</div>
+                                <div>{{info?.attributes?.description}}</div>
+                                <div>${{info?.attributes?.publicData.listing_price}}/Night</div>
                             </div>
-
                         </div>
                     </div>
                 </div>

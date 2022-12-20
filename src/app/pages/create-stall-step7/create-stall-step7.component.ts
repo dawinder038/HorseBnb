@@ -9,7 +9,7 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
   styleUrls: ['./create-stall-step7.component.scss']
 })
 export class CreateStallStep7Component implements OnInit {
-  myForm!: FormGroup;
+  imageForm!: FormGroup;
   bgImage: any;
   imageArray: any[] = []
   id: any;
@@ -17,7 +17,14 @@ export class CreateStallStep7Component implements OnInit {
   constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.intializeForm();
     this.id = this.route.snapshot.params['id'];
+ 
+  }
+  intializeForm(){
+    this.imageForm = new FormGroup({
+      image:new FormControl(''),
+    })
   }
   fileChange(event: any) {
     this.service.uploadImage(event).subscribe((result: any) => {
@@ -28,6 +35,11 @@ export class CreateStallStep7Component implements OnInit {
       console.log(this.bgImage);
     });
   }
+//   setValues(){
+// this.service.listingShowIdApi(this.id).subscribe((result:any)=>{
+//   console.log(result);
+// })
+  // }
   removePhoto(data: any) {
     console.log(data);
     var index = this.imageArray.indexOf(data);
@@ -55,6 +67,7 @@ export class CreateStallStep7Component implements OnInit {
     this.service.ownListingUpdateApi(payload).subscribe((result: any) => {
       console.log("image result", result);
       this.router.navigateByUrl("/create-stalls/step8/" + this.id);
+      // this.setValues();
     })
   }
   

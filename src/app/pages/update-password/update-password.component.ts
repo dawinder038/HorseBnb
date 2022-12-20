@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-update-password',
   templateUrl: './update-password.component.html',
@@ -10,7 +10,7 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 export class UpdatePasswordComponent implements OnInit {
   passwordShow:boolean = false;
   updatePasswordForm!:FormGroup;
-  constructor(private service:HorseServiceService) { }
+  constructor(private service:HorseServiceService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.intializeForm();
@@ -29,16 +29,16 @@ export class UpdatePasswordComponent implements OnInit {
       newPassword:data.newPassword
     }
     if(data.newPassword !== data.confirmPassword){
-      console.log("does not match")
+     this.toastr.error('Confirm and New Password should be same','Error')
     }
     else{
-      console.log("match")
+      this.service.changePasswordApi(payload).subscribe((result:any)=>{
+        console.log(result);
+        this.toastr.success(result.data.message,'Sucess')
+      })
     }
-    this.service.changePasswordApi(payload).subscribe((result:any)=>{
-      console.log(result);
-    })
   }
-  
+
   showPasswordBox(){
     this.passwordShow=true;
   }

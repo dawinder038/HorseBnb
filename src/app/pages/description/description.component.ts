@@ -32,8 +32,8 @@ export class DescriptionComponent implements OnInit {
       }
     }
     this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
+      this.router.navigateByUrl('/create-stalls/checkin-and-checkout/' + this.id);
       console.log(result);
-      this.router.navigateByUrl('/create-stalls/step9/' + this.id);
     })
   }
 }
