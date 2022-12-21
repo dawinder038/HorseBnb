@@ -26,13 +26,13 @@ export class SuccessfullHostingComponent implements OnInit {
     })
   }
   get() {
-    this.isget = true
+    this.isget = true;
   }
   successfullHosting(data: any) {
     let payload = {
       id: this.id,
       publicData: {
-        getIt: this.isget,
+        gotIt: this.isget,
       }
     }
     console.log(payload)

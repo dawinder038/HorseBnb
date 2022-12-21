@@ -13,6 +13,8 @@ export class CheckInCheckOutComponent implements OnInit {
   mytime: Date = new Date();
   id: any;
   leaveTime: any;
+  HR: any;
+  leave: any;
 
   constructor(private service: HorseServiceService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
@@ -25,58 +27,29 @@ export class CheckInCheckOutComponent implements OnInit {
       leave_before: new FormControl(''),
     })
   }
-
-  // onTimeChange(time: any) {
-  //   var timeSplit = time.split(':');
-  //   var hours, minutes, meridian;
-  //   hours = parseInt(timeSplit[0]);
-  //   minutes = parseInt(timeSplit[1]);
-  //   if (minutes == 60) {
-  //     hours += 1;
-  //   }
-  //   if (hours > 12) {
-  //     meridian = 'PM';
-  //     hours -= 12;
-  //   }
-  //   else if (hours < 12) {
-  //     meridian = 'AM';
-  //     if (hours == 0) {
-  //       hours = 12;
-  //     }
-  //   }
-  //   else {
-  //     meridian = 'PM';
-  //   }
-  //   if (hours < 10) hours = '0' + hours;
-  //   if (minutes < 10) minutes = '0' + minutes;
-  //   return hours + ':' + minutes + ' ' + meridian;
-  // }
-
-  // next(data: any) {
-  //   console.log(data)
-  //   let payload = {
-  //     id: this.id,
-  //     publicData: {
-  //       arrive_after: this.arrive,
-  //       leave_before: this.leave,
-  //       arrive_before: this.onTimeChange('00:00'),
-  //       leave_time: this.formatTime()
-  //     }
-  //   }
-  //   this.svc.updateStalls(payload).subscribe((res: any) => {
-  //     console.log("payload", payload)
-  //   })
-  //   this.route.navigateByUrl('create-stalls/succesfull-hosting/'+this.id)
-  // }
+  formatTime() {
+    let [time12, meridian] = this.leave.split(' ');
+    var [hr, m] = time12.split(':')
+    this.HR = hr;
+    if (this.HR === '12') {
+      this.HR = '00'
+    }
+    if (meridian == "PM") {
+      this.HR = parseInt(hr, 10) + 12;
+    }
+    this.HR = this.HR + ":" + m + ":" + "00"
+    return this.HR
+  }
 
   checkInOut(data: any) {
+    this.leave=data.leave_before.toLocaleString('en-US', { hour: "2-digit", minute: "2-digit" })
     let payload = {
       id: this.id,
       publicData: {
-        arrive_after: data.arrive_after,
+        arrive_after: data.arrive_after.toLocaleString('en-US', { hour: "2-digit", minute: "2-digit" }),
         arrive_before: "12:00 AM",
-        leave_before: data.leave_before,
-        leave_time: this.leaveTime,
+        leave_before: data.leave_before.toLocaleString('en-US', { hour: "2-digit", minute: "2-digit" }),
+        leave_time: this.formatTime()
       }
     }
     console.log(payload);
@@ -85,5 +58,4 @@ export class CheckInCheckOutComponent implements OnInit {
       this.router.navigateByUrl("/create-stalls/successfull-hosting/"+this.id);
     })
   }
-
 }

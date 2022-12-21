@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-amenities',
@@ -15,8 +16,7 @@ export class AmenitiesComponent implements OnInit {
   ammentiesForm!:FormGroup;
   ammentiesValue: any[] = [];
   listData:any;
-  constructor(private router: Router, private route: ActivatedRoute,private service:HorseServiceService) { }
-
+  constructor(private router: Router, private route: ActivatedRoute,private service:HorseServiceService,private toastr:ToastrService) { }
   ngOnInit(): void {
     this.intializeForm();
     this.id = this.route.snapshot.params['id'];
@@ -61,17 +61,28 @@ export class AmenitiesComponent implements OnInit {
   }
 
   addAmmenties(data:any) {
-    let payload = {
-      id:this.id,
-      publicData:{
-        amenities:this.ammentiesValue,
-      }
+    if(this.ammentiesValue.length==0){
+      this.toastr.error('please Select Amenities','Error')
     }
-    console.log(payload)
-    this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
-      console.log(result);
-      this.router.navigateByUrl('/create-stalls/step7/' + this.id);
-    })
+    else{
+      let payload = {
+        id:this.id,
+        publicData:{
+          amenities:this.ammentiesValue,
+        }
+      }
+      this.ammentiesList.forEach(element => {
+        if(element.isChecked){
+          this.ammentiesValue.push(element.value);
+        }        
+      });
+     console.log(payload)
+      this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
+        console.log(result);
+        this.router.navigateByUrl('/create-stalls/step7/' + this.id);
+      })
+    }
+    
     
   }
   ownListingShowId() {

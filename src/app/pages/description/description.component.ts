@@ -11,11 +11,13 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 export class DescriptionComponent implements OnInit {
   descriptionForm!: FormGroup;
   id: any;
+  listData:any;
   constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.intializeForm();
     this.id = this.route.snapshot.params['id'];
+    this.ownListingShowId();
   }
   intializeForm(){
     this.descriptionForm = new FormGroup({
@@ -36,4 +38,14 @@ export class DescriptionComponent implements OnInit {
       console.log(result);
     })
   }
+
+  ownListingShowId() {
+    console.log(this.id)
+    this.service.listingShowIdApi(this.id).subscribe((result: any) => {
+      console.log("particular id data", result);
+      this.listData = result.data;
+      this.descriptionForm.controls['description'].setValue(this.listData.attributes.description);
+      this.descriptionForm.controls['extra_detail'].setValue(this.listData.attributes.publicData.extra_detail)
+    })
+  }  
 }

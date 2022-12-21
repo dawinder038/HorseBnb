@@ -40,9 +40,9 @@ this.intializeForm()
         }
       }
     }
-    console.log(data);
+    console.log(payload);
     this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
-      console.log(result);
+      console.log("adressr",result);
       this.router.navigateByUrl('/create-guest/step6/'+this.id);
     })
    

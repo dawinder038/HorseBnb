@@ -13,7 +13,7 @@ export class CreateStallStep7Component implements OnInit {
   bgImage: any;
   imageArray: any[] = []
   id: any;
-  listData:any;
+  listData:any[]=[];
   imageId: any;
   constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
 
@@ -79,9 +79,8 @@ export class CreateStallStep7Component implements OnInit {
       console.log("particular id data", result);
       this.listData = result.data.attributes.publicData.images;
       console.log(this.listData);
-      // for(let i=0; i<=2;i++){
-      //   =this.imageForm.controls['image'].setValue(this.listData[i].url);
-      // }
+      this.imageArray = this.listData;
+      console.log(this.imageArray)
     })
   }  
 }

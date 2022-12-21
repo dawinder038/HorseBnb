@@ -11,6 +11,7 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class CreateStallsStep3Component implements OnInit {
   counter: any = 0;
+  stalls:any=0;
   id: any;
   idFromUrl:any;
   listData:any;

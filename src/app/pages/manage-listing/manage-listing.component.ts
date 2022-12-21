@@ -36,7 +36,13 @@ export class ManageListingComponent implements OnInit {
     this.page = event;
     this.ownListingQuery();
   }
+  
   editList(id:any){
     this.router.navigateByUrl('/create-your-stalls/step1/'+id);
+  }
+
+  previewList(id:any){
+    this.router.navigateByUrl('/booking-details/'+id)
+
   }
 }

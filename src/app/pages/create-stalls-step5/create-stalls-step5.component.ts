@@ -37,6 +37,7 @@ this.intializeForm()
           country:data.country,
           postcode:data.postcode,
           street:data.street,
+          location:data.street+data.city+data.state+data.country,
         }
       }
     }

@@ -13,11 +13,13 @@ export class PricingComponent implements OnInit {
   id: any;
   priceForm!: FormGroup;
   bookingAcceptType: any;
+  listData:any;
   constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.intializeForm();
     this.id = this.route.snapshot.params['id'];
+    this.ownListingShowId();
   }
 
   intializeForm() {
@@ -57,4 +59,13 @@ export class PricingComponent implements OnInit {
       this.toastr.error('Enter Price', 'Error')
     }
   }
+
+  ownListingShowId() {
+    console.log(this.id)
+    this.service.listingShowIdApi(this.id).subscribe((result: any) => {
+      console.log("particular id data", result);
+      this.listData = result.data;
+      this.priceForm.controls['listing_price'].setValue(this.listData.attributes.publicData.listing_price);
+    })
+  }  
 }
