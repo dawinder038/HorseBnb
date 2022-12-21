@@ -9,11 +9,13 @@ import { FormControl, FormGroup,Validators } from '@angular/forms';
 })
 export class CreateStallsStep5Component implements OnInit {
   id:any;
+  listData:any;
   constructor(private service:HorseServiceService ,private router:Router,private route : ActivatedRoute) { }
   addressForm!: FormGroup;
   ngOnInit(): void {
 this.intializeForm()
     this.id = this.route.snapshot.params['id'];
+    this.ownListingShowId()
    }
   intializeForm(){
     this.addressForm = new FormGroup({
@@ -44,4 +46,18 @@ this.intializeForm()
       this.router.navigateByUrl('/create-stalls/step6/'+this.id);
     })
   }
+
+  ownListingShowId() {
+    console.log(this.id)
+    this.service.listingShowIdApi(this.id).subscribe((result: any) => {
+      console.log("particular id data", result);
+      this.listData = result.data;
+      this.addressForm.controls['country'].setValue(this.listData.attributes.publicData.address.country);
+      this.addressForm.controls['street'].setValue(this.listData.attributes.publicData.address.street);
+      this.addressForm.controls['city'].setValue(this.listData.attributes.publicData.address.city);
+      this.addressForm.controls['state'].setValue(this.listData.attributes.publicData.address.state);
+      this.addressForm.controls['postcode'].setValue(this.listData.attributes.publicData.address.postcode);
+    })
+  }
+
 }

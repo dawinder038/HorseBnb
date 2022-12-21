@@ -16,32 +16,35 @@
 <div class="container">
     <div class="row h-100">
         <div class="col-md-6 px-5 py-5 steps-frame-height h-md-auto overflow-y-auto">
-            <h3>How many horses can your barn accommodate?</h3>
-            <p>Check that you have enough stalls.</p>
-            <div class="d-flex justify-content-between" style="height:270px ;">
-                <p>Stalls</p>
-                <div class="d-flex inc-box justify-content-around">
-                    <div>
-                        <img src="../../../assets/remove_circle_outline.png" (click)="decCounter()" alt="">
+            <form [formGroup]="stallForm" (ngSubmit)="addStalls(stallForm.value)">
+                <h3>How many horses can your barn accommodate?</h3>
+                <p>Check that you have enough stalls.</p>
+                <div class="d-flex justify-content-between" style="height:270px ;">
+                    <p>Stalls</p>
+                    <div class="d-flex inc-box justify-content-around">
+                        <div>
+                            <img src="../../../assets/remove_circle_outline.png" (click)="decCounter()" alt="">
+                        </div>
+                        <div><input type="text" class="input-field" value="{{counter}}" [ngModel]="counter" formControlName="stalls"></div>
+                        <!-- <p>{{counter}}</p> -->
+                        <div>
+                            <img src="../../../assets/add_circle_outline.png" (click)="incCounter()" alt="">
+                        </div>
                     </div>
-                    <p>{{counter}}</p>
-                    <div>
-                        <img src="../../../assets/add_circle_outline.png" (click)="incCounter()" alt="">
-                    </div>
-                </div>
-            </div>
-            <div>
-                <hr>
-            </div>
-            <div class="d-flex justify-content-between">
-                <div class="d-flex ">
-                    <img src="../../../assets/arrow_left.png" alt="">
-                    <button class="btn" style="color:red;">back</button>
                 </div>
                 <div>
-                    <button class="btn btn-danger" (click)="addStalls()">Next</button>
+                    <hr>
                 </div>
-            </div>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex ">
+                        <img src="../../../assets/arrow_left.png" alt="">
+                        <button class="btn" style="color:red;">back</button>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-danger">Next</button>
+                    </div>
+                </div>
+            </form> 
         </div>
         <div class="col-md-6 text-center px-md-0 d-none d-md-block">
             <div class="horse-image">

@@ -27,12 +27,16 @@
                 <span class="ms-3">{{data.attributes.publicData.host_bio}}</span>
               </td>
               <td>
-                <button class="draft-btn btn" (click)="goToPublish(data.id.uuid)" >{{data.attributes.state}}</button>
+                <button class="draft-btn btn" (click)="goToPublish(data.id.uuid)">{{data.attributes.state}}</button>
               </td>
               <td>{{data.attributes.publicData.type==1 ? 'Short Term':'Monthly Board'}}</td>
               <td colspan="3">{{data.attributes.publicData.address.street}}</td>
               <td>{{data.attributes.createdAt | date: 'MMMM d, y'}}</td>
-              <td><img src="../../../assets/more_horiz.png" (click)="editList(data.id.uuid)" alt=""></td>
+              <td><img src="../../../assets/more_horiz.png" class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"  aria-expanded="false" alt="">
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" (click)="editList(data.id.uuid)" >Edit</a></li>
+                  <li><a class="dropdown-item">Preview</a></li>
+                </ul></td>
             </tr>
           </tbody>
         </table>
@@ -42,6 +46,13 @@
   <!-- <div class="pagination m-auto">
     <ngb-pagination [maxSize]="5" [collectionSize]="total" [(page)]="page" (pageChange)="pageChanged($event)">
     </ngb-pagination>
-</div> -->
+  </div> -->
 </section>
 <app-footer></app-footer>
+
+<div>
+  <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button> -->
+  
+</div>

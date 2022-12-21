@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 
@@ -14,19 +14,21 @@ export class AmenitiesComponent implements OnInit {
   val: any;
   ammentiesForm!:FormGroup;
   ammentiesValue: any[] = [];
+  listData:any;
   constructor(private router: Router, private route: ActivatedRoute,private service:HorseServiceService) { }
 
   ngOnInit(): void {
     this.intializeForm();
-    this.id = this.route.snapshot.params['id']
+    this.id = this.route.snapshot.params['id'];
+    this.ownListingShowId();
   }
   intializeForm(){
     this.ammentiesForm = new FormGroup({
-      ammenties : new FormControl(''),
+      ammenties : new FormControl('',[Validators.required]),
     })
   }
 
-  ammentiesList: any = [
+  ammentiesList:any[] = [
     { isChecked: false, value: "Climate Controlled Barn" },
     { isChecked: false, value: "Indoor Arena" },
     { isChecked: false, value: "Hot Walker" },
@@ -68,8 +70,27 @@ export class AmenitiesComponent implements OnInit {
     console.log(payload)
     this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
       console.log(result);
+      this.router.navigateByUrl('/create-stalls/step7/' + this.id);
     })
-    this.router.navigateByUrl('/create-stalls/step7/' + this.id);
+    
+  }
+  ownListingShowId() {
+    console.log(this.id)
+    this.service.listingShowIdApi(this.id).subscribe((result: any) => {
+      console.log("particular id data", result);
+      this.listData = result.data;
+      console.log("ggg")
+      this.listData.attributes.publicData.amenities.forEach((x:any) => {
+        for(let i=0; i<this.ammentiesList.length;i++){
+          if(x==this.ammentiesList[i].value){
+            this.ammentiesList[i].isChecked=true;
+          }
+          else{
+            console.log("not get")
+          }
+        }
+      });
+    })
   }
 
 }

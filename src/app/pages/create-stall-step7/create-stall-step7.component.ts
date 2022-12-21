@@ -13,12 +13,14 @@ export class CreateStallStep7Component implements OnInit {
   bgImage: any;
   imageArray: any[] = []
   id: any;
+  listData:any;
   imageId: any;
   constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.intializeForm();
     this.id = this.route.snapshot.params['id'];
+    this.ownListingShowId();
  
   }
   intializeForm(){
@@ -70,5 +72,16 @@ export class CreateStallStep7Component implements OnInit {
       // this.setValues();
     })
   }
-  
+
+  ownListingShowId() {
+    console.log(this.id)
+    this.service.listingShowIdApi(this.id).subscribe((result: any) => {
+      console.log("particular id data", result);
+      this.listData = result.data.attributes.publicData.images;
+      console.log(this.listData);
+      // for(let i=0; i<=2;i++){
+      //   =this.imageForm.controls['image'].setValue(this.listData[i].url);
+      // }
+    })
+  }  
 }
