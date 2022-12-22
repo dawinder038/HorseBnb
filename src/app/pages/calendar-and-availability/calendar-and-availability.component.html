@@ -24,10 +24,14 @@
                         you
                         can always make changes after you <br> publish.</p>
                 </div>
-                <div>
+                <div class="d-flex">
                     <div class="pr-3 pb-3 pe-3 w-auto">
-                        <bs-daterangepicker-inline [bsValue]="bsInlineRangeValue"
-                            class="p-0"></bs-daterangepicker-inline>
+                        <bs-datepicker-inline [minDate]="minDate" (bsValueChange)="pushDateValue($event)" [(bsValue)]="datepickerModel"></bs-datepicker-inline>
+                    </div>
+                    <div>
+                        <div>
+                          <pre class="code-preview">{{datepickerModel}}</pre>
+                        </div>
                     </div>
                 </div>
                 <hr>

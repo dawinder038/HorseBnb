@@ -52,7 +52,9 @@ export class CreateStallsStep3Component implements OnInit {
     let payload = {
       id: this.id,
       publicData: {
-        stalls: data.stalls
+        stalls: data.stalls,
+        property_subtype:2,
+        property_type:2,
       }
     }
     console.log(payload)

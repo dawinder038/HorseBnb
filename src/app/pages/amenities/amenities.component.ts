@@ -13,22 +13,22 @@ export class AmenitiesComponent implements OnInit {
   id: any;
   isChecked: boolean = false;
   val: any;
-  ammentiesForm!:FormGroup;
+  ammentiesForm!: FormGroup;
   ammentiesValue: any[] = [];
-  listData:any;
-  constructor(private router: Router, private route: ActivatedRoute,private service:HorseServiceService,private toastr:ToastrService) { }
+  listData: any;
+  constructor(private router: Router, private route: ActivatedRoute, private service: HorseServiceService, private toastr: ToastrService) { }
   ngOnInit(): void {
     this.intializeForm();
     this.id = this.route.snapshot.params['id'];
     this.ownListingShowId();
   }
-  intializeForm(){
+  intializeForm() {
     this.ammentiesForm = new FormGroup({
-      ammenties : new FormControl('',[Validators.required]),
+      ammenties: new FormControl('', [Validators.required]),
     })
   }
 
-  ammentiesList:any[] = [
+  ammentiesList: any[] = [
     { isChecked: false, value: "Climate Controlled Barn" },
     { isChecked: false, value: "Indoor Arena" },
     { isChecked: false, value: "Hot Walker" },
@@ -60,44 +60,34 @@ export class AmenitiesComponent implements OnInit {
     }
   }
 
-  addAmmenties(data:any) {
-    if(this.ammentiesValue.length==0){
-      this.toastr.error('please Select Amenities','Error')
-    }
-    else{
-      let payload = {
-        id:this.id,
-        publicData:{
-          amenities:this.ammentiesValue,
-        }
+  addAmmenties(data: any) {
+    let payload = {
+      id: this.id,
+      publicData: {
+        amenities: this.ammentiesValue,
       }
-      this.ammentiesList.forEach(element => {
-        if(element.isChecked){
-          this.ammentiesValue.push(element.value);
-        }        
-      });
-     console.log(payload)
-      this.service.ownListingUpdateApi(payload).subscribe((result:any)=>{
-        console.log(result);
-        this.router.navigateByUrl('/create-stalls/step7/' + this.id);
-      })
     }
-    
-    
+    this.ammentiesList.forEach(element => {
+      if (element.isChecked) {
+        this.ammentiesValue.push(element.value);
+      }
+    });
+    console.log(payload)
+    this.service.ownListingUpdateApi(payload).subscribe((result: any) => {
+      console.log(result);
+      this.router.navigateByUrl('/create-stalls/step7/' + this.id);
+    })
   }
+
   ownListingShowId() {
     console.log(this.id)
     this.service.listingShowIdApi(this.id).subscribe((result: any) => {
       console.log("particular id data", result);
       this.listData = result.data;
-      console.log("ggg")
-      this.listData.attributes.publicData.amenities.forEach((x:any) => {
-        for(let i=0; i<this.ammentiesList.length;i++){
-          if(x==this.ammentiesList[i].value){
-            this.ammentiesList[i].isChecked=true;
-          }
-          else{
-            console.log("not get")
+      this.listData.attributes.publicData.amenities.forEach((x: any) => {
+        for (let i = 0; i < this.ammentiesList.length; i++) {
+          if (x == this.ammentiesList[i].value) {
+            this.ammentiesList[i].isChecked = true;
           }
         }
       });

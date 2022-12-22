@@ -25,8 +25,7 @@
                         <div>
                             <img src="../../../assets/remove_circle_outline.png" (click)="decCounter()" alt="">
                         </div>
-                        <div ><input type="text" class="input-field text-center" value="{{counter}}" [ngModel]="counter" formControlName="stalls"></div>
-                        <!-- <p>{{counter}}</p> -->
+                        <div ><input type="text" class="input-field text-center" [ngModel]="counter" formControlName="stalls"></div>
                         <div>
                             <img src="../../../assets/add_circle_outline.png" (click)="incCounter()" alt="">
                         </div>

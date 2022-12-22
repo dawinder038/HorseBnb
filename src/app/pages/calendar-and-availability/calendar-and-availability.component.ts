@@ -9,32 +9,39 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class CalendarAndAvailabilityComponent implements OnInit {
   bsInlineValue = new Date();
-  bsInlineRangeValue: Date[];
+  // bsInlineRangeValue: Date[];
   maxDate = new Date();
   id:any;
+  dateArray:any=[]
+  datepickerModel?: Date;
+  minDate= new Date();
   constructor(private router:Router,private service:HorseServiceService,private route:ActivatedRoute) {
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
-    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
+    this.minDate.setDate(this.minDate.getDate());
+    // this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
    }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
+ 
   }
+pushDateValue(data:any){
+  debugger
+  console.log(this.datepickerModel);
+  this.dateArray.push(this.datepickerModel);
+  console.log(this.dateArray);
+}
   next(){
-    console.log("value",this.bsInlineRangeValue);
+    console.log("value",this.datepickerModel);
+    this.id = this.route.snapshot.params['id'];
     let payload= {
       listingId:this.id,
-      start:this.bsInlineRangeValue[0],
-      end:this.bsInlineRangeValue[1],
+      start:this.datepickerModel,
+      end:this.datepickerModel,
       seat:0,
     }
     console.log(payload);
     this.service.availabilityExceptionApi(payload).subscribe((result:any)=>{
       console.log(result);
-      this.router.navigateByUrl('/create-stalls/step12/'+this.id)
+      this.router.navigateByUrl('/create-stalls/step12/'+this.id);
     })
-    
   }
-
- 
 }
