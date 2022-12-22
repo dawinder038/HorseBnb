@@ -106,6 +106,4 @@ export class HomeComponent implements OnInit {
   bookingDetails(id:any){
     this.router.navigateByUrl('/booking-details/'+id);
   }
-
-  
 }

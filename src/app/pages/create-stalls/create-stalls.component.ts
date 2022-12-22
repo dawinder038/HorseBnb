@@ -84,5 +84,4 @@ export class CreateStallsComponent implements OnInit {
       this.createOwnListingForm.controls['choose_stall'].setValue(this.listData.attributes.publicData.type);
     })
   }
-
 }

@@ -10,7 +10,7 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 export class BookingDetailsComponent implements OnInit {
   id: any;
   i:any=1;
-  imageArrayk:any;
+  // imageArrayk:any;
   bookingResult: any;
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -18,6 +18,9 @@ export class BookingDetailsComponent implements OnInit {
   counter: any = 0;
   maxDate = new Date();
   stallsValue: any;
+  perPage:any=3;
+  hostId: any;
+  hostListingData:any[]=[];
   constructor(private service: HorseServiceService, private router: Router, private route: ActivatedRoute) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -26,11 +29,13 @@ export class BookingDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.showBookingDetail();
     this.id = this.route.snapshot.params['id'];
+    this.hostListing();
   }
   showBookingDetail() {
     setTimeout(() => {
       this.service.listingShowIdApi(this.id).subscribe((result: any) => {
         console.log("id", result);
+        this.hostId=result.data.attributes.publicData.host_id
         this.bookingResult = result.data;
         this.imageArray = result.data.attributes.publicData.images;
       });
@@ -45,9 +50,26 @@ export class BookingDetailsComponent implements OnInit {
       this.counter = this.counter - 1;
     }
   }
-
   addStalls() {
     this.stallsValue = this.counter;
+  }
+  viewAll(){
+  this.perPage=100;
+   this.hostListing();
+  }
+  hostListing(){
+    setTimeout(() => {
+      let payload = {
+        host_id:this.hostId,
+        perPage:this.perPage,
+        page:1
+      }
+      console.log("host payload",payload)
+      this.service.hostListingApi(payload).subscribe((result:any)=>{
+        console.log("Host",result);
+        this.hostListingData = result.data
+      })
+    }, 3000);
   }
 
 }

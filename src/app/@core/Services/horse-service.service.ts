@@ -60,6 +60,9 @@ export class HorseServiceService {
   availabilityExceptionApi(data:any){
     return this.http.post(this.apiUrl+'availability_exceptions/create',data)
   }
+  hostListingApi(payload:any){
+    return this.http.get(this.apiUrl+"host/listing?host_id="+payload.host_id+"&perPage="+payload.perPage+"&page="+payload.page)
+  }
 }
 
 

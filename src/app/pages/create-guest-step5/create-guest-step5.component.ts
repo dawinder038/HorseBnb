@@ -30,6 +30,10 @@ this.intializeForm()
   addAddress(data:any){
     let payload = {
       id:this.id,
+      geolocation:{
+        lat:30.6977211,
+        lng:76.6759107
+      },
       publicData:{
         address:{
           city:data.city,
