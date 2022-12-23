@@ -33,7 +33,7 @@
                                 <img style="width: 20px;" src="../../../assets/dashboard_select.png" alt="">
                                 <span class="ms-3">{{item |date : 'MMMM YYYY'}}</span>
                             </div>
-                            <!-- <p>Block this month</p> -->
+                            <p><a (click)="availabiltyExeption()">Block this month</a></p>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                         <button class="btn" style="color:red;">back</button>
                     </div>
                     <div>
-                        <button class="btn btn-danger">Next</button>
+                        <button class="btn btn-danger" (click)="updateSlots()">Next</button>
                     </div>
                 </div>
             </div>

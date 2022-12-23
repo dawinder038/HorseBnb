@@ -68,7 +68,8 @@ import { AddExperienceStep2Component } from './pages/add-experience-step2/add-ex
 import { AddExperienceStep4Component } from './pages/add-experience-step4/add-experience-step4.component';
 import { AddExperienceStep5Component } from './pages/add-experience-step5/add-experience-step5.component';
 import { AddExperienceStep6Component } from './pages/add-experience-step6/add-experience-step6.component';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+// import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -141,8 +142,8 @@ import { AddExperienceStep6Component } from './pages/add-experience-step6/add-ex
     TabsModule.forRoot(),
     TimepickerModule.forRoot(),
     ToastrModule.forRoot(),
-    NgxSpinnerModule
-
+    NgxSpinnerModule,
+    PaginationModule.forRoot(),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },AuthGuardGuard,HorseServiceService],
   bootstrap: [AppComponent],

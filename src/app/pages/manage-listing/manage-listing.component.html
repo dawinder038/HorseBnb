@@ -34,8 +34,12 @@
               <td>{{data.attributes.createdAt | date: 'MMMM d, y'}}</td>
               <td><img src="../../../assets/more_horiz.png" class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"  aria-expanded="false" alt="">
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" (click)="editList(data.id.uuid)" >Edit</a></li>
-                  <li><a class="dropdown-item" (click)="previewList(data.id.uuid)">Preview</a></li>
+                  <li>
+                    <a class="dropdown-item" (click)="editList(data.id.uuid)" >Edit</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="previewList(data.id.uuid)">Preview</a>
+                  </li>
                 </ul>
               </td>
             </tr>
@@ -44,16 +48,21 @@
       </div>
     </div>
   </div>
+  <div class="row ">
+      <div class="pagination m-auto">
+    <ngb-pagination [maxSize]="5" [collectionSize]="total" [(page)]="page" (pageChange)="pageChanged($event)">
+    </ngb-pagination>
+</div>
+    <!-- <div class="col-xs-12 col-12 d-flex justify-content-center  ">
+        <pagination [boundaryLinks]="true" [totalItems]="77"
+        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+
+</pagination>
+    </div> -->
+</div>
   <!-- <div class="pagination m-auto">
     <ngb-pagination [maxSize]="5" [collectionSize]="total" [(page)]="page" (pageChange)="pageChanged($event)">
     </ngb-pagination>
-  </div> -->
+</div> -->
 </section>
 <app-footer></app-footer>
-
-<div>
-  <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button> -->
-  
-</div>

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
-
-
 @Component({
   selector: 'app-manage-listing',
   templateUrl: './manage-listing.component.html',
@@ -10,8 +8,8 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class ManageListingComponent implements OnInit {
   totalData: any;
-  page: number = 1;
-  total: number = 0;
+  page: any = 1;
+  total:any;
   label: String = ""
 
   constructor(private service: HorseServiceService,private router:Router) { }
@@ -36,6 +34,7 @@ export class ManageListingComponent implements OnInit {
     this.page = event;
     this.ownListingQuery();
   }
+
   
   editList(id:any){
     this.router.navigateByUrl('/create-your-stalls/step1/'+id);
@@ -43,6 +42,5 @@ export class ManageListingComponent implements OnInit {
 
   previewList(id:any){
     this.router.navigateByUrl('/booking-details/'+id)
-
   }
 }

@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   showMore:boolean = false;
   monthlyData: any;
   horseAccomoShow: any = false;
+  url='https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/'
   constructor(private service: HorseServiceService, private router: Router,private route:ActivatedRoute) {
   }
   ngOnInit(): void {
