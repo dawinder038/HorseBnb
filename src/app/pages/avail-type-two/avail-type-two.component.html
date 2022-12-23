@@ -23,10 +23,18 @@
                     <p class="text-muted">Block off any months that are unavailable .</p>
                 </div>
                 <div>
-                    <div style="width: 150px;border: 2px solid black;">
-                        <img style="width: 20px;" src="../../../assets/bookings.png" alt="">
-                        <span>January 2023</span>
-                        <p>Block this month</p>
+                    <form class="container">
+                        <input [(ngModel)]="modelDate" autocomplete="off" class="form-control" name="date" bsDatepicker
+                            [bsConfig]="{dateInputFormat: 'MM/YYYY'}" (onShown)="onOpenCalendar($event)">
+                    </form>
+                    <div class="p-4 row">
+                        <div class="card col-md-6 width my-2 mx-2" *ngFor="let item of monthArray">
+                            <div>
+                                <img style="width: 20px;" src="../../../assets/dashboard_select.png" alt="">
+                                <span class="ms-3">{{item |date : 'MMMM YYYY'}}</span>
+                            </div>
+                            <!-- <p>Block this month</p> -->
+                        </div>
                     </div>
                 </div>
                 <hr>

@@ -63,6 +63,12 @@ import { GuestPricingComponent } from './pages/guest-pricing/guest-pricing.compo
 import { GuestStripeComponent } from './pages/guest-stripe/guest-stripe.component';
 import { AvailTypeTwoComponent } from './pages/avail-type-two/avail-type-two.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { AddExperienceStep1Component } from './pages/add-experience-step1/add-experience-step1.component';
+import { AddExperienceStep2Component } from './pages/add-experience-step2/add-experience-step2.component';
+import { AddExperienceStep4Component } from './pages/add-experience-step4/add-experience-step4.component';
+import { AddExperienceStep5Component } from './pages/add-experience-step5/add-experience-step5.component';
+import { AddExperienceStep6Component } from './pages/add-experience-step6/add-experience-step6.component';
+
 
 
 @NgModule({
@@ -114,6 +120,11 @@ import { NgxSpinnerModule } from "ngx-spinner";
     GuestPricingComponent,
     GuestStripeComponent,
     AvailTypeTwoComponent,
+    AddExperienceStep1Component,
+    AddExperienceStep2Component,
+    AddExperienceStep4Component,
+    AddExperienceStep5Component,
+    AddExperienceStep6Component,
 
   ],
   imports: [

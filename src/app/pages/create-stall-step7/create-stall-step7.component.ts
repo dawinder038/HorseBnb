@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 
 @Component({
@@ -13,34 +14,42 @@ export class CreateStallStep7Component implements OnInit {
   bgImage: any;
   imageArray: any[] = []
   id: any;
-  listData:any[]=[];
+  listData: any[] = [];
   imageId: any;
-  constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
-
+  constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router, private spinner: NgxSpinnerService) {
+  }
   ngOnInit(): void {
     this.intializeForm();
     this.id = this.route.snapshot.params['id'];
     this.ownListingShowId();
- 
+    // this.loader()
+
   }
-  intializeForm(){
+  intializeForm() {
     this.imageForm = new FormGroup({
-      image:new FormControl(''),
+      image: new FormControl(''),
     })
   }
   fileChange(event: any) {
+    if (event) {
+      this.spinner.show()
+    }
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
+      if (result.filename != null) {
+        this.spinner.hide()
+      }
       this.bgImage = 'https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
-      this.imageArray.push({ "url": this.bgImage,caption:"caption",id:result.id,priority:0 });
+      this.imageArray.push({ "url": this.bgImage, caption: "caption", id: result.id, priority: 0 });
       this.imageId = result.id;
       console.log(this.bgImage);
+
     });
   }
-//   setValues(){
-// this.service.listingShowIdApi(this.id).subscribe((result:any)=>{
-//   console.log(result);
-// })
+  //   setValues(){
+  // this.service.listingShowIdApi(this.id).subscribe((result:any)=>{
+  //   console.log(result);
+  // })
   // }
   removePhoto(data: any) {
     console.log(data);
@@ -58,12 +67,12 @@ export class CreateStallStep7Component implements OnInit {
     let payload = {
       id: this.id,
       publicData: {
-        cover_photo:{
-          caption:"caption",
-          url:this.imageArray[0].url,
-          id:this.imageArray[0].id,
+        cover_photo: {
+          caption: "caption",
+          url: this.imageArray[0].url,
+          id: this.imageArray[0].id,
         },
-        images:this.imageArray,
+        images: this.imageArray,
       }
     }
     this.service.ownListingUpdateApi(payload).subscribe((result: any) => {
@@ -82,5 +91,5 @@ export class CreateStallStep7Component implements OnInit {
       this.imageArray = this.listData;
       console.log(this.imageArray)
     })
-  }  
+  }
 }

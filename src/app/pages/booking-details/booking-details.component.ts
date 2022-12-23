@@ -10,7 +10,6 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 export class BookingDetailsComponent implements OnInit {
   id: any;
   i:any=1;
-  // imageArrayk:any;
   bookingResult: any;
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];

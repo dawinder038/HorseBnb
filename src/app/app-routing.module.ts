@@ -46,6 +46,11 @@ import { GuestCalendarAvailabilityComponent } from './pages/guest-calendar-avail
 import { GuestPricingComponent } from './pages/guest-pricing/guest-pricing.component';
 import { GuestStripeComponent } from './pages/guest-stripe/guest-stripe.component';
 import { AvailTypeTwoComponent } from './pages/avail-type-two/avail-type-two.component';
+import { AddExperienceStep1Component } from './pages/add-experience-step1/add-experience-step1.component';
+import { AddExperienceStep2Component } from './pages/add-experience-step2/add-experience-step2.component';
+import { AddExperienceStep4Component } from './pages/add-experience-step4/add-experience-step4.component';
+import { AddExperienceStep5Component } from './pages/add-experience-step5/add-experience-step5.component';
+import { AddExperienceStep6Component } from './pages/add-experience-step6/add-experience-step6.component';
 
 
 const routes: Routes = [
@@ -63,7 +68,7 @@ const routes: Routes = [
   {path:"about-us",component:AboutUsComponent},
   {path:"contact-us",component:ContactUsComponent},
   {path:"term-conditions",component:TermConditionsComponent},
-  {path:"host-adventure",component:HostAdventureComponent},
+  {path:"host-an-experience",component:HostAdventureComponent},
   {path:"dashboard",component:DashboardComponent ,canActivate:[AuthGuardGuard]},
   {path:"account",component:AccountComponent},
   {path:"personal-info",component:PersonalInfoComponent},
@@ -96,6 +101,11 @@ const routes: Routes = [
   {path:"create-guest/step11/1/:id",component:GuestCalendarAvailabilityComponent},
   {path:"create-guest/step12/:id",component:GuestPricingComponent},
   {path:"create-guest/step13/:id",component:GuestStripeComponent},
+  {path:"add-experience/step1",component:AddExperienceStep1Component},
+  {path:"add-experience/step2/:id",component:AddExperienceStep2Component},
+  {path:"add-experience/step3/:id",component:AddExperienceStep4Component},
+  {path:"add-experience/step5/:id",component:AddExperienceStep5Component},
+  {path:"add-experience/step6/:id",component:AddExperienceStep6Component},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 
