@@ -82,7 +82,7 @@
                                 <div class="my-3">
                                     <label for="postcode" class="my-1">Postcode</label>
                                     <input type="text" id="postcode" formControlName="postcode" class="form-control"
-                                        placeholder="postcode">
+                                        placeholder="postcode" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
                                         <small style="color: red;"
                                         *ngIf="addressForm.controls['postcode']?.hasError('required') && addressForm.controls['postcode']?.touched">Postcode
                                         is required

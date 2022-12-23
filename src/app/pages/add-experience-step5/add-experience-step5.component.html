@@ -30,6 +30,9 @@
                     <div>
                         <img src="../../../assets/clock.png" alt="">
                     </div>
+                    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+                        <p style="font-size: 20px; color: white">Uploading...</p>
+                    </ngx-spinner>
                     <input type="file" id="image-upload" class="d-none" (change)="fileChange($event)">
                     <label for="image-upload">
                         <img src="../../../assets/publish.png" alt="">

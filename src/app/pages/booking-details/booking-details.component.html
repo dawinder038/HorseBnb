@@ -177,7 +177,7 @@
         <div class="row my-2">
             <div class="col">
                 <h4>Where You'll be</h4>
-                <p>Full Address</p>
+                <p>{{bookingResult?.attributes?.publicData?.address.location}}</p>
             </div>
         </div>
         <hr>
@@ -226,7 +226,7 @@
                         <div>
                             <img style="width:300px; height:200px;" [src]=item.cover_photo alt="">
                             <div class="my-2">
-                                <h6 class="m-0">{{item.type==1 ? 'Short Term':item.type==2 ? 'Monthly Board':item.type==3 ? 'Horse Adventure':item.type==4 ? 'Guest Accommodation':item}}</h6>
+                                <h6 class="m-0">{{item.type==1 ? 'Short Term':item.type==2 ? 'Monthly Board':item.type==3 ? 'Horse Adventure':item.type==4 ? 'Guest Accommodation':""}}</h6>
                                 <p>{{bookingResult?.attributes?.title}}</p>
                                 <div>
                                     <div class="w-100" >

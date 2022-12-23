@@ -31,6 +31,9 @@
                                 upload Photo
                             </div>
                             <div>
+                                <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+                                    <p style="font-size: 20px; color: white">Uploading...</p>
+                                </ngx-spinner>
                                 <input type="file" (change)="fileChange($event)" class="d-none" id="upload">
                                 <label for="upload" class="btn btn-primary">Upload Photo</label>
                             </div>

@@ -20,11 +20,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let data of totalData">
-              <th scope="row"></th>
+            <tr *ngFor="let data of totalData  let i=index;">
+              <th scope="row">{{i+1}}</th>
               <td colspan="3">
-                <img style="width:45px ;" [src]="data.attributes.publicData.cover_photo?.url" alt="">
-                <span class="ms-3">{{data.attributes.publicData.host_bio}}</span>
+                <img style="width:45px ;" [src]="data.attributes.publicData.cover_photo?.url" alt="image">
+                <span class="ms-3 text-center">{{data.attributes.title}}</span>
               </td>
               <td>
                 <button class="draft-btn btn" (click)="goToPublish(data.id.uuid)">{{data.attributes.state}}</button>

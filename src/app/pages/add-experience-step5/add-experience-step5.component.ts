@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 @Component({
   selector: 'app-add-experience-step5',
@@ -14,14 +15,20 @@ export class AddExperienceStep5Component implements OnInit {
   imageArray: any[] = []
   id: any;
   imageId: any;
-  constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router,private spinner:NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
   }
   fileChange(event: any) {
+    if (event) {
+      this.spinner.show()
+    }
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
+      if(result.filename!=null){
+        this.spinner.hide()
+      }
       this.bgImage = 'https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
       this.imageArray.push({ "url": this.bgImage,caption:"caption",id:result.id,priority:0 });
       this.imageId = result.id;

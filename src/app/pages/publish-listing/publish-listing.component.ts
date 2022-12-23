@@ -11,6 +11,7 @@ export class PublishListingComponent implements OnInit {
 
   id:any;
   info:any;
+  eid: any;
   constructor(private service:HorseServiceService,private route:ActivatedRoute,private router:Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
@@ -26,6 +27,8 @@ export class PublishListingComponent implements OnInit {
       this.service.listingShowIdApi(payload.id).subscribe((result:any)=>{
         console.log("id info",result);
       this.info = result.data;
+      this.eid=this.info.id.uuid;
+      console.log(this.eid);
       })
     }, 1000);
   }
@@ -39,5 +42,8 @@ export class PublishListingComponent implements OnInit {
       this.toastr.success('Successfully','Published');
       this.router.navigateByUrl('/manage-listing');      
     })
+  }
+  edit(id:any){
+    this.router.navigateByUrl('/create-your-stalls/step1/'+id);
   }
 }

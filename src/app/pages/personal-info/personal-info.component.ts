@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-personal-info',
@@ -27,7 +28,7 @@ export class PersonalInfoComponent implements OnInit {
   showAddress: any = true;
   showLanguage: any = true;
   profilePayload: any = {};
-  constructor(private service: HorseServiceService,private toastr : ToastrService) { }
+  constructor(private service: HorseServiceService,private toastr : ToastrService,private spinners:NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.intializeForm();
@@ -128,8 +129,14 @@ export class PersonalInfoComponent implements OnInit {
     this.showLanguage = true;
   }
   fileChange(event: any) {
+    if(event){
+      this.spinners.show();
+    }
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
+      if(result.filename!=null){
+        this.spinners.hide();
+      }
       this.bgImage = 'https://shared2.fra1.digitaloceanspaces.com/Uploads/Images/Original/' + result.filename;
       this.updateImage();
       console.log(this.bgImage)

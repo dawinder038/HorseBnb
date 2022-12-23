@@ -71,7 +71,6 @@ import { AddExperienceStep6Component } from './pages/add-experience-step6/add-ex
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 // import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 @NgModule({
   declarations: [
     AppComponent,
