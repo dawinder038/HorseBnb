@@ -69,6 +69,10 @@ import { AddExperienceStep4Component } from './pages/add-experience-step4/add-ex
 import { AddExperienceStep5Component } from './pages/add-experience-step5/add-experience-step5.component';
 import { AddExperienceStep6Component } from './pages/add-experience-step6/add-experience-step6.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { AddExperienceStep7Component } from './pages/add-experience-step7/add-experience-step7.component';
+import { AddExperienceStep10Component } from './pages/add-experience-step10/add-experience-step10.component';
+import { AddExperienceStep8Component } from './pages/add-experience-step8/add-experience-step8.component';
+import { ShowAllComponent } from './pages/show-all/show-all.component';
 // import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -125,6 +129,10 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     AddExperienceStep4Component,
     AddExperienceStep5Component,
     AddExperienceStep6Component,
+    AddExperienceStep7Component,
+    AddExperienceStep10Component,
+    AddExperienceStep8Component,
+    ShowAllComponent,
 
   ],
   imports: [

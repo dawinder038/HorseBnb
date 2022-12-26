@@ -41,6 +41,7 @@ export class AddExperienceStep6Component implements OnInit {
     }
     this.service.ownListingUpdateApi(payload).subscribe((result: any) => {
       console.log(result);
+      this.router.navigateByUrl('/add-experience/step10/'+this.id);
     })
   }
 }

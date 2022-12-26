@@ -30,10 +30,12 @@ export class ManageListingComponent implements OnInit {
   goToPublish(id:any){
     this.router.navigateByUrl('/manage-listing/publish-listing/'+id)
   }
+  
   pageChanged(event: any) {
     this.page = event;
     this.ownListingQuery();
   }
+
   editList(id:any){
     this.router.navigateByUrl('/create-your-stalls/step1/'+id);
   }

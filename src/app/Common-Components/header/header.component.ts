@@ -93,15 +93,11 @@ export class HeaderComponent implements OnInit {
         this.toastr.success(result.data.message);
         setTimeout(() => {
           this.spinner.hide();
+          window.location.reload();
         }, 2000);
       }
-      // window.location.reload();
     })
   }
-  showSuccess() {
-   
-  }
-
 // Logout method
 
   logout(){

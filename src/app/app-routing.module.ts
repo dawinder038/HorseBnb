@@ -51,6 +51,10 @@ import { AddExperienceStep2Component } from './pages/add-experience-step2/add-ex
 import { AddExperienceStep4Component } from './pages/add-experience-step4/add-experience-step4.component';
 import { AddExperienceStep5Component } from './pages/add-experience-step5/add-experience-step5.component';
 import { AddExperienceStep6Component } from './pages/add-experience-step6/add-experience-step6.component';
+import { AddExperienceStep10Component } from './pages/add-experience-step10/add-experience-step10.component';
+import { AddExperienceStep8Component } from './pages/add-experience-step8/add-experience-step8.component';
+import { AddExperienceStep7Component } from './pages/add-experience-step7/add-experience-step7.component';
+import { ShowAllComponent } from './pages/show-all/show-all.component';
 
 
 const routes: Routes = [
@@ -106,6 +110,10 @@ const routes: Routes = [
   {path:"add-experience/step3/:id",component:AddExperienceStep4Component},
   {path:"add-experience/step5/:id",component:AddExperienceStep5Component},
   {path:"add-experience/step6/:id",component:AddExperienceStep6Component},
+  {path:"add-experience/step10/:id",component:AddExperienceStep10Component},
+  {path:"add-experience/step8/:id",component:AddExperienceStep8Component},
+  {path:"add-experience/step7/:id",component:AddExperienceStep7Component},
+  {path:"show-all",component:ShowAllComponent},
   {path:"",redirectTo:"home",pathMatch:"full"}
 ];
 
