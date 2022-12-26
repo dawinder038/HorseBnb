@@ -218,7 +218,9 @@
         </div>
         <hr>
         <div class="row">
-            <button class="btn btn-primary" (click)="viewAll()">View All</button>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary" (click)="viewAll()">View All</button>
+            </div>
             <div class="col">
                 <h4> {{bookingResult?.attributes?.publicData?.hosted_by}}'s Listings</h4>
                 <div class="row">
@@ -226,10 +228,11 @@
                         <div>
                             <img style="width:300px; height:200px;" [src]=item.cover_photo alt="">
                             <div class="my-2">
-                                <h6 class="m-0">{{item.type==1 ? 'Short Term':item.type==2 ? 'Monthly Board':item.type==3 ? 'Horse Adventure':item.type==4 ? 'Guest Accommodation':""}}</h6>
-                                <p>{{bookingResult?.attributes?.title}}</p>
-                                <div>
-                                    <div class="w-100" >
+                                <h6 class="m-0">{{item.type==1 ? 'Short Term':item.type==2 ? 'MonthlyBoard':item.type==3 ? 'Horse Adventure':item.type==4 ? 'Guest Accommodation':""}}
+                                </h6>
+                                <p>{{item.title}}</p>
+                                <div class="d-flex justify-content-end">
+                                    <div>
                                         <img src="../../../assets/reviews_star_fill.png" alt="">
                                         <span>{{item.rating}}</span>
                                     </div>

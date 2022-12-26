@@ -66,7 +66,7 @@ export class BookingDetailsComponent implements OnInit {
       console.log("host payload",payload)
       this.service.hostListingApi(payload).subscribe((result:any)=>{
         console.log("Host",result);
-        this.hostListingData = result.data
+        this.hostListingData = result.data;
       })
     }, 3000);
   }
