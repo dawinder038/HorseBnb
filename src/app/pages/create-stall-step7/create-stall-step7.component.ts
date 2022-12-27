@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class CreateStallStep7Component implements OnInit {
   id: any;
   listData: any[] = [];
   imageId: any;
-  constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router, private spinner: NgxSpinnerService) {
+  new: any[]=[];
+  constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router, private spinner: NgxSpinnerService,private toastr:ToastrService) {
   }
   ngOnInit(): void {
     this.intializeForm();
@@ -64,22 +66,34 @@ export class CreateStallStep7Component implements OnInit {
   //  this.imageArray.splice(this.imageArray.indexOf(data), index,{ "url": this.bgImage,caption:"caption",id:this.imageId,priority:0 })
   //   }
   ownListingUpdate() {
-    let payload = {
-      id: this.id,
-      publicData: {
-        cover_photo: {
-          caption: "caption",
-          url: this.imageArray[0].url,
-          id: this.imageArray[0].id,
-        },
-        images: this.imageArray,
-      }
+    if(false)
+    {
+      this.toastr.error('Select Cover photo','Error')
     }
-    this.service.ownListingUpdateApi(payload).subscribe((result: any) => {
-      console.log("image result", result);
-      this.router.navigateByUrl("/create-stalls/step8/" + this.id);
-      // this.setValues();
-    })
+    else{
+      
+      this.new=this.imageArray.filter((item)=>{
+        if(item.url != this.imageArray[0].url){
+          return item
+        }
+      })
+      let payload = {
+        id: this.id,
+        publicData: {
+          cover_photo: {
+            caption: "caption",
+            url: this.imageArray[0].url,
+            id: this.imageArray[0].id,
+          },
+          images: this.new,
+        }
+      }
+      this.service.ownListingUpdateApi(payload).subscribe((result: any) => {
+        console.log("image result", result);
+        this.router.navigateByUrl("/create-stalls/step8/" + this.id);
+        // this.setValues();
+      })
+    }
   }
 
   ownListingShowId() {
