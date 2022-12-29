@@ -63,6 +63,9 @@ export class HorseServiceService {
   hostListingApi(payload:any){
     return this.http.get(this.apiUrl+"host/listing?host_id="+payload.host_id+"&perPage="+payload.perPage+"&page="+payload.page)
   }
+  requestPaymentApi(data:any){
+    return this.http.post(this.apiUrl+"bookings/request_payment",data)
+  }
 }
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 
@@ -10,6 +11,7 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 export class BookingDetailsComponent implements OnInit {
   id: any;
   i:any=1;
+  show:boolean=true;
   bookingResult: any;
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -19,6 +21,9 @@ export class BookingDetailsComponent implements OnInit {
   stallsValue: any;
   perPage:any=3;
   hostId: any;
+  dates:any;
+  bookingForm!:FormGroup;
+  showPay:boolean=false;
   hostListingData:any[]=[];
   constructor(private service: HorseServiceService, private router: Router, private route: ActivatedRoute) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
@@ -26,9 +31,16 @@ export class BookingDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.intializeForm();
     this.showBookingDetail();
     this.id = this.route.snapshot.params['id'];
     this.hostListing();
+  }
+  intializeForm(){
+    this.bookingForm = new FormGroup({
+      checkIn:new FormControl('',[Validators.required]),
+      checkOut:new FormControl('',[Validators.required]),
+    })
   }
   showBookingDetail() {
     setTimeout(() => {
@@ -70,5 +82,35 @@ export class BookingDetailsComponent implements OnInit {
       })
     }, 3000);
   }
-
+booking(data:any){
+  console.log(data);
+  this.dates=data
+  this.show=false;
+  this.showPay=true;
+  let payload = {
+    params: {
+      bookingEnd
+      : 
+      "2023-04-30T00:00:00.000Z",
+      bookingStart
+      : 
+      "2023-04-01T00:00:00.000Z",
+      days
+      : 
+      29,
+      listingId
+      : 
+      "1760",
+      seats
+      : 
+      2,
+      timeZone
+      : 
+      "+05:30"
+    }
+  }
+  this.service.requestPaymentApi(payload).subscribe((result:any)=>{
+    console.log(result);
+  })
+}
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,TemplateRef} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HorseServiceService } from 'src/app/@core/Services/horse-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-publish-listing',
   templateUrl: './publish-listing.component.html',
@@ -12,12 +13,30 @@ export class PublishListingComponent implements OnInit {
   id:any;
   info:any;
   eid: any;
-  constructor(private service:HorseServiceService,private route:ActivatedRoute,private router:Router,private toastr:ToastrService) { }
+  modalRef?: BsModalRef;
+  message?: string; 
+ 
+  constructor(private service:HorseServiceService,private route:ActivatedRoute,private router:Router,private toastr:ToastrService,private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.listingShowId();
     this.id = this.route.snapshot.params['id'];
     console.log(this.id)
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+ 
+  confirm(): void {
+    this.publishDraft();
+    this.modalRef?.hide();
+
+  }
+ 
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef?.hide();
   }
   listingShowId(){
     setTimeout(() => {

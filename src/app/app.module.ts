@@ -74,6 +74,7 @@ import { AddExperienceStep10Component } from './pages/add-experience-step10/add-
 import { AddExperienceStep8Component } from './pages/add-experience-step8/add-experience-step8.component';
 import { ShowAllComponent } from './pages/show-all/show-all.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -151,6 +152,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgxSpinnerModule,
     PaginationModule.forRoot(),
     NgxPaginationModule,
+    ModalModule.forRoot(),
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },AuthGuardGuard,HorseServiceService],

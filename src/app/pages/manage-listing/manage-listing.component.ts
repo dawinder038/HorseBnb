@@ -10,10 +10,8 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 })
 export class ManageListingComponent implements OnInit {
   totalData: any;
-  page: number = 1;
-  count: number = 0;
-  tableSize:number = 10;
-  // label: String = ""
+  p:any = 1;
+ count:any;
   constructor(private service: HorseServiceService,private router:Router,private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
@@ -25,7 +23,8 @@ export class ManageListingComponent implements OnInit {
     this.service.ownListingQueryApi().subscribe((result: any) => {
       this.totalData = result.data;
       console.log(this.totalData);
-      console.log("total-listing",result);
+      console.log("total-listing",result)
+      this.count=result.count
     })
   }
   // Go To Publish Listing 
@@ -33,8 +32,8 @@ export class ManageListingComponent implements OnInit {
     this.router.navigateByUrl('/manage-listing/publish-listing/'+id)
   }
   pageChanged(event: any) {
-    this.tableSize = event.target.value
-    this.page = 1;
+// this.tableSize=event;
+    // this.page=1;
     this.ownListingQuery();
   }
 

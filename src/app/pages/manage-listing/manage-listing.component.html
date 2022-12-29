@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="p-4">
       <div>
-        <span style="font-size:30px ;font-weight:300;">335</span>
+        <span style="font-size:30px ;font-weight:300;">{{count}}</span>
         <span style="font-size:30px ;font-weight:300;" class="ms-3">Listing</span>
       </div>
       <div class="my-2">
@@ -20,10 +20,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let data of totalData | paginate:{itemsPerPage:tableSize,
-              currentPage:page,
-              totalItems:count}; let i=index;">
-              <th scope="row">{{i+1}}</th>
+            <tr *ngFor="let data of totalData | paginate:{itemsPerPage:10,
+              currentPage:p} let i = index;">
+              <th scope="row">{{ (p -1) * 10 + i + 1}}</th>
               <td colspan="3">
                 <img style="width:45px ;" [src]="data.attributes.publicData.cover_photo?.url" alt="image">
                 <span class="ms-3 text-center">{{data.attributes.title}}</span>
@@ -50,10 +49,8 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <!-- <ngb-pagination [maxSize]="5" [collectionSize]="total" [(page)]="page" (pageChange)="pageChanged($event)">
-    </ngb-pagination> -->
-    <pagination-controls previousLabel="prev" nextLabel="next" (pageChange)="pageChanged($event)"></pagination-controls>
+  <div class="d-flex justify-content-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </section>
 <app-footer></app-footer>
