@@ -20,7 +20,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let data of totalData  let i=index;">
+            <tr *ngFor="let data of totalData | paginate:{itemsPerPage:tableSize,
+              currentPage:page,
+              totalItems:count}; let i=index;">
               <th scope="row">{{i+1}}</th>
               <td colspan="3">
                 <img style="width:45px ;" [src]="data.attributes.publicData.cover_photo?.url" alt="image">
@@ -48,21 +50,10 @@
       </div>
     </div>
   </div>
-  <div class="row ">
-      <div class="pagination m-auto">
-    <ngb-pagination [maxSize]="5" [collectionSize]="total" [(page)]="page" (pageChange)="pageChanged($event)">
-    </ngb-pagination>
-</div>
-    <!-- <div class="col-xs-12 col-12 d-flex justify-content-center  ">
-        <pagination [boundaryLinks]="true" [totalItems]="77"
-        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
-
-</pagination>
-    </div> -->
-</div>
-  <!-- <div class="pagination m-auto">
-    <ngb-pagination [maxSize]="5" [collectionSize]="total" [(page)]="page" (pageChange)="pageChanged($event)">
-    </ngb-pagination>
-</div> -->
+  <div class="row">
+    <!-- <ngb-pagination [maxSize]="5" [collectionSize]="total" [(page)]="page" (pageChange)="pageChanged($event)">
+    </ngb-pagination> -->
+    <pagination-controls previousLabel="prev" nextLabel="next" (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
 </section>
 <app-footer></app-footer>

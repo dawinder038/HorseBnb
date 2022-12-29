@@ -154,7 +154,12 @@
           </div>
         </div>
         <div class="mt-1" style="font-size:20px ;">
-          {{item.attributes.description}}
+          <!-- {{item.attributes.description}} -->
+          <span *ngIf="!item.showMore">   {{trimString(item.attributes.description,60)}}</span>
+          <span  *ngIf="item.showMore">	{{item.attributes.description}} </span>
+          <span style="color:red ;" *ngIf="item.attributes.description.length> 60" (click)="item.showMore = !item.showMore" class="show">Show
+      <span class="show">{{item.showMore ? 'less' : 'More'}}</span>
+          </span>
         </div>
         <div class="mt-1">
           <span><strong> &#36; 30 /</strong></span> night
@@ -194,7 +199,12 @@
         </div>
 
         <div class="mt-1" style="font-size:20px ;">
-           {{item.attributes.description}}
+           <!-- {{item.attributes.description}} -->
+           <span *ngIf="!item.showMore">   {{trimString(item.attributes.description,60)}}</span>
+           <span  *ngIf="item.showMore">	{{item.attributes.description}} </span>
+           <span style="color:red ;" *ngIf="item.attributes.description.length> 60" (click)="item.showMore = !item.showMore" class="show">Show
+       <span class="show">{{item.showMore ? 'less' : 'More'}}</span>
+           </span>
         </div>
         <div class="mt-1">
           <span><strong> &#36;{{item.attributes.publicData.listing_price}} /</strong></span> night
@@ -234,7 +244,12 @@
         </div>
 
         <div class="mt-1" style="font-size:20px ;">
-           {{item.attributes.description}}
+           <!-- {{item.attributes.description}} -->
+           <span *ngIf="!item.showMore">   {{trimString(item.attributes.description,60)}}</span>
+           <span  *ngIf="item.showMore">	{{item.attributes.description}} </span>
+           <span style="color:red ;" *ngIf="item.attributes.description.length> 60" (click)="item.showMore = !item.showMore" class="show">Show
+       <span class="show">{{item.showMore ? 'less' : 'More'}}</span>
+           </span>
         </div>
         <div class="mt-1">
           <span><strong> &#36;{{item.attributes.publicData.listing_price}} /</strong></span> night

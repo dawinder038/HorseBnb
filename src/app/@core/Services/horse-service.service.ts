@@ -25,7 +25,7 @@ export class HorseServiceService {
     return this.http.post(this.apiUrl+"own_listings/update",data)
   }
   ownListingQueryApi(){
-    return this.http.get(this.apiUrl+"own_listings/query?perPage=10&page=1")
+    return this.http.get(this.apiUrl+"own_listings/query?perPage=400&page=1")
   }
   listingDashboardApi(){
     return this.http.get(this.apiUrl+"listings/dashboard")

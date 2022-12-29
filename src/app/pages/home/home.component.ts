@@ -32,6 +32,13 @@ export class HomeComponent implements OnInit {
       console.log(result);
     })
   }
+
+  trimString(text:any,length:any) {
+    return text.length > length ?
+      text.substring(0, length) + '...' :
+      text;
+  }
+
 // monthly Boared Method
   showMonthlyFun() {
     this.showStall = true;
