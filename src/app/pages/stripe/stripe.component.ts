@@ -10,16 +10,18 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class StripeComponent implements OnInit {
   id: any;
-  lastName:any;
-  dob:any;
-  firstName:any;
-  bgImage:any;
-  email:any;
-  theDate:any;
-  phoneNumber:any;
-  imageShow:boolean=false;
+  lastName: any;
+  dob: any;
+  firstName: any;
+  bgImage: any;
+  email: any;
+  theDate: any;
+  phoneNumber: any;
+  imageShow: boolean = false;
   bankAccountForm!: FormGroup;
   stripeInfoForm!: FormGroup;
+  bankToken: any;
+  accountToken: any;
 
   constructor(private service: HorseServiceService, private route: ActivatedRoute, private router: Router) { }
 
@@ -60,8 +62,8 @@ export class StripeComponent implements OnInit {
     })
   }
 
-  valueSet(){
-    this.theDate = new Date( Date.parse(this.dob));
+  valueSet() {
+    this.theDate = new Date(Date.parse(this.dob));
     this.stripeInfoForm.controls['first_name'].setValue(this.firstName);
     this.stripeInfoForm.controls['last_name'].setValue(this.lastName);
     this.stripeInfoForm.controls['email'].setValue(this.email);
@@ -71,7 +73,7 @@ export class StripeComponent implements OnInit {
   generateStripeToken(data: any) {
     let payload = {
       account: {
-        business_type:"individual",
+        business_type: "individual",
         individual: {
           first_name: data.first_name,
           last_name: data.last_name,
@@ -92,14 +94,15 @@ export class StripeComponent implements OnInit {
         }
       }
     }
-    console.log("dob",payload.account.individual.dob)
+    console.log("dob", payload.account.individual.dob)
     console.log(payload);
-    this.service.generateStripeTokenApi(payload).subscribe((result:any)=>{
-      console.log(result);
-      this.router.navigateByUrl('/manage-listing/publish-listing/' + this.id)
+    this.service.generateStripeTokenApi(payload).subscribe((result: any) => {
+      console.log("TOke",result);
+      // this.accountToken= result.id
+      // this.router.navigateByUrl('/manage-listing/publish-listing/' + this.id)
     })
   }
-  
+
   fileChange(event: any) {
     this.service.uploadImage(event).subscribe((result: any) => {
       console.log(result);
@@ -119,22 +122,39 @@ export class StripeComponent implements OnInit {
       }
     }
     this.service.generateBankAccountTokenApi(payload).subscribe((result: any) => {
-      console.log(result);
-     
+      console.log("resul",result);
+      this.bankToken = result.bank_account.id
+      this.accountToken = result.id
+      setTimeout(() => {
+        this.createStripe();
+      }, 1000);
     })
   }
-  skip(){
-    this.router.navigateByUrl('/manage-listing/publish-listing/'+this.id);
+  skip() {
+    this.router.navigateByUrl('/manage-listing/publish-listing/' + this.id);
   }
-  
-  stripeAccountFetch(){
-    setTimeout(() => {
-      this.service.stripeAccountFetchApi().subscribe((result:any)=>{
-        console.log(result);
-        this.router.navigateByUrl('/manage-listing/publish-listing/'+this.id)
-      })
-    }, 1000);
-    
+  createStripe() {
+    let payload = {
+      country: "US",
+      accountToken: this.accountToken,
+      bankAccountToken: this.bankToken,
+      businessProfileMCC: 7394,
+      requestedCapabilities: [
+        "string"
+      ]
+    }
+    this.service.createStripeApi(payload).subscribe((result: any) => {
+      console.log(result);
+    })
   }
 
+  stripeAccountFetch() {
+    setTimeout(() => {
+      this.service.stripeAccountFetchApi().subscribe((result: any) => {
+        console.log(result);
+        this.router.navigateByUrl('/manage-listing/publish-listing/' + this.id)
+      })
+    }, 1000);
+
+  }
 }

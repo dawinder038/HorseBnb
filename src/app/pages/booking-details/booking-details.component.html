@@ -1,6 +1,8 @@
 <app-header></app-header>
 <section class="section">
+    <form [formGroup]="bookingForm" (ngSubmit)="confirmPay(bookingForm.value)">
     <div  class="container my-3">
+        
         <div *ngIf="show">
             <h5>{{bookingResult?.attributes?.title}}</h5>
         </div>
@@ -123,7 +125,6 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <form [formGroup]="bookingForm" (ngSubmit)="booking(bookingForm.value)">
                     <div class="shadow-lg">
                         <div class="p-3">
                             <div>
@@ -174,12 +175,12 @@
                                     <span>$983.10</span>
                                 </div>
                                 <div class="my-1">
-                                    <button class="btn btn-danger w-100">Reserve</button>
+                                    <button type="button" class="btn btn-danger w-100" (click)="booking(bookingForm.value)">Reserve</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
+             
             </div>
         </div>
         <div class="row" *ngIf="show">
@@ -282,6 +283,7 @@
             </div>
         </div>
     </div>
+</form>
 </section>
 <!-- add stall Modal -->
 <div class="modal fade" id="stalls-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -10,8 +10,8 @@ import { HorseServiceService } from 'src/app/@core/Services/horse-service.servic
 })
 export class BookingDetailsComponent implements OnInit {
   id: any;
-  i:any=1;
-  show:boolean=true;
+  i: any = 1;
+  show: boolean = true;
   bookingResult: any;
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -19,12 +19,15 @@ export class BookingDetailsComponent implements OnInit {
   counter: any = 0;
   maxDate = new Date();
   stallsValue: any;
-  perPage:any=3;
+  perPage: any = 3;
   hostId: any;
-  dates:any;
-  bookingForm!:FormGroup;
-  showPay:boolean=false;
-  hostListingData:any[]=[];
+  dates: any;
+  bookingForm!: FormGroup;
+  showPay: boolean = false;
+  hostListingData: any[] = [];
+  endData: any;
+  startDate: any;
+  day: any;
   constructor(private service: HorseServiceService, private router: Router, private route: ActivatedRoute) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -36,17 +39,19 @@ export class BookingDetailsComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.hostListing();
   }
-  intializeForm(){
+
+  intializeForm() {
     this.bookingForm = new FormGroup({
-      checkIn:new FormControl('',[Validators.required]),
-      checkOut:new FormControl('',[Validators.required]),
+      checkIn: new FormControl('', [Validators.required]),
+      checkOut: new FormControl('', [Validators.required]),
     })
   }
+
   showBookingDetail() {
     setTimeout(() => {
       this.service.listingShowIdApi(this.id).subscribe((result: any) => {
         console.log("id", result);
-        this.hostId=result.data.attributes.publicData.host_id
+        this.hostId = result.data.attributes.publicData.host_id
         this.bookingResult = result.data;
         this.imageArray = result.data.attributes.publicData.images;
       });
@@ -56,61 +61,63 @@ export class BookingDetailsComponent implements OnInit {
   incCounter() {
     return this.counter = this.counter + 1;
   }
+
   decCounter() {
     if (this.counter > 0) {
       this.counter = this.counter - 1;
     }
   }
+
   addStalls() {
     this.stallsValue = this.counter;
   }
-  viewAll(){
-  this.perPage=100;
-   this.hostListing();
+
+  viewAll() {
+    this.perPage = 100;
+    this.hostListing();
   }
-  hostListing(){
+
+  hostListing() {
     setTimeout(() => {
       let payload = {
-        host_id:this.hostId,
-        perPage:this.perPage,
-        page:1
+        host_id: this.hostId,
+        perPage: this.perPage,
+        page: 1
       }
-      console.log("host payload",payload)
-      this.service.hostListingApi(payload).subscribe((result:any)=>{
-        console.log("Host",result);
+      console.log("host payload", payload)
+      this.service.hostListingApi(payload).subscribe((result: any) => {
+        console.log("Host", result);
         this.hostListingData = result.data;
       })
     }, 3000);
   }
-booking(data:any){
-  console.log(data);
-  this.dates=data
-  this.show=false;
-  this.showPay=true;
-  let payload = {
-    params: {
-      bookingEnd
-      : 
-      "2023-04-30T00:00:00.000Z",
-      bookingStart
-      : 
-      "2023-04-01T00:00:00.000Z",
-      days
-      : 
-      29,
-      listingId
-      : 
-      "1760",
-      seats
-      : 
-      2,
-      timeZone
-      : 
-      "+05:30"
-    }
+
+  booking(data: any) {
+    this.startDate = data.checkIn.toLocaleDateString('en-us', { day: 'numeric' });
+    this.endData = data.checkOut.toLocaleDateString('en-us', { day: 'numeric' });
+    this.day = this.endData - this.startDate;
+    console.log(this.day, "day");
+
+    console.log(data);
+    this.dates = data;
+    this.show = false;
+    this.showPay = true;
+  
   }
-  this.service.requestPaymentApi(payload).subscribe((result:any)=>{
-    console.log(result);
-  })
-}
+  confirmPay(data:any){
+    let payload = {
+      params: {
+        bookingEnd: data.checkIn.toLocaleDateString('en-us', { month: 'long', year: 'numeric', day: 'numeric' }),
+        bookingStart: data.checkOut.toLocaleDateString('en-us', { month: 'long', year: 'numeric', day: 'numeric' }),
+        days: this.day,
+        listingId: this.id,
+        seats: this.stallsValue,
+        timeZone: "+05:30"
+      }
+    }
+    this.service.requestPaymentApi(payload).subscribe((result: any) => {
+      console.log(result);
+    })
+  }
+
 }

@@ -30,7 +30,7 @@
                 <div class="my-3">
                     <div class="my-2">
                         <label for="slot-size">Slot Size (In Hours)</label>
-                        <input type="text"  id="slot-size" class="form-control w-50">
+                        <input type="text"  id="slot-size" placeholder="please enter size" class="form-control w-50">
                     </div>
                 </div>
                 <div>
@@ -38,8 +38,19 @@
                         <span>Set Schedule</span>
                     </div>
                     <div class="card"> 
-                        <div>
-                            
+                        <div *ngFor="let data of dayArray" class="px-2 d-flex d-flex justify-content-between">
+                            <div>
+                                <div>
+                                    <input [type]=data.type [id]=data.id>
+                                    <label [for]=data.id class="ms-2">{{data.day}}</label>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="../../../assets/add_circle_outline.png" alt="">    <span>Add time slots</span>
+                            </div>
+                            <div>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>

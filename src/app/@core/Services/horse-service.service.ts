@@ -66,6 +66,9 @@ export class HorseServiceService {
   requestPaymentApi(data:any){
     return this.http.post(this.apiUrl+"bookings/request_payment",data)
   }
+  createStripeApi(data:any){
+    return this.http.post(this.apiUrl+'stripe_account/create',data)
+  }
 }
 
 

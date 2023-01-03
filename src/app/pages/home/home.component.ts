@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   getData() {
     this.service.getDataApi().subscribe((result: any) => {
       console.log(result);
-    })
+    });
   }
 
   trimString(text:any,length:any) {
@@ -114,4 +114,5 @@ export class HomeComponent implements OnInit {
   bookingDetails(id:any){
     this.router.navigateByUrl('/booking-details/'+id);
   }
+  
 }
